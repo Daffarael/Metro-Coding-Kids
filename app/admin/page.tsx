@@ -236,7 +236,7 @@ export default function AdminPage() {
             </Link>
             <div>
               <h1 className="font-extrabold text-base sm:text-lg leading-tight">
-                Metro Coding Kids — Admin Hub
+                Metro Coding Kids • Admin Hub
               </h1>
               <p className="text-[11px] text-emerald-200/80">
                 Pusat Kendali Data Leads & Pengaturan Konten

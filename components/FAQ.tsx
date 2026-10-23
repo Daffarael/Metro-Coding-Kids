@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown, HelpCircle } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 export default function FAQ() {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
@@ -34,15 +34,15 @@ export default function FAQ() {
   };
 
   return (
-    <section className="px-5 py-8 bg-white border-b border-slate-200/80">
+    <section className="px-5 py-8 bg-white border-b border-[#1B4332]/10">
       <div className="text-center mb-6">
-        <span className="text-xs font-bold text-emerald-800 uppercase tracking-wider bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full inline-block mb-2">
+        <span className="text-xs font-semibold text-[#1B4332] uppercase tracking-wider bg-[#EBF5EA] border border-[#BCE1B7] px-3.5 py-1 rounded-full inline-block mb-2">
           Tanya Jawab
         </span>
-        <h2 className="text-2xl sm:text-3xl font-extrabold text-[#143E2C] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-heading text-[#1B4332] tracking-tight">
           Pertanyaan Umum Orang Tua
         </h2>
-        <p className="text-slate-600 text-xs sm:text-sm mt-1 max-w-sm mx-auto">
+        <p className="text-[#334155] text-xs sm:text-sm mt-1 max-w-sm mx-auto">
           Informasi transparan seputar teknis kelas, perangkat, dan jadwal belajar si kecil.
         </p>
       </div>
@@ -53,30 +53,28 @@ export default function FAQ() {
           return (
             <div
               key={idx}
-              className={`rounded-xl border transition-all ${
+              className={`rounded-2xl border transition-all ${
                 isOpen
-                  ? "bg-emerald-50/40 border-emerald-300 shadow-2xs"
-                  : "bg-white border-slate-200 hover:border-slate-300"
+                  ? "bg-[#EBF5EA]/50 border-[#BCE1B7] shadow-2xs"
+                  : "bg-white border-slate-200 hover:border-[#1B4332]/20"
               }`}
             >
               <button
                 onClick={() => toggle(idx)}
-                className="w-full text-left p-4 flex items-center justify-between gap-3 cursor-pointer"
+                className="w-full p-4 text-left flex items-center justify-between gap-3 cursor-pointer"
               >
-                <div className="flex items-center gap-2.5">
-                  <HelpCircle className="w-4 h-4 text-emerald-700 shrink-0" />
-                  <span className="font-bold text-xs sm:text-sm text-slate-900 leading-snug">
-                    {item.q}
-                  </span>
-                </div>
+                <span className="font-extrabold text-xs sm:text-sm text-[#1B4332] leading-snug">
+                  {item.q}
+                </span>
                 <ChevronDown
-                  className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-200 ${
-                    isOpen ? "rotate-180 text-emerald-700" : ""
+                  className={`w-4 h-4 text-[#1B4332] shrink-0 transition-transform duration-200 ${
+                    isOpen ? "rotate-180" : ""
                   }`}
                 />
               </button>
+
               {isOpen && (
-                <div className="px-4 pb-4 pt-0 text-slate-600 text-xs leading-relaxed border-t border-emerald-100/70 mt-1">
+                <div className="px-4 pb-4 pt-1 text-[#334155] text-xs leading-relaxed border-t border-[#1B4332]/10">
                   {item.a}
                 </div>
               )}

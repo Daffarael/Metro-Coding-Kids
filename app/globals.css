@@ -3,39 +3,74 @@
 @layer base {
   :root {
     --font-sans: var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --brand-forest: #143e2c;
-    --brand-emerald: #225e43;
-    --brand-lime: #66a838;
-    --brand-orange: #f95724;
-    --brand-bg: #f8faf7;
+    --font-heading: var(--font-more-sugar), cursive, sans-serif;
+    --font-hand: var(--font-patrick), cursive, sans-serif;
+
+    /* Exact Official Brand Palette from Flyer */
+    --brand-forest: #1B4332;
+    --brand-lime: #7CB342;
+    --brand-mint: #F4FAF2;
+    --brand-white: #FFFFFF;
+    --brand-orange: #F35D25;
+    --brand-amber: #FAB818;
+    --brand-blue: #0A5CB8;
+    --brand-purple: #9B51E0;
+    --brand-slate: #334155;
   }
 
   body {
     font-family: var(--font-sans);
-    background-color: #f1f5f9;
+    background-color: #EDF4EC;
+    color: var(--brand-slate);
   }
 }
 
-/* Custom brochure container & clean card utilities */
+/* Typography Utility Classes */
+.font-heading {
+  font-family: var(--font-more-sugar), cursive, sans-serif;
+}
+
+.font-hand {
+  font-family: var(--font-patrick), cursive, sans-serif;
+}
+
+.font-sans {
+  font-family: var(--font-jakarta), sans-serif;
+}
+
+/* Official Flyer Sticker Effect for More Sugar Headings */
+.headline-sticker {
+  font-family: var(--font-more-sugar), cursive, sans-serif;
+  color: #1B4332;
+  text-shadow:
+    -2px -2px 0 #ffffff,
+     2px -2px 0 #ffffff,
+    -2px  2px 0 #ffffff,
+     2px  2px 0 #ffffff,
+    -3px  0px 0 #ffffff,
+     3px  0px 0 #ffffff,
+     0px -3px 0 #ffffff,
+     0px  3px 0 #ffffff,
+     0px  3px 6px rgba(27, 67, 50, 0.12);
+  -webkit-text-stroke: 1.5px #ffffff;
+  paint-order: stroke fill;
+}
+
+/* Vertical Brochure Container (Clean Mobile Canvas) */
 .brochure-container {
-  max-width: 490px;
+  max-width: 480px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #f8faf7;
+  background-color: #F4FAF2;
   min-height: 100vh;
-  box-shadow: 0 10px 40px -10px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 10px 40px -10px rgba(15, 23, 42, 0.12);
 }
 
 @media (min-width: 640px) {
   .brochure-container {
-    border-left: 1px solid #e2e8f0;
-    border-right: 1px solid #e2e8f0;
+    border-left: 1px solid #D8EAD6;
+    border-right: 1px solid #D8EAD6;
   }
-}
-
-/* Crisp text stroke for playful headings if needed */
-.text-stroke-forest {
-  -webkit-text-stroke: 1px #143e2c;
 }
 
 /* Subtle smooth pulses */

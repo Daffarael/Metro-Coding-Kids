@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Clock, ShieldCheck, ArrowRight, Zap, Check } from "lucide-react";
+import { Clock, ShieldCheck, ArrowRight, Check } from "lucide-react";
 
 interface PricingBatchProps {
   onCtaClick?: () => void;
@@ -63,52 +63,52 @@ export default function PricingBatch({
   };
 
   return (
-    <section id="biaya-paket" className="px-5 py-8 bg-white border-b border-slate-200/80">
+    <section id="biaya-paket" className="px-5 py-8 bg-white border-b border-[#1B4332]/10">
       <div className="text-center mb-5">
-        <span className="text-xs font-bold text-emerald-800 uppercase tracking-wider bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full inline-block mb-2">
+        <span className="text-xs font-semibold text-[#1B4332] uppercase tracking-wider bg-[#EBF5EA] border border-[#BCE1B7] px-3.5 py-1 rounded-full inline-block mb-2">
           Investasi Belajar Si Kecil
         </span>
-        <h2 className="text-2xl sm:text-3xl font-extrabold text-[#143E2C] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-heading text-[#1B4332] tracking-tight">
           Paket Pendaftaran {batchName}
         </h2>
-        <p className="text-slate-600 text-xs sm:text-sm mt-1 max-w-sm mx-auto">
+        <p className="text-[#334155] text-xs sm:text-sm mt-1 max-w-sm mx-auto">
           Biaya transparan untuk 8 pertemuan intensif. Tanpa ada biaya pendaftaran tersembunyi.
         </p>
       </div>
 
       {/* Countdown Timer Block */}
-      <div className="bg-[#143E2C] text-white p-4 rounded-2xl mb-5 shadow-sm text-center">
-        <div className="flex items-center justify-center gap-1.5 text-xs font-semibold text-emerald-300 mb-2.5">
+      <div className="bg-[#1B4332] text-white p-4 rounded-2xl sm:rounded-3xl mb-5 shadow-sm text-center">
+        <div className="flex items-center justify-center gap-1.5 text-xs font-semibold text-[#BCE1B7] mb-2.5">
           <Clock className="w-3.5 h-3.5" />
           <span>Waktu Penutupan Pendaftaran Batch:</span>
         </div>
         <div className="grid grid-cols-4 gap-2 max-w-[280px] mx-auto">
           <div className="bg-white/10 rounded-xl p-2 border border-white/10">
             <span className="block text-xl font-extrabold">{timeLeft.days}</span>
-            <span className="block text-[10px] text-emerald-200 uppercase font-medium">Hari</span>
+            <span className="block text-[10px] text-[#BCE1B7] uppercase font-medium">Hari</span>
           </div>
           <div className="bg-white/10 rounded-xl p-2 border border-white/10">
             <span className="block text-xl font-extrabold">{timeLeft.hours}</span>
-            <span className="block text-[10px] text-emerald-200 uppercase font-medium">Jam</span>
+            <span className="block text-[10px] text-[#BCE1B7] uppercase font-medium">Jam</span>
           </div>
           <div className="bg-white/10 rounded-xl p-2 border border-white/10">
             <span className="block text-xl font-extrabold">{timeLeft.minutes}</span>
-            <span className="block text-[10px] text-emerald-200 uppercase font-medium">Menit</span>
+            <span className="block text-[10px] text-[#BCE1B7] uppercase font-medium">Menit</span>
           </div>
           <div className="bg-white/10 rounded-xl p-2 border border-white/10">
             <span className="block text-xl font-extrabold">{timeLeft.seconds}</span>
-            <span className="block text-[10px] text-emerald-200 uppercase font-medium">Detik</span>
+            <span className="block text-[10px] text-[#BCE1B7] uppercase font-medium">Detik</span>
           </div>
         </div>
       </div>
 
       {/* Investment Card */}
-      <div className="rounded-2xl border-2 border-emerald-600/30 bg-gradient-to-b from-emerald-50/40 via-white to-white p-5 shadow-sm">
+      <div className="rounded-2xl sm:rounded-3xl border-2 border-[#1B4332]/20 bg-gradient-to-b from-[#EBF5EA]/50 via-white to-white p-5 shadow-sm">
         <div className="flex items-center justify-between mb-3">
           <span className="text-xs font-bold text-slate-500 uppercase tracking-wide">
             Biaya Investasi Lengkap
           </span>
-          <span className="text-[11px] font-bold text-orange-950 bg-orange-100 border border-orange-300/80 px-2.5 py-0.5 rounded-full">
+          <span className="text-[11px] font-bold text-white bg-[#F35D25] px-2.5 py-0.5 rounded-full shadow-2xs">
             Hemat 47% untuk Batch Ini
           </span>
         </div>
@@ -119,12 +119,12 @@ export default function PricingBatch({
             Normal: {formatRupiah(priceNormal)}
           </div>
           <div className="flex items-baseline gap-2">
-            <span className="text-3xl sm:text-4xl font-extrabold text-[#143E2C] tracking-tight">
+            <span className="text-3xl sm:text-4xl font-extrabold text-[#1B4332] tracking-tight">
               {formatRupiah(priceCurrent)}
             </span>
             <span className="text-xs font-semibold text-slate-500">/ 8 Sesi</span>
           </div>
-          <p className="text-[11px] text-emerald-800 font-semibold mt-1">
+          <p className="text-[11px] text-[#1B4332] font-semibold mt-1">
             ✓ Sudah mencakup seluruh modul, sertifikat, dan aset pembuatan game
           </p>
         </div>
@@ -140,7 +140,7 @@ export default function PricingBatch({
             "Laporan perkembangan dan logika nalar anak",
           ].map((item, idx) => (
             <div key={idx} className="flex items-center gap-2 text-xs text-slate-700">
-              <div className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0">
+              <div className="w-4 h-4 rounded-full bg-[#EBF5EA] text-[#1B4332] flex items-center justify-center shrink-0">
                 <Check className="w-2.5 h-2.5 stroke-[3]" />
               </div>
               <span>{item}</span>
@@ -151,14 +151,14 @@ export default function PricingBatch({
         {/* Action Button */}
         <button
           onClick={handleCta}
-          className="w-full py-4 px-6 rounded-2xl bg-[#F95724] hover:bg-[#e24a1b] active:scale-[0.99] text-white font-extrabold text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
+          className="w-full py-4 px-6 rounded-2xl bg-[#F35D25] hover:bg-[#D84C18] active:scale-[0.99] text-white font-extrabold text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
         >
           <span>Daftar Sekarang & Amankan Kursi</span>
           <ArrowRight className="w-5 h-5 stroke-[2.5]" />
         </button>
 
         <div className="flex items-center justify-center gap-1.5 text-[11px] text-slate-500 font-medium mt-3">
-          <ShieldCheck className="w-4 h-4 text-emerald-700" />
+          <ShieldCheck className="w-4 h-4 text-[#1B4332]" />
           <span>Garansi pendampingan sampai anak menyelesaikan gamenya</span>
         </div>
       </div>

@@ -1,6 +1,6 @@
 # Metro Coding Kids
 
-Landing page dan Admin Hub untuk **Metro Coding Kids** (kursus koding interaktif anak usia 6–15 tahun).
+Landing page dan Admin Hub untuk **Metro Coding Kids** (kursus koding interaktif anak usia 6-15 tahun).
 
 ## Fitur Utama
 - **Digital Brochure Landing Page:** Format mobile-first responsif dengan integrasi langsung ke WhatsApp CS.

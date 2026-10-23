@@ -8,28 +8,28 @@ interface FooterProps {
 
 export default function Footer({ whatsappNumber = "6282382872411" }: FooterProps) {
   return (
-    <footer className="px-5 pt-8 pb-24 bg-[#143E2C] text-white">
+    <footer className="px-5 pt-8 pb-24 bg-[#1B4332] text-white">
       <div className="space-y-5">
         {/* Brand */}
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <div className="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center font-bold text-emerald-300 text-sm">
+            <div className="w-8 h-8 rounded-lg bg-white/15 border border-white/20 flex items-center justify-center font-extrabold text-[#BCE1B7] text-sm">
               MK
             </div>
-            <span className="font-extrabold text-base tracking-tight">
-              Metro Koding Kids
+            <span className="font-heading text-lg tracking-normal">
+              Metro Coding Kids
             </span>
           </div>
-          <p className="text-emerald-100/70 text-xs leading-relaxed max-w-sm">
+          <p className="text-[#BCE1B7]/80 text-xs leading-relaxed max-w-sm">
             Membekali generasi masa depan dengan keterampilan berpikir logis, daya cipta kreatif, dan problem solving melalui pemrograman game interaktif.
           </p>
         </div>
 
         {/* Contact info */}
-        <div className="space-y-2.5 pt-3 border-t border-emerald-800/80 text-xs text-emerald-100/90">
+        <div className="space-y-2.5 pt-3 border-t border-white/10 text-xs text-[#BCE1B7]">
           <div className="flex items-center gap-2.5">
             <svg
-              className="w-4 h-4 text-emerald-400 shrink-0"
+              className="w-4 h-4 text-[#7CB342] shrink-0"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -52,7 +52,7 @@ export default function Footer({ whatsappNumber = "6282382872411" }: FooterProps
           </div>
 
           <div className="flex items-center gap-2.5">
-            <MessageCircle className="w-4 h-4 text-emerald-400 shrink-0" />
+            <MessageCircle className="w-4 h-4 text-[#7CB342] shrink-0" />
             <a
               href={`https://wa.me/${whatsappNumber}`}
               target="_blank"
@@ -64,17 +64,17 @@ export default function Footer({ whatsappNumber = "6282382872411" }: FooterProps
           </div>
 
           <div className="flex items-center gap-2.5">
-            <MapPin className="w-4 h-4 text-emerald-400 shrink-0" />
-            <span>Metro, Lampung & Sesi Online via Zoom</span>
+            <MapPin className="w-4 h-4 text-[#7CB342] shrink-0" />
+            <span>Metro, Lampung dan Sesi Online via Zoom</span>
           </div>
         </div>
 
         {/* Copyright and Admin access */}
-        <div className="pt-4 border-t border-emerald-800/60 flex items-center justify-between text-[11px] text-emerald-200/60">
+        <div className="pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-[#BCE1B7]/60">
           <span>&copy; 2026 Metro Coding Kids.</span>
           <Link
             href="/admin"
-            className="flex items-center gap-1 hover:text-emerald-100 transition-colors"
+            className="flex items-center gap-1 hover:text-white transition-colors"
           >
             <Lock className="w-3 h-3" />
             <span>Admin</span>

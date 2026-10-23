@@ -7,10 +7,10 @@ export default function Pillars() {
       title: "Asah Logika",
       desc: "Anak belajar berpikir terstruktur, memahami konsep sebab-akibat, algoritma langkah demi langkah, dan logika bersyarat (if-then).",
       icon: Brain,
-      bgColor: "bg-emerald-50",
-      borderColor: "border-emerald-200",
-      accentColor: "text-emerald-800",
-      tagColor: "bg-emerald-700 text-white",
+      bgColor: "bg-[#EBF5EA]",
+      borderColor: "border-[#BCE1B7]",
+      accentColor: "text-[#1B4332]",
+      tagColor: "bg-[#1B4332] text-white",
     },
     {
       title: "Kembangkan Kreativitas",
@@ -18,8 +18,8 @@ export default function Pillars() {
       icon: Lightbulb,
       bgColor: "bg-orange-50",
       borderColor: "border-orange-200",
-      accentColor: "text-orange-700",
-      tagColor: "bg-[#F95724] text-white",
+      accentColor: "text-[#F35D25]",
+      tagColor: "bg-[#F35D25] text-white",
     },
     {
       title: "Latih Konsentrasi",
@@ -27,8 +27,8 @@ export default function Pillars() {
       icon: Target,
       bgColor: "bg-amber-50",
       borderColor: "border-amber-200",
-      accentColor: "text-amber-800",
-      tagColor: "bg-[#E5A00D] text-white",
+      accentColor: "text-[#FAB818]",
+      tagColor: "bg-[#FAB818] text-white",
     },
     {
       title: "Pecahkan Masalah",
@@ -36,21 +36,27 @@ export default function Pillars() {
       icon: Puzzle,
       bgColor: "bg-blue-50",
       borderColor: "border-blue-200",
-      accentColor: "text-blue-800",
+      accentColor: "text-[#0A5CB8]",
       tagColor: "bg-[#0A5CB8] text-white",
     },
   ];
 
   return (
-    <section className="px-5 py-7 bg-white border-y border-slate-200/80">
+    <section className="px-5 py-7 bg-white border-y border-[#1B4332]/10">
       <div className="text-center mb-6">
-        <span className="text-xs font-bold text-emerald-800 uppercase tracking-wider bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full inline-block mb-2">
+        <span className="text-xs font-semibold text-[#1B4332] uppercase tracking-wider bg-[#EBF5EA] border border-[#BCE1B7] px-3.5 py-1 rounded-full inline-block mb-2">
           Manfaat Nyata untuk Anak
         </span>
-        <h2 className="text-2xl sm:text-3xl font-extrabold text-[#143E2C] tracking-tight">
-          Lebih Dari Sekedar Koding
-        </h2>
-        <p className="text-slate-600 text-xs sm:text-sm mt-1.5 max-w-sm mx-auto">
+        <div className="flex items-center justify-center gap-2 flex-wrap">
+          <h2 className="text-2xl sm:text-3xl font-heading text-[#1B4332] tracking-tight">
+            Lebih Dari Sekedar
+          </h2>
+          <span className="px-3.5 py-0.5 rounded-full bg-[#1B4332] text-white font-heading text-xl sm:text-2xl shadow-xs inline-flex items-center gap-1.5">
+            Coding
+            <span className="text-xs font-mono font-bold text-[#FAB818]">&lt;/&gt;</span>
+          </span>
+        </div>
+        <p className="text-[#334155] text-xs sm:text-sm mt-2 max-w-sm mx-auto">
           Belajar koding bukan sekadar mengetik kode komputer, tetapi membekali 4 pondasi kecerdasan penting:
         </p>
       </div>
@@ -61,7 +67,7 @@ export default function Pillars() {
           return (
             <div
               key={idx}
-              className={`p-4 rounded-2xl ${item.bgColor} border ${item.borderColor} shadow-xs flex flex-col justify-between`}
+              className={`p-4 rounded-2xl ${item.bgColor} border ${item.borderColor} shadow-2xs flex flex-col justify-between`}
             >
               <div>
                 <div className="flex items-center justify-between mb-2.5">
@@ -72,10 +78,10 @@ export default function Pillars() {
                     <Icon className="w-5 h-5" />
                   </div>
                 </div>
-                <h3 className="font-extrabold text-slate-900 text-base mb-1">
+                <h3 className="font-extrabold text-[#1B4332] text-base mb-1">
                   {item.title}
                 </h3>
-                <p className="text-slate-600 text-xs leading-relaxed">
+                <p className="text-[#334155] text-xs leading-relaxed">
                   {item.desc}
                 </p>
               </div>

@@ -36,15 +36,15 @@ export default function Facilities() {
   ];
 
   return (
-    <section className="px-5 py-7 bg-[#F8FAF7] border-b border-slate-200/80">
+    <section className="px-5 py-7 bg-[#F4FAF2] border-b border-[#1B4332]/10">
       <div className="text-center mb-6">
-        <span className="text-xs font-bold text-emerald-800 uppercase tracking-wider bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full inline-block mb-2">
+        <span className="text-xs font-semibold text-[#1B4332] uppercase tracking-wider bg-[#EBF5EA] border border-[#BCE1B7] px-3.5 py-1 rounded-full inline-block mb-2">
           Fasilitas Lengkap
         </span>
-        <h2 className="text-2xl sm:text-3xl font-extrabold text-[#143E2C] tracking-tight">
+        <h2 className="text-2xl sm:text-3xl font-heading text-[#1B4332] tracking-tight">
           Yang Didapatkan Si Kecil
         </h2>
-        <p className="text-slate-600 text-xs sm:text-sm mt-1.5 max-w-sm mx-auto">
+        <p className="text-[#334155] text-xs sm:text-sm mt-1 max-w-sm mx-auto">
           Setiap peserta mendapatkan fasilitas pembelajaran lengkap tanpa biaya tambahan.
         </p>
       </div>
@@ -55,16 +55,16 @@ export default function Facilities() {
           return (
             <div
               key={idx}
-              className="p-3.5 rounded-xl bg-white border border-slate-200/90 shadow-2xs flex items-start gap-3"
+              className="p-4 rounded-2xl bg-white border border-[#1B4332]/10 shadow-2xs flex items-start gap-3"
             >
-              <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 mt-0.5">
-                <Icon className="w-4 h-4" />
+              <div className="w-9 h-9 rounded-xl bg-[#EBF5EA] text-[#1B4332] flex items-center justify-center shrink-0 mt-0.5">
+                <Icon className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="font-bold text-slate-900 text-xs sm:text-sm mb-0.5">
+                <h3 className="font-extrabold text-[#1B4332] text-sm mb-0.5">
                   {item.title}
                 </h3>
-                <p className="text-slate-600 text-[11px] sm:text-xs leading-relaxed">
+                <p className="text-[#334155] text-xs leading-relaxed">
                   {item.desc}
                 </p>
               </div>
