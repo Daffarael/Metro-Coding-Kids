@@ -53,7 +53,7 @@ export default function Hero({ onCtaClick, seatsLeft = 4 }: HeroProps) {
       <div className="relative rounded-2xl overflow-hidden border border-emerald-900/10 shadow-md bg-white mb-6">
         <div className="relative aspect-[4/5] w-full">
           <Image
-            src="/images/media_1792758722402.png"
+            src="/images/hero-poster.png"
             alt="Anak Belajar Coding Membuat Game Sendiri di Metro Coding Kids"
             fill
             sizes="(max-width: 500px) 100vw, 490px"

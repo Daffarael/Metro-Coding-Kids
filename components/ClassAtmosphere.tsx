@@ -21,7 +21,7 @@ export default function ClassAtmosphere() {
       <div className="rounded-2xl overflow-hidden bg-white border border-slate-200/90 shadow-sm mb-4">
         <div className="relative aspect-[4/3] w-full bg-slate-100">
           <Image
-            src="/images/media_1792759271521.png"
+            src="/images/class-showcase.png"
             alt="Suasana Belajar Coding Anak di Metro Coding Kids"
             fill
             sizes="(max-width: 500px) 100vw, 490px"
