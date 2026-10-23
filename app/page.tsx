@@ -15,7 +15,6 @@ import Footer from "@/components/Footer";
 import StickyWhatsApp from "@/components/StickyWhatsApp";
 
 export default function Home() {
-  const [selectedCourseId, setSelectedCourseId] = useState("junior");
   const [settings, setSettings] = useState({
     whatsapp_number: "6282382872411",
     batch_name: "Batch November 2026",
@@ -39,8 +38,9 @@ export default function Home() {
       });
   }, []);
 
-  const handleSelectClass = (courseId: string) => {
-    setSelectedCourseId(courseId);
+  const handleSelectClass = () => {
+    const el = document.getElementById("form-pendaftaran");
+    el?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -86,10 +86,7 @@ export default function Home() {
         />
 
         {/* Hybrid Lead Form */}
-        <RegistrationForm
-          defaultCourseId={selectedCourseId}
-          whatsappNumber={settings.whatsapp_number}
-        />
+        <RegistrationForm whatsappNumber={settings.whatsapp_number} />
 
         {/* Frequently Asked Questions */}
         <FAQ />

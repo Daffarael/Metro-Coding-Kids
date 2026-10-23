@@ -4,34 +4,18 @@ import React, { useState } from "react";
 import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 
 interface RegistrationFormProps {
-  defaultCourseId?: string;
   whatsappNumber?: string;
 }
 
 export default function RegistrationForm({
-  defaultCourseId = "junior",
   whatsappNumber = "6282382872411",
 }: RegistrationFormProps) {
   const [parentName, setParentName] = useState("");
   const [childName, setChildName] = useState("");
   const [childAge, setChildAge] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
-  const [courseId, setCourseId] = useState(defaultCourseId);
   const [isLoading, setIsLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
-
-  // Sync if prop changes
-  React.useEffect(() => {
-    if (defaultCourseId) {
-      setCourseId(defaultCourseId);
-    }
-  }, [defaultCourseId]);
-
-  const courseNames: Record<string, string> = {
-    junior: "Junior Game Maker (Usia 6-8 Tahun)",
-    explorer: "Explorer Coder (Usia 9-12 Tahun)",
-    master: "Master Creator (Usia 13-15 Tahun)",
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -57,26 +41,24 @@ export default function RegistrationForm({
           child_name: childName,
           child_age: childAge,
           whatsapp: whatsapp,
-          course_id: courseId,
+          course_id: "konsultasi_wa",
         }),
       });
 
-      // 2. Format WhatsApp message
-      const selectedCourseName = courseNames[courseId] || courseId;
+      // 2. Format WhatsApp message without preselected course
       const waMessage =
         `Halo CS Metro Coding Kids, saya ingin mendaftarkan anak saya untuk Batch Belajar Koding:\n\n` +
         `• Nama Orang Tua: ${parentName.trim()}\n` +
         `• Nama Anak: ${childName.trim()}\n` +
         `• Usia Anak: ${childAge.trim() ? `${childAge.trim()} Tahun` : "Belum dicantumkan"}\n` +
-        `• Pilihan Program: ${selectedCourseName}\n` +
         `• WhatsApp: ${whatsapp.trim()}\n\n` +
-        `Mohon info ketersediaan kursi belajar dan jadwal kelasnya. Terima kasih!`;
+        `Saya ingin konsultasi rekomendasi program kelas yang paling cocok dan info ketersediaan kursinya. Terima kasih!`;
 
       const waUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(waMessage)}`;
 
       setStatusMessage({
         type: "success",
-        text: "Pendaftaran tercatat! Mengarahkan ke WhatsApp CS...",
+        text: "Data tercatat! Mengarahkan ke WhatsApp CS...",
       });
 
       // 3. Smooth redirect to WhatsApp
@@ -85,12 +67,11 @@ export default function RegistrationForm({
       }, 400);
     } catch (err) {
       console.error("Submission failed:", err);
-      const selectedCourseName = courseNames[courseId] || courseId;
       const waMessage =
         `Halo CS Metro Coding Kids, saya ingin mendaftarkan anak saya:\n` +
         `• Nama Orang Tua: ${parentName.trim()}\n` +
-        `• Nama Anak: ${childName.trim()} (${childAge.trim()} thn)\n` +
-        `• Pilihan Program: ${selectedCourseName}`;
+        `• Nama Anak: ${childName.trim()} (${childAge.trim()} thn)\n\n` +
+        `Saya ingin konsultasi pilihan program kelas dan jadwal belajarnya. Terima kasih!`;
       window.location.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(waMessage)}`;
     } finally {
       setIsLoading(false);
@@ -107,7 +88,7 @@ export default function RegistrationForm({
           Form Pendaftaran Cepat
         </h2>
         <p className="text-[#334155] text-xs sm:text-sm mt-1 max-w-sm mx-auto">
-          Isi 4 data singkat di bawah ini. Tim CS kami akan segera mengonfirmasi jadwal dan ketersediaan kursi.
+          Isi data singkat di bawah ini. Tim CS kami akan segera mengonfirmasi jadwal dan rekomendasi kelas terbaik untuk si kecil.
         </p>
       </div>
 
@@ -176,56 +157,6 @@ export default function RegistrationForm({
             <span className="block text-[11px] text-slate-400 mt-1">
               Digunakan untuk pengiriman jadwal kelas dan koordinasi mentor.
             </span>
-          </div>
-
-          {/* Field 4: Pilihan Kelas */}
-          <div>
-            <label className="block text-xs font-bold text-[#1B4332] mb-1.5">
-              Pilihan Program Belajar <span className="text-red-500">*</span>
-            </label>
-            <div className="space-y-2">
-              {[
-                {
-                  id: "junior",
-                  title: "Junior Game Maker (Usia 6 - 8 Tahun)",
-                  desc: "Scratch Jr • Animasi Cerita & Mini Maze",
-                },
-                {
-                  id: "explorer",
-                  title: "Explorer Coder (Usia 9 - 12 Tahun)",
-                  desc: "Scratch 3.0 & Roblox • Game Arcade & Logika Variabel",
-                },
-                {
-                  id: "master",
-                  title: "Master Creator (Usia 13 - 15 Tahun)",
-                  desc: "Python Basics • Text-Code & Game Development",
-                },
-              ].map((opt) => (
-                <label
-                  key={opt.id}
-                  className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all ${
-                    courseId === opt.id
-                      ? "bg-[#EBF5EA] border-[#1B4332] ring-1 ring-[#1B4332]/20"
-                      : "border-slate-200 hover:bg-slate-50"
-                  }`}
-                >
-                  <input
-                    type="radio"
-                    name="courseOption"
-                    value={opt.id}
-                    checked={courseId === opt.id}
-                    onChange={() => setCourseId(opt.id)}
-                    className="mt-0.5 accent-[#1B4332]"
-                  />
-                  <div>
-                    <div className="font-bold text-xs sm:text-sm text-[#1B4332] leading-tight">
-                      {opt.title}
-                    </div>
-                    <div className="text-[11px] text-[#334155]/80 mt-0.5">{opt.desc}</div>
-                  </div>
-                </label>
-              ))}
-            </div>
           </div>
 
           {/* Feedback status */}
