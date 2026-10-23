@@ -6,22 +6,20 @@
     --font-heading: var(--font-more-sugar), cursive, sans-serif;
     --font-hand: var(--font-patrick), cursive, sans-serif;
 
-    /* Exact Official Brand Palette from Flyer */
-    --brand-forest: #1B4332;
-    --brand-lime: #7CB342;
-    --brand-mint: #F4FAF2;
-    --brand-white: #FFFFFF;
-    --brand-orange: #F35D25;
-    --brand-amber: #FAB818;
-    --brand-blue: #0A5CB8;
-    --brand-purple: #9B51E0;
-    --brand-slate: #334155;
+    /* High-Vibrancy Kid Coding Colors (Direct from reference images) */
+    --color-forest: #143D2B;
+    --color-yellow: #F5BA13;
+    --color-coral: #EE4C23;
+    --color-blue: #3B5EDB;
+    --color-mint: #E2F3E7;
+    --color-cream: #F7F5EE;
+    --color-dark: #1E293B;
   }
 
   body {
     font-family: var(--font-sans);
-    background-color: #EDF4EC;
-    color: var(--brand-slate);
+    background-color: #EFECE3;
+    color: #334155;
   }
 }
 
@@ -38,53 +36,19 @@
   font-family: var(--font-jakarta), sans-serif;
 }
 
-/* Official Flyer Sticker Effect for More Sugar Headings */
-.headline-sticker {
-  font-family: var(--font-more-sugar), cursive, sans-serif;
-  color: #1B4332;
-  text-shadow:
-    -2px -2px 0 #ffffff,
-     2px -2px 0 #ffffff,
-    -2px  2px 0 #ffffff,
-     2px  2px 0 #ffffff,
-    -3px  0px 0 #ffffff,
-     3px  0px 0 #ffffff,
-     0px -3px 0 #ffffff,
-     0px  3px 0 #ffffff,
-     0px  3px 6px rgba(27, 67, 50, 0.12);
-  -webkit-text-stroke: 1.5px #ffffff;
-  paint-order: stroke fill;
-}
-
-/* Vertical Brochure Container (Clean Mobile Canvas) */
+/* Vertical Brochure Container (Warm Cream Canvas) */
 .brochure-container {
-  max-width: 480px;
+  max-width: 540px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #F4FAF2;
+  background-color: #F7F5EE;
   min-height: 100vh;
-  box-shadow: 0 10px 40px -10px rgba(15, 23, 42, 0.12);
+  box-shadow: 0 10px 50px -15px rgba(20, 61, 43, 0.15);
 }
 
 @media (min-width: 640px) {
   .brochure-container {
-    border-left: 1px solid #D8EAD6;
-    border-right: 1px solid #D8EAD6;
+    border-left: 1px solid #E6E1D1;
+    border-right: 1px solid #E6E1D1;
   }
-}
-
-/* Subtle smooth pulses */
-@keyframes softPulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.04);
-    opacity: 0.92;
-  }
-}
-
-.animate-soft-pulse {
-  animation: softPulse 2.5s ease-in-out infinite;
 }

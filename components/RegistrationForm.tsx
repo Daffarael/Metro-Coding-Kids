@@ -79,12 +79,12 @@ export default function RegistrationForm({
   };
 
   return (
-    <section id="form-pendaftaran" className="px-5 py-8 bg-[#F4FAF2] border-b border-[#1B4332]/10">
+    <section id="form-pendaftaran" className="px-5 py-8 bg-[#F7F5EE]">
       <div className="text-center mb-6">
-        <span className="text-xs font-semibold text-[#1B4332] uppercase tracking-wider bg-[#EBF5EA] border border-[#BCE1B7] px-3.5 py-1 rounded-full inline-block mb-2">
+        <span className="text-[11px] font-black text-[#143D2B] uppercase tracking-wider bg-[#F5BA13] px-3.5 py-1 rounded-full inline-block mb-2 shadow-2xs">
           Langkah Mudah
         </span>
-        <h2 className="text-2xl sm:text-3xl font-heading text-[#1B4332] tracking-tight">
+        <h2 className="text-3xl sm:text-4xl font-heading text-[#143D2B] tracking-tight">
           Form Pendaftaran Cepat
         </h2>
         <p className="text-[#334155] text-xs sm:text-sm mt-1 max-w-sm mx-auto">
@@ -92,12 +92,12 @@ export default function RegistrationForm({
         </p>
       </div>
 
-      <div className="bg-white rounded-2xl sm:rounded-3xl p-5 border border-slate-200/90 shadow-sm">
+      <div className="bg-white rounded-3xl p-6 border-2 border-[#143D2B]/10 shadow-md">
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Field 1: Nama Orang Tua */}
           <div>
-            <label className="block text-xs font-bold text-[#1B4332] mb-1.5">
-              Nama Lengkap Orang Tua <span className="text-red-500">*</span>
+            <label className="block text-xs font-bold text-[#143D2B] mb-1.5">
+              Nama Lengkap Orang Tua <span className="text-[#EE4C23]">*</span>
             </label>
             <input
               type="text"
@@ -105,15 +105,15 @@ export default function RegistrationForm({
               placeholder="Contoh: Ayah Hendra / Bunda Maya"
               value={parentName}
               onChange={(e) => setParentName(e.target.value)}
-              className="w-full px-3.5 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#1B4332] focus:ring-2 focus:ring-[#1B4332]/10 transition-all placeholder:text-slate-400"
+              className="w-full px-3.5 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#143D2B] focus:ring-2 focus:ring-[#143D2B]/10 transition-all placeholder:text-slate-400"
             />
           </div>
 
           {/* Field 2: Nama & Usia Anak */}
           <div className="grid grid-cols-3 gap-2.5">
             <div className="col-span-2">
-              <label className="block text-xs font-bold text-[#1B4332] mb-1.5">
-                Nama Panggilan Anak <span className="text-red-500">*</span>
+              <label className="block text-xs font-bold text-[#143D2B] mb-1.5">
+                Nama Panggilan Anak <span className="text-[#EE4C23]">*</span>
               </label>
               <input
                 type="text"
@@ -121,12 +121,12 @@ export default function RegistrationForm({
                 placeholder="Contoh: Kenzo"
                 value={childName}
                 onChange={(e) => setChildName(e.target.value)}
-                className="w-full px-3.5 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#1B4332] focus:ring-2 focus:ring-[#1B4332]/10 transition-all placeholder:text-slate-400"
+                className="w-full px-3.5 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#143D2B] focus:ring-2 focus:ring-[#143D2B]/10 transition-all placeholder:text-slate-400"
               />
             </div>
             <div>
-              <label className="block text-xs font-bold text-[#1B4332] mb-1.5">
-                Usia (Thn) <span className="text-red-500">*</span>
+              <label className="block text-xs font-bold text-[#143D2B] mb-1.5">
+                Usia (Thn) <span className="text-[#EE4C23]">*</span>
               </label>
               <input
                 type="number"
@@ -136,15 +136,15 @@ export default function RegistrationForm({
                 placeholder="8"
                 value={childAge}
                 onChange={(e) => setChildAge(e.target.value)}
-                className="w-full px-3.5 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#1B4332] focus:ring-2 focus:ring-[#1B4332]/10 transition-all placeholder:text-slate-400 text-center"
+                className="w-full px-3.5 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#143D2B] focus:ring-2 focus:ring-[#143D2B]/10 transition-all placeholder:text-slate-400 text-center"
               />
             </div>
           </div>
 
           {/* Field 3: WhatsApp */}
           <div>
-            <label className="block text-xs font-bold text-[#1B4332] mb-1.5">
-              Nomor WhatsApp Aktif <span className="text-red-500">*</span>
+            <label className="block text-xs font-bold text-[#143D2B] mb-1.5">
+              Nomor WhatsApp Aktif <span className="text-[#EE4C23]">*</span>
             </label>
             <input
               type="tel"
@@ -152,7 +152,7 @@ export default function RegistrationForm({
               placeholder="Contoh: 081234567890"
               value={whatsapp}
               onChange={(e) => setWhatsapp(e.target.value)}
-              className="w-full px-3.5 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#1B4332] focus:ring-2 focus:ring-[#1B4332]/10 transition-all placeholder:text-slate-400"
+              className="w-full px-3.5 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#143D2B] focus:ring-2 focus:ring-[#143D2B]/10 transition-all placeholder:text-slate-400"
             />
             <span className="block text-[11px] text-slate-400 mt-1">
               Digunakan untuk pengiriman jadwal kelas dan koordinasi mentor.
@@ -162,14 +162,14 @@ export default function RegistrationForm({
           {/* Feedback status */}
           {statusMessage && (
             <div
-              className={`p-3 rounded-xl text-xs flex items-center gap-2 ${
+              className={`p-3 rounded-2xl text-xs flex items-center gap-2 ${
                 statusMessage.type === "success"
-                  ? "bg-[#EBF5EA] text-[#1B4332] border border-[#BCE1B7]"
+                  ? "bg-[#E2F3E7] text-[#143D2B] border border-[#143D2B]/20"
                   : "bg-red-50 text-red-800 border border-red-200"
               }`}
             >
               {statusMessage.type === "success" ? (
-                <CheckCircle2 className="w-4 h-4 shrink-0 text-[#1B4332]" />
+                <CheckCircle2 className="w-4 h-4 shrink-0 text-[#143D2B]" />
               ) : (
                 <AlertCircle className="w-4 h-4 shrink-0" />
               )}
@@ -181,7 +181,7 @@ export default function RegistrationForm({
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full py-4 px-6 rounded-2xl bg-[#F35D25] hover:bg-[#D84C18] active:scale-[0.99] text-white font-extrabold text-sm sm:text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed mt-2"
+            className="w-full py-4 px-6 rounded-2xl bg-[#EE4C23] hover:bg-[#d63f17] active:scale-[0.99] text-white font-extrabold text-sm sm:text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed mt-2"
           >
             {isLoading ? (
               <>

@@ -1,31 +1,27 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { Plus, Minus, ArrowRight, Star } from "lucide-react";
 
 export default function FAQ() {
-  const [openIdx, setOpenIdx] = useState<number | null>(0);
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   const faqs = [
     {
-      q: "Apakah anak harus punya laptop berspesifikasi tinggi?",
-      a: "Sama sekali tidak perlu laptop canggih atau laptop gaming. Laptop standar biasa dengan koneksi internet dan browser Google Chrome sudah sangat cukup untuk menjalankan platform belajar Scratch dan Roblox. Untuk kelas Junior, anak bahkan bisa mulai menggunakan tablet.",
+      q: "Apakah anak harus sudah pernah coding?",
+      a: "Sama sekali tidak perlu! Kurikulum kami dirancang dari nol dengan metode visual block drag-and-drop yang ramah anak. Anak yang belum pernah pegang laptop pun akan dibimbing secara sabar sampai bisa membuat game pertamanya.",
     },
     {
-      q: "Bagaimana jika anak belum lancar mengetik di keyboard?",
-      a: "Tidak masalah sama sekali. Khususnya pada kelas Junior (6-8 tahun), kurikulum kami berbasis visual block drag-and-drop (seperti menyusun kepingan puzzle). Anak tidak dituntut mengetik panjang, justru metode ini melatih koordinasi motorik dan nalar anak secara bertahap.",
+      q: "Kelasnya online atau offline?",
+      a: "Tersedia pilihan kelas tatap muka (offline) langsung di Kota Metro, Lampung, maupun kelas online interaktif via Zoom untuk peserta dari luar kota. Kedua format sama-sama semi-privat maksimal 6 anak per kelas.",
     },
     {
-      q: "Berapa lama durasi tiap pertemuan dan jadwal kelasnya?",
-      a: "Program intensif ini terdiri dari 8 sesi pertemuan, dengan durasi 60-75 menit per sesi. Pilihan jadwal tersedia di akhir pekan (Sabtu/Minggu) maupun sore hari pada hari kerja, sehingga tidak bentrok dengan jam sekolah anak.",
+      q: "Perangkat apa yang dibutuhkan?",
+      a: "Cukup laptop standar biasa atau komputer dengan koneksi internet dan browser Google Chrome. Untuk kelas Junior (usia 6-8 tahun), anak bahkan bisa mulai belajar dengan menggunakan tablet.",
     },
     {
-      q: "Apakah kelas diadakan tatap muka atau online?",
-      a: "Tersedia pilihan kelas tatap muka (offline) di Kota Metro, Lampung, maupun kelas online interaktif via Zoom untuk peserta dari luar kota. Kedua format sama-sama dibatasi maksimal 6 anak per sesi agar mentor fokus mendampingi.",
-    },
-    {
-      q: "Jika anak berhalangan hadir karena sakit, apakah ada sesi pengganti?",
-      a: "Tentu ada. Kami menyediakan sesi makeup class (kelas pengganti) dengan jadwal yang disepakati bersama mentor, sehingga si kecil tidak akan kehilangan tahapan proyek pembuatan gamenya.",
+      q: "Bagaimana cara mencoba kelas gratis?",
+      a: "Cukup isi formulir pendaftaran singkat di atas dengan nama dan nomor WhatsApp Anda. Tim CS kami akan segera menghubungi untuk mengatur jadwal sesi perkenalan gratis bersama mentor.",
     },
   ];
 
@@ -33,55 +29,102 @@ export default function FAQ() {
     setOpenIdx(openIdx === idx ? null : idx);
   };
 
+  const scrollToForm = () => {
+    const el = document.getElementById("form-pendaftaran");
+    el?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <section className="px-5 py-8 bg-white border-b border-[#1B4332]/10">
-      <div className="text-center mb-6">
-        <span className="text-xs font-semibold text-[#1B4332] uppercase tracking-wider bg-[#EBF5EA] border border-[#BCE1B7] px-3.5 py-1 rounded-full inline-block mb-2">
-          Tanya Jawab
-        </span>
-        <h2 className="text-2xl sm:text-3xl font-heading text-[#1B4332] tracking-tight">
-          Pertanyaan Umum Orang Tua
-        </h2>
-        <p className="text-[#334155] text-xs sm:text-sm mt-1 max-w-sm mx-auto">
-          Informasi transparan seputar teknis kelas, perangkat, dan jadwal belajar si kecil.
-        </p>
-      </div>
+    <div className="space-y-6 bg-[#F7F5EE] py-8">
+      {/* FAQ Section (Matching User Image 4) */}
+      <section className="px-5">
+        <div className="text-center mb-6">
+          <span className="text-[11px] font-black text-[#3B5EDB] uppercase tracking-wider block mb-1">
+            Yang Sering Ditanyakan
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-heading text-[#143D2B] tracking-tight">
+            Biar makin yakin.
+          </h2>
+        </div>
 
-      <div className="space-y-2.5">
-        {faqs.map((item, idx) => {
-          const isOpen = openIdx === idx;
-          return (
-            <div
-              key={idx}
-              className={`rounded-2xl border transition-all ${
-                isOpen
-                  ? "bg-[#EBF5EA]/50 border-[#BCE1B7] shadow-2xs"
-                  : "bg-white border-slate-200 hover:border-[#1B4332]/20"
-              }`}
+        {/* Clean Divider Accordion Rows */}
+        <div className="divide-y divide-[#E6E1D1] border-y border-[#E6E1D1]">
+          {faqs.map((item, idx) => {
+            const isOpen = openIdx === idx;
+            return (
+              <div key={idx} className="py-3.5 transition-colors">
+                <button
+                  onClick={() => toggle(idx)}
+                  className="w-full text-left flex items-center justify-between gap-3 cursor-pointer py-1"
+                >
+                  <span className="font-extrabold text-xs sm:text-sm text-[#143D2B] leading-snug">
+                    {item.q}
+                  </span>
+                  <div
+                    className={`w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-all ${
+                      isOpen
+                        ? "bg-[#143D2B] text-white"
+                        : "bg-[#E2F3E7] text-[#143D2B] hover:bg-[#cbe8d2]"
+                    }`}
+                  >
+                    {isOpen ? (
+                      <Minus className="w-3.5 h-3.5 stroke-[3]" />
+                    ) : (
+                      <Plus className="w-3.5 h-3.5 stroke-[3]" />
+                    )}
+                  </div>
+                </button>
+
+                {isOpen && (
+                  <div className="pt-2 pb-2 text-[#334155] text-xs leading-relaxed max-w-lg">
+                    {item.a}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Blue Action Banner (Exact match to User Image 4 bottom) */}
+      <section className="px-4 pt-4">
+        <div className="relative rounded-3xl sm:rounded-[36px] bg-[#3B5EDB] text-white p-7 sm:p-9 overflow-hidden text-center shadow-xl">
+          {/* Top-Left Coral Orange Half Circle */}
+          <div className="absolute -top-7 -left-7 w-20 h-20 rounded-full bg-[#EE4C23] pointer-events-none" />
+
+          {/* Bottom-Right Golden Yellow Quarter Circle */}
+          <div className="absolute -bottom-10 -right-10 w-28 h-28 rounded-full bg-[#F5BA13] pointer-events-none" />
+
+          {/* Star doodle top right */}
+          <div className="absolute top-4 right-5 text-[#F5BA13] opacity-90 pointer-events-none">
+            <Star className="w-6 h-6 stroke-[2] fill-none" />
+          </div>
+
+          {/* Content */}
+          <div className="relative z-10 max-w-sm mx-auto">
+            <span className="text-[11px] font-black text-[#F5BA13] uppercase tracking-wider block mb-2">
+              Siap Melihat Anak Berkarya?
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-heading text-white tracking-tight leading-[1.15] mb-2.5">
+              Mulai dari satu kelas yang seru.
+            </h2>
+            <p className="text-blue-100 text-xs sm:text-sm leading-relaxed mb-6 font-normal">
+              Biarkan anak mencoba, bertemu mentor, dan membuat proyek kecil pertamanya. Gratis dan tanpa komitmen.
+            </p>
+
+            {/* Bright Yellow Button */}
+            <button
+              onClick={scrollToForm}
+              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-[#F5BA13] hover:bg-[#e2a809] active:scale-[0.99] text-[#143D2B] font-extrabold text-sm shadow-md hover:shadow-lg transition-all cursor-pointer"
             >
-              <button
-                onClick={() => toggle(idx)}
-                className="w-full p-4 text-left flex items-center justify-between gap-3 cursor-pointer"
-              >
-                <span className="font-extrabold text-xs sm:text-sm text-[#1B4332] leading-snug">
-                  {item.q}
-                </span>
-                <ChevronDown
-                  className={`w-4 h-4 text-[#1B4332] shrink-0 transition-transform duration-200 ${
-                    isOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-
-              {isOpen && (
-                <div className="px-4 pb-4 pt-1 text-[#334155] text-xs leading-relaxed border-t border-[#1B4332]/10">
-                  {item.a}
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
-    </section>
+              <span>Coba Kelas Gratis</span>
+              <div className="w-5 h-5 rounded-full bg-[#143D2B] text-white flex items-center justify-center">
+                <ArrowRight className="w-3 h-3 stroke-[3]" />
+              </div>
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

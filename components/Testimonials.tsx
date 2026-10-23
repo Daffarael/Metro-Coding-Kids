@@ -24,12 +24,12 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="px-5 py-7 bg-white border-b border-[#1B4332]/10">
-      <div className="text-center mb-5">
-        <span className="text-xs font-semibold text-[#1B4332] uppercase tracking-wider bg-[#EBF5EA] border border-[#BCE1B7] px-3.5 py-1 rounded-full inline-block mb-2">
+    <section className="px-5 py-8 bg-[#F7F5EE]">
+      <div className="text-center mb-6">
+        <span className="text-[11px] font-black text-[#143D2B] uppercase tracking-wider bg-[#F5BA13] px-3.5 py-1 rounded-full inline-block mb-2 shadow-2xs">
           Cerita Orang Tua
         </span>
-        <h2 className="text-2xl sm:text-3xl font-heading text-[#1B4332] tracking-tight">
+        <h2 className="text-3xl sm:text-4xl font-heading text-[#143D2B] tracking-tight">
           Apa Kata Para Orang Tua?
         </h2>
         <p className="text-[#334155] text-xs sm:text-sm mt-1 max-w-sm mx-auto">
@@ -37,29 +37,29 @@ export default function Testimonials() {
         </p>
       </div>
 
-      <div className="space-y-3">
+      <div className="space-y-3.5">
         {reviews.map((rev, idx) => (
           <div
             key={idx}
-            className="p-4 rounded-2xl bg-[#F4FAF2] border border-[#1B4332]/10 shadow-2xs"
+            className="p-5 rounded-3xl bg-white border border-[#143D2B]/10 shadow-xs"
           >
-            <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center justify-between mb-2.5">
               <div className="flex items-center gap-1">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-3.5 h-3.5 fill-[#FAB818] text-[#FAB818]" />
+                  <Star key={i} className="w-4 h-4 fill-[#F5BA13] text-[#F5BA13]" />
                 ))}
               </div>
-              <span className="text-[10px] font-semibold text-[#1B4332] bg-[#EBF5EA] border border-[#BCE1B7] px-2 py-0.5 rounded-full">
+              <span className="text-[10px] font-black text-[#143D2B] bg-[#E2F3E7] px-2.5 py-0.5 rounded-full border border-[#143D2B]/10">
                 {rev.classTaken}
               </span>
             </div>
 
-            <p className="text-[#334155] text-xs leading-relaxed italic mb-3">
+            <p className="text-[#334155] text-xs leading-relaxed italic mb-3.5">
               &ldquo;{rev.text}&rdquo;
             </p>
 
-            <div className="flex items-center justify-between text-xs pt-2 border-t border-[#1B4332]/10">
-              <span className="font-extrabold text-[#1B4332]">{rev.name}</span>
+            <div className="flex items-center justify-between text-xs pt-3 border-t border-slate-100">
+              <span className="font-extrabold text-[#143D2B]">{rev.name}</span>
               <span className="text-[11px] text-slate-500">{rev.role}</span>
             </div>
           </div>

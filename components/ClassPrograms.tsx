@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { Check, Star, ArrowRight } from "lucide-react";
 
 interface ClassProgramsProps {
@@ -17,12 +17,14 @@ export default function ClassPrograms({ onSelectClass }: ClassProgramsProps) {
       tools: "Scratch Jr & Visual Block",
       desc: "Dirancang khusus agar anak bisa langsung praktik membuat cerita animasi dan game sederhana tanpa perlu mahir mengetik keyboard.",
       points: [
-        "Pengenalan logika sekuensial (urutan langkah kerja komputer)",
+        "Pengenalan logika sekuensial (urutan langkah kerja)",
         "Membuat animasi karakter, suara, dan gerakan kustom",
         "Menciptakan mini-game labirin & interaksi sentuh",
         "Cocok untuk melatih motorik halus & konsentrasi anak",
       ],
       highlight: false,
+      accentBg: "bg-[#F5BA13]",
+      tagColor: "bg-[#F5BA13] text-[#143D2B]",
     },
     {
       id: "explorer",
@@ -38,6 +40,8 @@ export default function ClassPrograms({ onSelectClass }: ClassProgramsProps) {
         "Proyek mandiri: menciptakan game yang bisa dimainkan teman",
       ],
       highlight: true,
+      accentBg: "bg-[#EE4C23]",
+      tagColor: "bg-[#EE4C23] text-white",
     },
     {
       id: "master",
@@ -48,11 +52,13 @@ export default function ClassPrograms({ onSelectClass }: ClassProgramsProps) {
       desc: "Transisi bertahap dari blok visual menuju bahasa pemrograman teks nyata tingkat industri yang digunakan di seluruh dunia.",
       points: [
         "Sintaks Python ramah pemula, tipe data, dan perulangan",
-        "Membuat game teks interaktif (RPG petualangan & kuis logika)",
+        "Membuat game teks interaktif (RPG petualangan & kuis)",
         "Konsep Computational Thinking tingkat lanjut",
-        "Dasar fondasi kuat untuk pemrograman masa depan & robotika",
+        "Dasar fondasi kuat untuk pemrograman & robotika",
       ],
       highlight: false,
+      accentBg: "bg-[#3B5EDB]",
+      tagColor: "bg-[#3B5EDB] text-white",
     },
   ];
 
@@ -67,16 +73,16 @@ export default function ClassPrograms({ onSelectClass }: ClassProgramsProps) {
   };
 
   return (
-    <section id="program-kelas" className="px-5 py-8 bg-white border-b border-[#1B4332]/10">
+    <section id="program-kelas" className="px-5 py-8 bg-[#F7F5EE]">
       <div className="text-center mb-6">
-        <span className="text-xs font-semibold text-[#1B4332] uppercase tracking-wider bg-[#EBF5EA] border border-[#BCE1B7] px-3.5 py-1 rounded-full inline-block mb-2">
+        <span className="text-[11px] font-black text-[#143D2B] uppercase tracking-wider bg-[#F5BA13] px-3.5 py-1 rounded-full inline-block mb-2 shadow-2xs">
           Kurikulum Berjenjang
         </span>
-        <h2 className="text-2xl sm:text-3xl font-heading text-[#1B4332] tracking-tight">
+        <h2 className="text-3xl sm:text-4xl font-heading text-[#143D2B] tracking-tight">
           Pilihan Kelas Sesuai Usia
         </h2>
         <p className="text-[#334155] text-xs sm:text-sm mt-1 max-w-sm mx-auto">
-          Materi disesuaikan secara presisi dengan tahap perkembangan kognitif dan ketertarikan anak.
+          Materi disesuaikan secara presisi dengan tahap perkembangan kognitif dan ketertarikan si kecil.
         </p>
       </div>
 
@@ -84,14 +90,14 @@ export default function ClassPrograms({ onSelectClass }: ClassProgramsProps) {
         {programs.map((item) => (
           <div
             key={item.id}
-            className={`rounded-2xl sm:rounded-3xl p-5 border transition-all ${
+            className={`rounded-3xl p-5 sm:p-6 border-2 transition-all ${
               item.highlight
-                ? "bg-gradient-to-b from-[#EBF5EA]/70 to-white border-[#7CB342] shadow-sm ring-1 ring-[#7CB342]/30"
-                : "bg-white border-slate-200/90 shadow-2xs hover:border-[#1B4332]/30"
+                ? "bg-white border-[#EE4C23] shadow-md ring-2 ring-[#EE4C23]/20"
+                : "bg-white border-[#143D2B]/10 shadow-2xs hover:border-[#143D2B]/30"
             }`}
           >
-            <div className="flex items-center justify-between gap-2 mb-2">
-              <span className="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-[#EBF5EA] text-[#1B4332] border border-[#BCE1B7]">
+            <div className="flex items-center justify-between gap-2 mb-2.5">
+              <span className={`text-[11px] font-black px-3 py-1 rounded-full ${item.tagColor}`}>
                 {item.age}
               </span>
               {item.highlight && (
@@ -102,11 +108,11 @@ export default function ClassPrograms({ onSelectClass }: ClassProgramsProps) {
               )}
             </div>
 
-            <h3 className="text-xl font-extrabold text-[#1B4332] tracking-tight mb-1">
+            <h3 className="text-xl font-extrabold text-[#143D2B] tracking-tight mb-1">
               {item.title}
             </h3>
 
-            <div className="inline-block text-xs font-semibold text-[#1B4332] bg-[#EBF5EA] px-2.5 py-0.5 rounded-md mb-2.5 border border-[#BCE1B7]">
+            <div className="inline-block text-xs font-bold text-[#143D2B] bg-[#E2F3E7] px-3 py-1 rounded-lg mb-3 border border-[#143D2B]/10">
               🛠️ Tool: {item.tools}
             </div>
 
@@ -118,7 +124,7 @@ export default function ClassPrograms({ onSelectClass }: ClassProgramsProps) {
             <div className="space-y-2 mb-5 pt-3 border-t border-slate-100">
               {item.points.map((pt, pIdx) => (
                 <div key={pIdx} className="flex items-start gap-2 text-xs text-slate-700">
-                  <div className="w-4 h-4 rounded-full bg-[#EBF5EA] text-[#1B4332] flex items-center justify-center shrink-0 mt-0.5">
+                  <div className="w-4 h-4 rounded-full bg-[#E2F3E7] text-[#143D2B] flex items-center justify-center shrink-0 mt-0.5">
                     <Check className="w-2.5 h-2.5 stroke-[3]" />
                   </div>
                   <span>{pt}</span>
@@ -128,10 +134,10 @@ export default function ClassPrograms({ onSelectClass }: ClassProgramsProps) {
 
             <button
               onClick={() => handleSelect(item.id)}
-              className={`w-full py-3.5 px-4 rounded-xl text-xs sm:text-sm font-bold flex items-center justify-center gap-2 cursor-pointer transition-all ${
+              className={`w-full py-3.5 px-4 rounded-2xl text-xs sm:text-sm font-extrabold flex items-center justify-center gap-2 cursor-pointer transition-all ${
                 item.highlight
-                  ? "bg-[#1B4332] hover:bg-[#275a45] text-white shadow-xs"
-                  : "bg-[#EBF5EA] hover:bg-[#d8edd6] text-[#1B4332]"
+                  ? "bg-[#EE4C23] hover:bg-[#d63f17] text-white shadow-sm"
+                  : "bg-[#143D2B] hover:bg-[#1E523A] text-white"
               }`}
             >
               <span>Pilih Program Ini</span>
