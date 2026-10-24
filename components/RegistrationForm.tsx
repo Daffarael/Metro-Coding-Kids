@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { Combobox } from "@/components/ui/combobox";
 import { PressDepth } from "@/components/ui/press-depth";
@@ -28,14 +28,14 @@ export default function RegistrationForm({
   const [whatsapp, setWhatsapp] = useState("");
   const [city, setCity] = useState("jakarta");
   const [courseId, setCourseId] = useState(selectedCourse);
+  const [prevSelectedCourse, setPrevSelectedCourse] = useState(selectedCourse);
   const [isLoading, setIsLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
-  useEffect(() => {
-    if (selectedCourse) {
-      setCourseId(selectedCourse);
-    }
-  }, [selectedCourse]);
+  if (selectedCourse !== prevSelectedCourse) {
+    setPrevSelectedCourse(selectedCourse);
+    setCourseId(selectedCourse);
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

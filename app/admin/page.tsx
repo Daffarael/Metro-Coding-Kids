@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import {
   Users,
@@ -13,7 +13,6 @@ import {
   CheckCircle2,
   AlertCircle,
   ArrowLeft,
-  Lock,
   Unlock,
   RefreshCw,
 } from "lucide-react";
@@ -68,6 +67,8 @@ export default function AdminPage() {
     e.preventDefault();
     if (passcode === "admin123" || passcode === "metrokids") {
       setIsAuthenticated(true);
+      fetchLeads("");
+      fetchSettings();
     } else {
       alert("PIN Admin salah. Silakan coba: admin123");
     }
@@ -102,38 +103,9 @@ export default function AdminPage() {
     }
   };
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      fetchLeads(search);
-      fetchSettings();
-    }
-  }, [isAuthenticated]);
-
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     fetchLeads(search);
-  };
-
-  const handleSaveSetting = async (key: string, value: unknown) => {
-    setIsSavingSettings(true);
-    setSettingsToast(null);
-    try {
-      const res = await fetch("/api/settings", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ key, value }),
-      });
-      const data = await res.json();
-      if (data.success) {
-        setSettingsToast({ type: "success", text: `Pengaturan "${key}" tersimpan!` });
-      } else {
-        setSettingsToast({ type: "error", text: data.error || "Gagal menyimpan" });
-      }
-    } catch (err) {
-      setSettingsToast({ type: "error", text: "Terjadi kesalahan koneksi" });
-    } finally {
-      setIsSavingSettings(false);
-    }
   };
 
   const handleSaveAllSettings = async () => {
@@ -148,7 +120,7 @@ export default function AdminPage() {
         });
       }
       setSettingsToast({ type: "success", text: "Semua pengaturan landing page berhasil disimpan!" });
-    } catch (err) {
+    } catch {
       setSettingsToast({ type: "error", text: "Gagal menyimpan beberapa pengaturan" });
     } finally {
       setIsSavingSettings(false);
