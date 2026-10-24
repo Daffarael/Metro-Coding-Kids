@@ -18,7 +18,7 @@ export default function PainPoint() {
     <section id="pain-point" className="px-5 pt-8 pb-10 bg-[#F7F5EE]">
       {/* 1. Heading Section */}
       <div className="text-center mb-6 flex flex-col items-center">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading text-[#143D2B] tracking-tight leading-[1.2] max-w-xl text-center">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading text-[#143D2B] tracking-tight leading-[1.35] sm:leading-[1.25] max-w-xl text-center">
           Pernahkah Anda Cemas Melihat Anak{" "}
           <span className="text-[#EE4C23] inline-block relative font-heading">
             Kecanduan Gadget
@@ -26,13 +26,13 @@ export default function PainPoint() {
               aria-hidden="true"
               viewBox="0 0 220 18"
               preserveAspectRatio="none"
-              className="absolute -bottom-2 left-0 h-3 w-full text-[#f15a29]"
+              className="absolute -bottom-1 left-0 h-2.5 w-full text-[#f15a29] pointer-events-none"
               fill="none"
             >
               <path
-                d="M4 11C60 6 150 7 216 10"
+                d="M4 10C60 5 150 6 216 9"
                 stroke="currentColor"
-                strokeWidth="7"
+                strokeWidth="6"
                 strokeLinecap="round"
               />
             </svg>
