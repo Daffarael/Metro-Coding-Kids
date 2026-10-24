@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { Sparkles, Quote, ArrowRight, Heart } from "lucide-react";
 import { PressDepth } from "@/components/ui/press-depth";
+import { Amp } from "@/components/ui/amp";
 
 export default function InspirationSection() {
   const scrollToForm = () => {
@@ -16,7 +17,7 @@ export default function InspirationSection() {
       {/* 1. Section Header Matching PainPoint & Pillars */}
       <div className="text-center mb-6 flex flex-col items-center">
         <span className="h-7 px-4 inline-flex items-center justify-center rounded-full bg-[#F5BA13] text-[#143D2B] font-nunito text-xs font-black uppercase tracking-wider mb-2.5 shadow-none">
-          <span className="translate-y-[1px]">Pilar 3: Inspirasi & Emosi</span>
+          <span className="translate-y-[1px]">Pilar 3: Inspirasi <Amp /> Emosi</span>
         </span>
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading text-[#143D2B] tracking-tight leading-[1.2] max-w-xl text-center">
           Inovasi Besar Dunia Berawal dari{" "}
@@ -85,10 +86,10 @@ export default function InspirationSection() {
                 Luis von Ahn
               </h3>
               <p className="text-xs sm:text-sm font-heading text-[#EE4C23] mt-0.5">
-                Pendiri & CEO Duolingo (Aplikasi Edukasi #1 Dunia)
+                Pendiri <Amp /> CEO Duolingo (Aplikasi Edukasi #1 Dunia)
               </p>
               <p className="text-[11px] sm:text-xs font-semibold text-[#143D2B]/85 mt-1 leading-snug">
-                Pencipta reCAPTCHA yang diakuisisi Google & kini memimpin Duolingo dengan 500+ juta pengguna global.
+                Pencipta reCAPTCHA yang diakuisisi Google <Amp /> kini memimpin Duolingo dengan 500+ juta pengguna global.
               </p>
             </div>
           </div>
@@ -173,7 +174,7 @@ export default function InspirationSection() {
               <span className="w-5 h-5 rounded-full bg-[#143D2B] text-[#F5BA13] flex items-center justify-center text-xs font-black shrink-0 mt-0.5">
                 ✓
               </span>
-              <span>Investasi terbaik untuk kemandirian, daya nalar logis, & rasa percaya diri anak.</span>
+              <span>Investasi terbaik untuk kemandirian, daya nalar logis, <Amp /> rasa percaya diri anak.</span>
             </div>
           </div>
 

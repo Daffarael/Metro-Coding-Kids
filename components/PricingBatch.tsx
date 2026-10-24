@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { Clock, ArrowRight, Check, Sparkles, Calendar, Timer } from "lucide-react";
 import { PressDepth } from "@/components/ui/press-depth";
+import { Amp } from "@/components/ui/amp";
 
 interface PricingBatchProps {
   onCtaClick?: () => void;
@@ -228,7 +229,7 @@ export default function PricingBatch({
             baseBg="bg-[#b83310]"
             className="w-full py-3.5 sm:py-4 px-3 sm:px-6 bg-[#EE4C23] text-white font-black text-sm sm:text-lg tracking-tight border-none flex items-center justify-center gap-2.5 sm:gap-3 hover:bg-[#d93f18] shadow-md"
           >
-            <span className="text-center">Klaim Voucher 15% & Amankan Kursi</span>
+            <span className="text-center">Klaim Voucher 15% <Amp /> Amankan Kursi</span>
             <div className="w-6 h-6 rounded-full bg-white text-[#EE4C23] flex items-center justify-center shrink-0">
               <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
             </div>

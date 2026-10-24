@@ -3,6 +3,22 @@
 import React from "react";
 import { Check, Star, Gamepad2, Sparkles, Layers, Terminal, ArrowRight } from "lucide-react";
 import { PressDepth } from "@/components/ui/press-depth";
+import { Amp } from "@/components/ui/amp";
+
+function formatWithAmp(text: string) {
+  if (!text || !text.includes("&")) return text;
+  const parts = text.split("&");
+  return (
+    <>
+      {parts.map((part, idx) => (
+        <React.Fragment key={idx}>
+          {part}
+          {idx < parts.length - 1 && <Amp />}
+        </React.Fragment>
+      ))}
+    </>
+  );
+}
 
 interface ClassProgramsProps {
   onSelectClass?: (courseId: string) => void;
@@ -204,13 +220,13 @@ export default function ClassPrograms({ onSelectClass }: ClassProgramsProps) {
                 >
                   <td className="py-2.5 px-3 font-heading font-black text-white whitespace-nowrap flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-[#F5BA13] shrink-0" />
-                    <span>{item.title}</span>
+                    <span>{formatWithAmp(item.title)}</span>
                   </td>
                   <td className="py-2.5 px-2 text-center font-nunito font-black text-[#F5BA13] whitespace-nowrap">
                     {item.ageRaw} Thn
                   </td>
                   <td className="py-2.5 px-3 text-white font-medium text-[10.5px] sm:text-xs leading-snug">
-                    {item.focus}
+                    {formatWithAmp(item.focus)}
                   </td>
                 </tr>
               ))}
@@ -258,10 +274,10 @@ export default function ClassPrograms({ onSelectClass }: ClassProgramsProps) {
               {/* Title & Stage Kicker */}
               <div className="mb-2.5">
                 <span className={`text-xs font-black uppercase tracking-wider font-nunito block mb-1 ${item.badgeColor}`}>
-                  {item.badge}
+                  {formatWithAmp(item.badge)}
                 </span>
                 <h3 className="font-heading text-2xl sm:text-3xl text-[#143D2B] tracking-tight leading-tight">
-                  {item.title}
+                  {formatWithAmp(item.title)}
                 </h3>
               </div>
 
@@ -271,13 +287,13 @@ export default function ClassPrograms({ onSelectClass }: ClassProgramsProps) {
                   <span className="translate-y-[0.5px]">FOKUS</span>
                 </span>
                 <span className="text-xs sm:text-sm font-extrabold text-[#143D2B]">
-                  {item.focus}
+                  {formatWithAmp(item.focus)}
                 </span>
               </div>
 
               {/* Description */}
               <p className="text-xs sm:text-sm font-semibold text-[#143D2B] leading-relaxed mb-4">
-                {item.desc}
+                {formatWithAmp(item.desc)}
               </p>
 
               {/* Checkpoints with Solid Non-Faded Colors */}
@@ -287,7 +303,7 @@ export default function ClassPrograms({ onSelectClass }: ClassProgramsProps) {
                     <div className={`w-5 h-5 rounded-full ${item.checkBg} flex items-center justify-center shrink-0 mt-0.5`}>
                       <Check className="w-3 h-3 stroke-[3]" />
                     </div>
-                    <span className="leading-snug">{pt}</span>
+                    <span className="leading-snug">{formatWithAmp(pt)}</span>
                   </div>
                 ))}
               </div>
@@ -300,7 +316,7 @@ export default function ClassPrograms({ onSelectClass }: ClassProgramsProps) {
                 baseBg={item.baseBg}
                 className={`w-full py-3 px-3 sm:py-3.5 sm:px-4 ${item.btnBg} font-heading font-black text-[11px] sm:text-sm flex items-center justify-between gap-2 border-none shadow-md`}
               >
-                <span className="text-left leading-snug">Konsultasi & Pilih {item.title}</span>
+                <span className="text-left leading-snug">{formatWithAmp(`Konsultasi & Pilih ${item.title}`)}</span>
                 <div className={`w-6 h-6 rounded-full ${item.arrowBg} flex items-center justify-center shrink-0 ml-1`}>
                   <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
                 </div>
@@ -322,7 +338,7 @@ export default function ClassPrograms({ onSelectClass }: ClassProgramsProps) {
           baseBg="bg-[#b83310]"
           className="w-full sm:w-auto py-4 px-6 sm:px-8 bg-[#EE4C23] text-white font-heading font-black text-base sm:text-lg shadow-lg flex items-center justify-center gap-2.5 sm:gap-3 hover:bg-[#d93f18] border-none"
         >
-          <span className="text-center">Pilih Kelas & Daftarkan Si Kecil</span>
+          <span className="text-center">{formatWithAmp("Pilih Kelas & Daftarkan Si Kecil")}</span>
           <div className="w-6 h-6 rounded-full bg-white text-[#EE4C23] flex items-center justify-center shrink-0">
             <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
           </div>

@@ -1,9 +1,24 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'NormalAmpersand';
+  src: local('Arial'), local('Helvetica Neue'), local('Roboto'), local('Segoe UI');
+  font-weight: 100 900;
+  unicode-range: U+0026;
+}
+
+@font-face {
+  font-family: 'MoreSugarCustom';
+  src: url('/fonts/MoreSugar-Regular.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+  unicode-range: U+0000-0025, U+0027-FFFF;
+}
+
 @layer base {
   :root {
     --font-sans: var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-heading: var(--font-more-sugar), cursive, sans-serif;
+    --font-heading: 'NormalAmpersand', 'MoreSugarCustom', var(--font-more-sugar), var(--font-poppins), var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-hand: var(--font-patrick), cursive, sans-serif;
 
     /* High-Vibrancy Kid Coding Colors (Direct from reference images) */
@@ -26,7 +41,7 @@
 @theme {
   --font-poppins: var(--font-poppins), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-nunito: var(--font-nunito), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-heading: var(--font-more-sugar), cursive, sans-serif;
+  --font-heading: 'NormalAmpersand', 'MoreSugarCustom', var(--font-more-sugar), var(--font-poppins), var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-hand: var(--font-patrick), cursive, sans-serif;
   --font-sans: var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
@@ -40,7 +55,7 @@
 }
 
 @utility font-heading {
-  font-family: var(--font-more-sugar), cursive, sans-serif !important;
+  font-family: 'NormalAmpersand', 'MoreSugarCustom', var(--font-more-sugar), var(--font-poppins), var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
 }
 
 @utility font-hand {
@@ -57,7 +72,7 @@
 }
 
 .font-heading {
-  font-family: var(--font-more-sugar), cursive, sans-serif !important;
+  font-family: 'NormalAmpersand', 'MoreSugarCustom', var(--font-more-sugar), var(--font-poppins), var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
 }
 
 .font-hand {

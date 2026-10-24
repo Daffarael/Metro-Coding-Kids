@@ -7,6 +7,10 @@ const moreSugar = localFont({
   src: "../public/fonts/MoreSugar-Regular.ttf",
   variable: "--font-more-sugar",
   display: "swap",
+  declarations: [
+    { prop: "unicode-range", value: "U+0000-0025, U+0027-FFFF" },
+  ],
+  fallback: ["var(--font-poppins)", "var(--font-jakarta)", "sans-serif"],
 });
 
 const patrickHand = Patrick_Hand({
