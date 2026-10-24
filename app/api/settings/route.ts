@@ -1,16 +1,8 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase-admin";
+import { DEFAULT_CAMPAIGN_SETTINGS } from "@/lib/default-data";
 
 export const dynamic = "force-dynamic";
-
-const DEFAULT_SETTINGS: Record<string, unknown> = {
-  whatsapp_number: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6281818778099",
-  batch_name: "Batch November 2026",
-  batch_deadline: "2026-11-15T23:59:59",
-  price_normal: 950000,
-  price_current: 499000,
-  quota_seats_left: 4,
-};
 
 export async function GET() {
   try {
@@ -19,11 +11,11 @@ export async function GET() {
     if (error || !data || data.length === 0) {
       return NextResponse.json({
         success: true,
-        settings: DEFAULT_SETTINGS,
+        settings: DEFAULT_CAMPAIGN_SETTINGS,
       });
     }
 
-    const settingsMap: Record<string, unknown> = { ...DEFAULT_SETTINGS };
+    const settingsMap: Record<string, unknown> = { ...DEFAULT_CAMPAIGN_SETTINGS };
     data.forEach((row) => {
       settingsMap[row.key] = row.value;
     });
@@ -40,7 +32,7 @@ export async function GET() {
     console.warn("Failed fetching settings from Supabase, returning defaults:", err);
     return NextResponse.json({
       success: true,
-      settings: DEFAULT_SETTINGS,
+      settings: DEFAULT_CAMPAIGN_SETTINGS,
     });
   }
 }
@@ -48,7 +40,23 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { key, value } = body;
+    const { key, value, settings } = body;
+
+    // Allow bulk update
+    if (settings && typeof settings === "object") {
+      const entries = Object.entries(settings);
+      for (const [k, v] of entries) {
+        await supabaseAdmin.from("site_settings").upsert(
+          {
+            key: k,
+            value: v,
+            updated_at: new Date().toISOString(),
+          },
+          { onConflict: "key" }
+        );
+      }
+      return NextResponse.json({ success: true, message: "Pengaturan berhasil diperbarui." });
+    }
 
     if (!key) {
       return NextResponse.json({ error: "Key wajib diisi" }, { status: 400 });

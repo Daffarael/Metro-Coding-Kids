@@ -15,19 +15,27 @@ import RegistrationForm from "@/components/RegistrationForm";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import LiveRegistrationToast from "@/components/LiveRegistrationToast";
+import {
+  DEFAULT_CAMPAIGN_SETTINGS,
+  DEFAULT_PROGRAMS,
+  DEFAULT_TESTIMONIALS,
+  DEFAULT_FAQS,
+  ProgramItem,
+  TestimonialItem,
+  FAQItem,
+  CampaignSettings,
+} from "@/lib/default-data";
 
 export default function Home() {
-  const [settings, setSettings] = useState({
-    whatsapp_number: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6281818778099",
-    batch_name: "Batch November 2026",
-    batch_deadline: "2026-11-15T23:59:59",
-    price_normal: 950000,
-    price_current: 499000,
-    quota_seats_left: 4,
-  });
+  const [settings, setSettings] = useState<CampaignSettings>(DEFAULT_CAMPAIGN_SETTINGS);
+  const [programs, setPrograms] = useState<ProgramItem[]>(DEFAULT_PROGRAMS);
+  const [testimonials, setTestimonials] = useState<TestimonialItem[]>(DEFAULT_TESTIMONIALS);
+  const [faqs, setFaqs] = useState<FAQItem[]>(DEFAULT_FAQS);
+
+  const [selectedCourse, setSelectedCourse] = useState("konsultasi_wa");
 
   useEffect(() => {
-    // Fetch live settings if available
+    // 1. Fetch Campaign Settings
     fetch("/api/settings")
       .then((res) => res.json())
       .then((data) => {
@@ -35,12 +43,38 @@ export default function Home() {
           setSettings((prev) => ({ ...prev, ...data.settings }));
         }
       })
-      .catch((err) => {
-        console.warn("Using default settings:", err);
-      });
-  }, []);
+      .catch((err) => console.warn("Using default settings:", err));
 
-  const [selectedCourse, setSelectedCourse] = useState("konsultasi_wa");
+    // 2. Fetch Class Programs
+    fetch("/api/programs")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.programs && Array.isArray(data.programs) && data.programs.length > 0) {
+          setPrograms(data.programs);
+        }
+      })
+      .catch((err) => console.warn("Using default programs:", err));
+
+    // 3. Fetch Testimonials
+    fetch("/api/testimonials")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.testimonials && Array.isArray(data.testimonials) && data.testimonials.length > 0) {
+          setTestimonials(data.testimonials);
+        }
+      })
+      .catch((err) => console.warn("Using default testimonials:", err));
+
+    // 4. Fetch FAQs
+    fetch("/api/faq")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.faqs && Array.isArray(data.faqs) && data.faqs.length > 0) {
+          setFaqs(data.faqs);
+        }
+      })
+      .catch((err) => console.warn("Using default faqs:", err));
+  }, []);
 
   const handleSelectClass = (courseId?: string) => {
     if (courseId) {
@@ -68,7 +102,7 @@ export default function Home() {
         {/* Section 2: Pain Point - Pilar 2: Mengerti Kebutuhan Customer */}
         <PainPoint />
 
-        {/* Section 3: Inspirasi & Emosi - Pilar 3: Menjual Emosi */}
+        {/* Section 3: Inspirasi & Emosi */}
         <InspirationSection />
 
         {/* 4 Pillars Section */}
@@ -78,20 +112,23 @@ export default function Home() {
         <ClassAtmosphere />
 
         {/* Curriculum & Classes */}
-        <ClassPrograms onSelectClass={handleSelectClass} />
+        <ClassPrograms
+          programs={programs}
+          onSelectClass={handleSelectClass}
+        />
 
         {/* Facilities & Certifications */}
         <Facilities />
 
         {/* Real Parent Testimonials */}
-        <Testimonials />
+        <Testimonials testimonials={testimonials} />
 
-        {/* Pricing & Countdown */}
+        {/* Voucher Batch & Countdown */}
         <PricingBatch
           batchName={settings.batch_name}
-          priceNormal={settings.price_normal}
-          priceCurrent={settings.price_current}
           deadlineDate={settings.batch_deadline}
+          voucherBadge={settings.voucher_badge}
+          voucherDescription={settings.voucher_description}
           onCtaClick={() => {
             const el = document.getElementById("form-pendaftaran");
             el?.scrollIntoView({ behavior: "smooth" });
@@ -102,10 +139,11 @@ export default function Home() {
         <RegistrationForm
           whatsappNumber={settings.whatsapp_number}
           selectedCourse={selectedCourse}
+          programs={programs}
         />
 
         {/* Frequently Asked Questions */}
-        <FAQ />
+        <FAQ faqs={faqs} />
 
         {/* Footer with Contacts & Location */}
         <Footer whatsappNumber={settings.whatsapp_number} />

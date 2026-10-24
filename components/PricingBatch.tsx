@@ -11,12 +11,16 @@ interface PricingBatchProps {
   priceCurrent?: number;
   deadlineDate?: string;
   batchName?: string;
+  voucherBadge?: string;
+  voucherDescription?: string;
 }
 
 export default function PricingBatch({
   onCtaClick,
   deadlineDate = "2026-11-15T23:59:59",
   batchName = "Batch November 2026",
+  voucherBadge = "DISKON 15%",
+  voucherDescription = "Khusus untuk pendaftar baru yang mengamankan kursi belajar di bulan November.",
 }: PricingBatchProps) {
   const [timeLeft, setTimeLeft] = useState({
     days: 4,
@@ -135,7 +139,7 @@ export default function PricingBatch({
               className="px-3.5 sm:px-4 py-1.5 rounded-2xl bg-[#EE4C23] text-white font-heading font-black text-sm sm:text-base tracking-wide flex items-center gap-1.5 shadow-none select-none"
             >
               <Sparkles className="w-4 h-4 stroke-[2.5]" />
-              <span>DISKON 15%</span>
+              <span>{voucherBadge}</span>
             </div>
           </div>
 
@@ -147,17 +151,17 @@ export default function PricingBatch({
                 Voucher Pendaftaran
               </span>
               <span className="text-[11px] sm:text-xs font-black text-[#143D2B] font-nunito uppercase tracking-wide">
-                Bulan November
+                {batchName}
               </span>
             </div>
 
             {/* Big Voucher Headline */}
             <div className="my-2">
               <div className="text-3xl sm:text-4xl md:text-[40px] font-heading font-black text-[#143D2B] tracking-tight leading-none">
-                KLAIM VOUCHER <span className="text-[#EE4C23]">15%</span>
+                KLAIM <span className="text-[#EE4C23]">{voucherBadge}</span>
               </div>
               <p className="text-xs sm:text-sm font-bold text-[#143D2B] mt-2 leading-relaxed">
-                Khusus untuk pendaftar baru yang mengamankan kursi belajar di bulan November.
+                {voucherDescription}
               </p>
             </div>
 

@@ -81,9 +81,13 @@ export default function RootLayout({
   return (
     <html
       lang="id"
+      suppressHydrationWarning
       className={`${jakarta.variable} ${moreSugar.variable} ${patrickHand.variable} ${nunito.variable} ${poppins.variable} scroll-smooth`}
     >
-      <body className="min-h-screen bg-[#EDF4EC] font-sans text-slate-800 antialiased selection:bg-emerald-200 selection:text-emerald-900">
+      <body
+        suppressHydrationWarning
+        className="min-h-screen bg-[#EDF4EC] font-sans text-slate-800 antialiased selection:bg-emerald-200 selection:text-emerald-900"
+      >
         {children}
       </body>
     </html>

@@ -4,32 +4,18 @@ import React, { useState } from "react";
 import { ArrowRight, Star } from "lucide-react";
 import { AnimatedAccordionItem } from "@/components/AnimatedAccordion";
 import { PressDepth } from "@/components/ui/press-depth";
+import { FAQItem, DEFAULT_FAQS } from "@/lib/default-data";
 
-export default function FAQ() {
+interface FAQProps {
+  faqs?: FAQItem[];
+}
+
+export default function FAQ({ faqs = DEFAULT_FAQS }: FAQProps) {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
-  const faqs = [
-    {
-      q: "Apakah anak harus sudah pernah coding sebelumnya?",
-      a: "Sama sekali tidak perlu! Kurikulum kami dirancang dari nol dengan metode bertahap yang sangat ramah anak. Untuk program awal seperti Code & Game dan Creative Technology, anak diajak memahami logika berpikir dan membuat game tanpa perlu pusing menghafal sintaks rumit.",
-    },
-    {
-      q: "Bagaimana cara memilih di antara 4 Core Programs?",
-      a: "Kami menyediakan 4 jenjang sesuai usia & fokus: Code & Game (8–11 thn: Logic, coding, game), Creative Technology (8–11 thn: Coding, AI, creative project), Digital Creator (12–14 thn: Game, web, AI, digital product), dan Future Tech (15–18 thn: Python, Web/App, AI, automation). Anda juga dapat memilih opsi 'Konsultasi CS' di formulir pendaftaran.",
-    },
-    {
-      q: "Kelasnya online atau offline?",
-      a: "Tersedia pilihan kelas tatap muka (offline) langsung di Taman Palem, Jakarta Barat dan Setiabudi Bandung, maupun kelas online interaktif via Zoom untuk peserta dari luar kota. Kedua format sama-sama semi-privat maksimal 6 anak per kelas.",
-    },
-    {
-      q: "Perangkat apa yang dibutuhkan?",
-      a: "Cukup laptop standar biasa atau komputer dengan koneksi internet dan browser Google Chrome.",
-    },
-    {
-      q: "Bagaimana cara mendaftar kelasnya?",
-      a: "Cukup isi formulir pendaftaran singkat di atas dengan nama dan nomor WhatsApp Anda. Tim Admin kami akan segera menghubungi untuk mengonfirmasi ketersediaan kursi dan rekomendasi jadwal belajar si kecil.",
-    },
-  ];
+  const activeFaqs = (faqs || DEFAULT_FAQS)
+    .filter((f) => f.isActive !== false)
+    .sort((a, b) => (a.order || 0) - (b.order || 0));
 
   const toggle = (idx: number) => {
     setOpenIdx(openIdx === idx ? null : idx);
@@ -66,18 +52,18 @@ export default function FAQ() {
           </p>
         </div>
 
-        {/* Clean Divider Accordion Rows with 60fps CSS Grid Height Transition */}
+        {/* Clean Divider Accordion Rows */}
         <div className="border-t border-[#E6E1D1] max-w-xl mx-auto">
-          {faqs.map((item, idx) => {
+          {activeFaqs.map((item, idx) => {
             const isOpen = openIdx === idx;
             return (
               <AnimatedAccordionItem
-                key={idx}
-                title={item.q}
+                key={item.id || idx}
+                title={item.question}
                 isOpen={isOpen}
                 onToggle={() => toggle(idx)}
               >
-                {item.a}
+                {item.answer}
               </AnimatedAccordionItem>
             );
           })}

@@ -5,23 +5,30 @@ import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 import { Combobox } from "@/components/ui/combobox";
 import { PressDepth } from "@/components/ui/press-depth";
 
+import { ProgramItem, DEFAULT_PROGRAMS } from "@/lib/default-data";
+
 interface RegistrationFormProps {
   whatsappNumber?: string;
   selectedCourse?: string;
+  programs?: ProgramItem[];
 }
-
-const PROGRAMS_LIST = [
-  { id: "konsultasi_wa", label: "Konsultasi / Rekomendasi CS (Bantu Pilihkan)" },
-  { id: "code_game", label: "Code & Game (Usia 8–11 Thn - Logic & Coding)" },
-  { id: "creative_tech", label: "Creative Technology (Usia 8–11 Thn - Coding & AI)" },
-  { id: "digital_creator", label: "Digital Creator (Usia 12–14 Thn - Web, Game & AI)" },
-  { id: "future_tech", label: "Future Tech (Usia 15–18 Thn - Python & Automation)" },
-];
 
 export default function RegistrationForm({
   whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6281818778099",
   selectedCourse = "konsultasi_wa",
+  programs = DEFAULT_PROGRAMS,
 }: RegistrationFormProps) {
+  // Bangun daftar program dinamis dari data kelas aktif
+  const dynamicProgramsList = [
+    { id: "konsultasi_wa", label: "Konsultasi / Rekomendasi CS (Bantu Pilihkan)" },
+    ...(programs || DEFAULT_PROGRAMS)
+      .filter((p) => p.isActive !== false)
+      .sort((a, b) => (a.order || 0) - (b.order || 0))
+      .map((p) => ({
+        id: p.id,
+        label: `${p.title} (${p.ageRaw ? `Usia ${p.ageRaw} Thn` : p.age} - ${p.focus})`,
+      })),
+  ];
   const [parentName, setParentName] = useState("");
   const [childName, setChildName] = useState("");
   const [childAge, setChildAge] = useState("");
@@ -51,7 +58,7 @@ export default function RegistrationForm({
 
     setIsLoading(true);
 
-    const chosenProgram = PROGRAMS_LIST.find((p) => p.id === courseId) || PROGRAMS_LIST[0];
+    const chosenProgram = dynamicProgramsList.find((p) => p.id === courseId) || dynamicProgramsList[0];
     const cityName =
       city === "bandung"
         ? "Bandung (Setiabudi, Bandung)"
@@ -218,7 +225,7 @@ export default function RegistrationForm({
             >
               <Combobox.Input />
               <Combobox.List emptyMessage="Program tidak ditemukan">
-                {PROGRAMS_LIST.map((prog) => (
+                {dynamicProgramsList.map((prog) => (
                   <Combobox.Option key={prog.id} value={prog.id}>
                     {prog.label}
                   </Combobox.Option>

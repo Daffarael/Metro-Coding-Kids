@@ -44,6 +44,20 @@
   --font-heading: 'NormalAmpersand', 'MoreSugarCustom', var(--font-more-sugar), var(--font-poppins), var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-hand: var(--font-patrick), cursive, sans-serif;
   --font-sans: var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --color-card: #ffffff;
+  --color-card-foreground: #143D2B;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #143D2B;
+  --color-primary: #143D2B;
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #F7F5EE;
+  --color-secondary-foreground: #143D2B;
+  --color-muted: #f8fafc;
+  --color-muted-foreground: #64748b;
+  --color-border: #e2e8f0;
+  --color-input: #cbd5e1;
+  --color-foreground: #143D2B;
 }
 
 @utility font-poppins {
@@ -165,6 +179,9 @@ button.no-pop,
 .no-pop:hover,
 .no-pop:active,
 .no-pop:focus,
+.m3-auto-container button,
+.m3-auto-container button:hover,
+.m3-auto-container button:active,
 button[aria-expanded],
 button[aria-expanded]:hover,
 button[aria-expanded]:active {
