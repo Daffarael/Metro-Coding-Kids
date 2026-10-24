@@ -62,7 +62,7 @@ export default function Navbar({
 
           <a
             href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-              "Halo Admin Metro Coding Kids, saya ingin tanya info pendaftaran kelas koding anak."
+              "Halo Admin Metro Coding Kids, saya ingin tanya info pendaftaran Metro Koding Kids"
             )}`}
             target="_blank"
             rel="noopener noreferrer"
