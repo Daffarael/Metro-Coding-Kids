@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Clock, ArrowRight, Check, Sparkles } from "lucide-react";
+import { Clock, ArrowRight, Check, Sparkles, Calendar, Timer } from "lucide-react";
+import { PressDepth } from "@/components/ui/press-depth";
 
 interface PricingBatchProps {
   onCtaClick?: () => void;
@@ -13,8 +14,6 @@ interface PricingBatchProps {
 
 export default function PricingBatch({
   onCtaClick,
-  priceNormal = 950000,
-  priceCurrent = 499000,
   deadlineDate = "2026-11-15T23:59:59",
   batchName = "Batch November 2026",
 }: PricingBatchProps) {
@@ -54,26 +53,18 @@ export default function PricingBatch({
     }
   };
 
-  const formatRupiah = (val: number) => {
-    return new Intl.NumberFormat("id-ID", {
-      style: "currency",
-      currency: "IDR",
-      maximumFractionDigits: 0,
-    }).format(val);
-  };
-
   return (
     <section id="biaya-paket" className="px-5 py-8 bg-[#F7F5EE]">
       {/* Section Header Matching ClassPrograms & Facilities */}
       <div className="text-center mb-6">
-        <span className="text-[11px] font-black text-[#143D2B] uppercase tracking-wider bg-[#F5BA13] px-3.5 py-1 rounded-full inline-block mb-2.5">
-          Investasi Belajar Si Kecil
+        <span className="h-7 px-4 inline-flex items-center justify-center rounded-full bg-[#F5BA13] text-[#143D2B] font-nunito text-xs font-black uppercase tracking-wider mb-2.5 shadow-none">
+          <span className="translate-y-[1px]">Promo Spesial Batch</span>
         </span>
         <h2
           style={{ fontFamily: "var(--font-poppins), sans-serif" }}
           className="text-2xl sm:text-3xl md:text-4xl font-black text-[#143D2B] tracking-tight leading-tight"
         >
-          <span>Paket Pendaftaran</span>{" "}
+          <span>Paket Belajar</span>{" "}
           <span
             style={{ transform: "rotate(-2deg)" }}
             className="inline-block px-3.5 py-0.5 rounded-2xl bg-[#EE4C23] text-white font-black"
@@ -82,7 +73,7 @@ export default function PricingBatch({
           </span>
         </h2>
         <p className="text-[#334155] text-xs sm:text-sm mt-2 max-w-md mx-auto leading-relaxed">
-          Biaya transparan untuk 8 pertemuan intensif. Tanpa ada biaya pendaftaran tersembunyi.
+          Daftar khusus di bulan November dan klaim voucher potongan 15% untuk 1 program intensif (12 pertemuan / 3 bulan).
         </p>
       </div>
 
@@ -90,9 +81,9 @@ export default function PricingBatch({
         {/* Countdown Timer Block (Deep Forest Green, Playful & High-Contrast) */}
         <div className="rounded-[32px] sm:rounded-[36px] bg-[#143D2B] text-white p-5 sm:p-6 mb-4 border-2 border-[#143D2B] text-center select-none shadow-none">
           <div className="flex items-center justify-center mb-3.5">
-            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#F5BA13] text-[#143D2B] text-xs font-black tracking-wide font-nunito">
-              <Clock className="w-3.5 h-3.5 stroke-[2.5]" />
-              <span>WAKTU PENUTUPAN BATCH:</span>
+            <div className="h-7 px-3.5 inline-flex items-center justify-center rounded-full bg-[#F5BA13] text-[#143D2B] text-xs font-black tracking-wide font-nunito leading-none">
+              <Clock className="w-3.5 h-3.5 stroke-[2.5] mr-1.5" />
+              <span className="translate-y-[1px]">WAKTU KLAIM VOUCHER NOVEMBER:</span>
             </div>
           </div>
           <div className="grid grid-cols-4 gap-2 sm:gap-2.5 max-w-[320px] mx-auto">
@@ -131,63 +122,94 @@ export default function PricingBatch({
           </div>
         </div>
 
-        {/* Investment Card */}
+        {/* Voucher & Program Card */}
         <div className="rounded-[32px] sm:rounded-[36px] border-2 border-[#143D2B]/15 bg-white p-6 sm:p-7 shadow-none select-none">
-          {/* Header Row: Label & Playful Sticker Badge (Gede & Tegas) */}
+          {/* Header Row: Label & Playful Sticker Badge */}
           <div className="flex items-center justify-between gap-2 mb-3">
             <span className="text-xs sm:text-sm font-black text-slate-500 uppercase tracking-wide font-nunito">
-              Biaya Investasi Lengkap
+              Penawaran Khusus
             </span>
             <div
               style={{ transform: "rotate(2deg)" }}
               className="px-3.5 sm:px-4 py-1.5 rounded-2xl bg-[#EE4C23] text-white font-heading font-black text-sm sm:text-base tracking-wide flex items-center gap-1.5 shadow-none select-none"
             >
               <Sparkles className="w-4 h-4 stroke-[2.5]" />
-              <span>HEMAT 47%</span>
+              <span>DISKON 15%</span>
             </div>
           </div>
 
-          {/* Price Display */}
-          <div className="mb-4">
-            <div className="flex items-center gap-2 mb-1">
-              <span className="text-xs text-slate-400 font-semibold line-through">
-                Normal: {formatRupiah(priceNormal)}
+          {/* Golden Voucher Ticket Box (Menggantikan Tampilan Harga) */}
+          <div className="rounded-2xl sm:rounded-3xl bg-[#F5BA13] border-2 border-[#143D2B] p-5 sm:p-6 text-[#143D2B] mb-4 shadow-sm relative overflow-hidden">
+            {/* Top Row inside ticket */}
+            <div className="flex items-center justify-between gap-2 mb-2">
+              <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-[#143D2B] text-[#F5BA13] font-nunito">
+                Voucher Pendaftaran
               </span>
-              <span className="text-[10px] font-black px-2 py-0.5 rounded-md bg-[#EE4C23] text-white uppercase tracking-wide">
-                Hemat Rp 451.000
-              </span>
-            </div>
-
-            <div className="flex items-baseline gap-2">
-              <span
-                style={{ fontFamily: "var(--font-poppins), sans-serif" }}
-                className="text-3xl sm:text-4xl font-black text-[#143D2B] tracking-tight"
-              >
-                {formatRupiah(priceCurrent)}
-              </span>
-              <span className="text-xs sm:text-sm font-extrabold text-slate-600 font-nunito">
-                / 8 Sesi
+              <span className="text-[11px] sm:text-xs font-black text-[#143D2B] font-nunito uppercase tracking-wide">
+                Bulan November
               </span>
             </div>
 
-            {/* Inclusions Line - Solid & Clean, Tanpa Warna Pudar */}
-            <div className="mt-2.5 flex items-center gap-2 text-xs font-bold text-[#143D2B]">
-              <div className="w-4 h-4 rounded-full bg-[#143D2B] text-white flex items-center justify-center shrink-0">
+            {/* Big Voucher Headline */}
+            <div className="my-2">
+              <div className="text-3xl sm:text-4xl md:text-[40px] font-heading font-black text-[#143D2B] tracking-tight leading-none">
+                KLAIM VOUCHER <span className="text-[#EE4C23]">15%</span>
+              </div>
+              <p className="text-xs sm:text-sm font-bold text-[#143D2B] mt-2 leading-relaxed">
+                Khusus untuk pendaftar baru yang mengamankan kursi belajar di bulan November.
+              </p>
+            </div>
+
+            {/* Inclusions Line inside ticket */}
+            <div className="mt-3 pt-3 border-t-2 border-[#143D2B]/15 flex items-center gap-2 text-xs font-black text-[#143D2B]">
+              <div className="w-4 h-4 rounded-full bg-[#143D2B] text-[#F5BA13] flex items-center justify-center shrink-0">
                 <Check className="w-2.5 h-2.5 stroke-[3]" />
               </div>
-              <span>Sudah mencakup modul, sertifikat, & akun belajar</span>
+              <span>Sudah mencakup modul, sertifikat resmi, & portofolio game</span>
+            </div>
+          </div>
+
+          {/* 3 Core Highlight Badges (Solid White & Forest Green, Tanpa Warna Pudar) */}
+          <div className="grid grid-cols-3 gap-2 mb-4">
+            <div className="p-2.5 rounded-2xl bg-white border-2 border-[#143D2B] text-center flex flex-col items-center justify-center shadow-xs">
+              <Calendar className="w-4 h-4 text-[#EE4C23] mb-1 stroke-[3]" />
+              <span className="text-sm sm:text-base font-heading text-[#143D2B] leading-none">
+                12 Sesi
+              </span>
+              <span className="text-[10px] font-black text-[#143D2B] mt-1 leading-tight font-nunito">
+                1 Program (3 Bulan)
+              </span>
+            </div>
+            <div className="p-2.5 rounded-2xl bg-white border-2 border-[#143D2B] text-center flex flex-col items-center justify-center shadow-xs">
+              <Clock className="w-4 h-4 text-[#EE4C23] mb-1 stroke-[3]" />
+              <span className="text-sm sm:text-base font-heading text-[#143D2B] leading-none">
+                1x Seminggu
+              </span>
+              <span className="text-[10px] font-black text-[#143D2B] mt-1 leading-tight font-nunito">
+                Jadwal Fleksibel
+              </span>
+            </div>
+            <div className="p-2.5 rounded-2xl bg-white border-2 border-[#143D2B] text-center flex flex-col items-center justify-center shadow-xs">
+              <Timer className="w-4 h-4 text-[#EE4C23] mb-1 stroke-[3]" />
+              <span className="text-sm sm:text-base font-heading text-[#143D2B] leading-none">
+                Maks 90 Mnt
+              </span>
+              <span className="text-[10px] font-black text-[#143D2B] mt-1 leading-tight font-nunito">
+                Per Pertemuan
+              </span>
             </div>
           </div>
 
           {/* Feature Inclusions Matching ClassPrograms */}
-          <div className="space-y-3 py-4 border-y border-[#143D2B]/10 mb-5">
+          <div className="space-y-2.5 py-4 border-y border-[#143D2B]/10 mb-5">
             {[
-              "8x Pertemuan Kelas Intensif (Durasi 60–75 menit)",
-              "Maksimal 6 anak per sesi (semi-privat terpantau)",
-              "Akses software, akun belajar & template project",
+              "12x Pertemuan untuk 1 program lengkap (durasi 3 bulan)",
+              "Jadwal kelas 1x seminggu (durasi maksimal 90 menit per sesi)",
+              "Maksimal 6 anak per sesi (semi-privat terpantau intensif)",
+              "Akses software, akun belajar koding & template project",
               "Sertifikat resmi kelulusan Metro Coding Kids",
-              "Portofolio game yang siap dimainkan dan dipamerkan",
-              "Laporan perkembangan dan logika nalar anak",
+              "Portofolio game pribadi yang siap dimainkan & dipamerkan",
+              "Laporan berkala perkembangan logika & nalar anak",
             ].map((item, idx) => (
               <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#1E293B] font-semibold">
                 <div className="w-5 h-5 rounded-full bg-[#EE4C23] text-white flex items-center justify-center shrink-0 mt-0.5">
@@ -199,16 +221,18 @@ export default function PricingBatch({
           </div>
 
           {/* Signature Action CTA Button */}
-          <button
+          <PressDepth
+            type="button"
             onClick={handleCta}
-            style={{ fontFamily: "var(--font-poppins), sans-serif" }}
-            className="w-full max-w-full py-3.5 sm:py-4 px-3 sm:px-6 rounded-2xl bg-[#EE4C23] text-white font-black text-sm sm:text-lg tracking-tight shadow-none border-none flex items-center justify-center gap-2.5 sm:gap-3 cursor-pointer hover:bg-[#d93f18] active:scale-[0.98] transition-all select-none"
+            containerClassName="w-full"
+            baseBg="bg-[#b83310]"
+            className="w-full py-3.5 sm:py-4 px-3 sm:px-6 bg-[#EE4C23] text-white font-black text-sm sm:text-lg tracking-tight border-none flex items-center justify-center gap-2.5 sm:gap-3 hover:bg-[#d93f18] shadow-md"
           >
-            <span className="text-center">Daftar Sekarang & Amankan Kursi</span>
+            <span className="text-center">Klaim Voucher 15% & Amankan Kursi</span>
             <div className="w-6 h-6 rounded-full bg-white text-[#EE4C23] flex items-center justify-center shrink-0">
               <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
             </div>
-          </button>
+          </PressDepth>
         </div>
       </div>
     </section>

@@ -29,6 +29,18 @@ interface Lead {
   created_at: string;
 }
 
+const COURSE_LABELS: Record<string, string> = {
+  code_game: "Code & Game",
+  creative_tech: "Creative Technology",
+  digital_creator: "Digital Creator",
+  future_tech: "Future Tech",
+  junior: "Code & Game",
+  explorer: "Creative Technology",
+  creator: "Digital Creator",
+  master: "Future Tech",
+  konsultasi_wa: "Konsultasi / Rekomendasi CS",
+};
+
 export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [passcode, setPasscode] = useState("");
@@ -41,7 +53,7 @@ export default function AdminPage() {
 
   // Settings State
   const [settings, setSettings] = useState({
-    whatsapp_number: "6282382872411",
+    whatsapp_number: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6281818778099",
     batch_name: "Batch November 2026",
     batch_deadline: "2026-11-15T23:59:59",
     price_normal: 950000,
@@ -156,7 +168,7 @@ export default function AdminPage() {
       `"${l.child_name.replace(/"/g, '""')}"`,
       l.child_age,
       `'${l.whatsapp}`,
-      l.course_id,
+      `"${(COURSE_LABELS[l.course_id] || l.course_id).replace(/"/g, '""')}"`,
       l.status,
     ]);
 
@@ -393,7 +405,7 @@ export default function AdminPage() {
                           </td>
                           <td className="py-3 px-4">
                             <span className="inline-block px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-semibold">
-                              {lead.course_id}
+                              {COURSE_LABELS[lead.course_id] || lead.course_id}
                             </span>
                           </td>
                           <td className="py-3 px-4 text-center">

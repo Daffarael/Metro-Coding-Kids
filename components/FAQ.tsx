@@ -3,26 +3,31 @@
 import React, { useState } from "react";
 import { ArrowRight, Star } from "lucide-react";
 import { AnimatedAccordionItem } from "@/components/AnimatedAccordion";
+import { PressDepth } from "@/components/ui/press-depth";
 
 export default function FAQ() {
   const [openIdx, setOpenIdx] = useState<number | null>(null);
 
   const faqs = [
     {
-      q: "Apakah anak harus sudah pernah coding?",
-      a: "Sama sekali tidak perlu! Kurikulum kami dirancang dari nol dengan metode visual block drag-and-drop yang ramah anak. Anak yang belum pernah pegang laptop pun akan dibimbing secara sabar sampai bisa membuat game pertamanya.",
+      q: "Apakah anak harus sudah pernah coding sebelumnya?",
+      a: "Sama sekali tidak perlu! Kurikulum kami dirancang dari nol dengan metode bertahap yang sangat ramah anak. Untuk program awal seperti Code & Game dan Creative Technology, anak diajak memahami logika berpikir dan membuat game tanpa perlu pusing menghafal sintaks rumit.",
+    },
+    {
+      q: "Bagaimana cara memilih di antara 4 Core Programs?",
+      a: "Kami menyediakan 4 jenjang sesuai usia & fokus: Code & Game (8–11 thn: Logic, coding, game), Creative Technology (8–11 thn: Coding, AI, creative project), Digital Creator (12–14 thn: Game, web, AI, digital product), dan Future Tech (15–18 thn: Python, Web/App, AI, automation). Anda juga dapat memilih opsi 'Konsultasi CS' di formulir pendaftaran.",
     },
     {
       q: "Kelasnya online atau offline?",
-      a: "Tersedia pilihan kelas tatap muka (offline) langsung di Kota Metro, Lampung, maupun kelas online interaktif via Zoom untuk peserta dari luar kota. Kedua format sama-sama semi-privat maksimal 6 anak per kelas.",
+      a: "Tersedia pilihan kelas tatap muka (offline) langsung di Taman Palem, Jakarta Barat dan Setiabudi Bandung, maupun kelas online interaktif via Zoom untuk peserta dari luar kota. Kedua format sama-sama semi-privat maksimal 6 anak per kelas.",
     },
     {
       q: "Perangkat apa yang dibutuhkan?",
-      a: "Cukup laptop standar biasa atau komputer dengan koneksi internet dan browser Google Chrome. Untuk kelas Junior (usia 6-8 tahun), anak bahkan bisa mulai belajar dengan menggunakan tablet.",
+      a: "Cukup laptop standar biasa atau komputer dengan koneksi internet dan browser Google Chrome. Untuk program usia 8-11 tahun, laptop standar yang biasa digunakan sehari-hari sudah sangat memadai.",
     },
     {
       q: "Bagaimana cara mendaftar kelasnya?",
-      a: "Cukup isi formulir pendaftaran singkat di atas dengan nama dan nomor WhatsApp Anda. Tim Admin kami akan segera menghubungi untuk mengonfirmasi ketersediaan kursi dan jadwal belajar si kecil.",
+      a: "Cukup isi formulir pendaftaran singkat di atas dengan nama dan nomor WhatsApp Anda. Tim Admin kami akan segera menghubungi untuk mengonfirmasi ketersediaan kursi dan rekomendasi jadwal belajar si kecil.",
     },
   ];
 
@@ -109,16 +114,18 @@ export default function FAQ() {
             </p>
 
             {/* Bright Yellow Button with Signature White Arrow Badge */}
-            <button
+            <PressDepth
+              type="button"
               onClick={scrollToForm}
-              style={{ fontFamily: "var(--font-poppins), sans-serif" }}
-              className="w-full sm:w-auto max-w-full inline-flex items-center justify-center gap-2.5 sm:gap-3 px-4 sm:px-7 py-3.5 rounded-2xl bg-[#F5BA13] text-[#143D2B] font-black text-sm sm:text-lg shadow-none border-none cursor-pointer hover:bg-[#e0a90f] active:scale-[0.98] transition-all select-none"
+              containerClassName="w-full sm:w-auto"
+              baseBg="bg-[#c4920c]"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 sm:gap-3 px-4 sm:px-7 py-3.5 bg-[#F5BA13] text-[#143D2B] font-black text-sm sm:text-lg border-none hover:bg-[#e0a90f] shadow-md"
             >
               <span className="tracking-wide text-center">Daftarkan Si Kecil Sekarang</span>
               <div className="w-6 h-6 rounded-full bg-[#143D2B] text-[#F5BA13] flex items-center justify-center shrink-0">
                 <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
               </div>
-            </button>
+            </PressDepth>
           </div>
         </div>
       </section>

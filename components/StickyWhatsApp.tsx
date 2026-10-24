@@ -2,6 +2,7 @@
 
 import React from "react";
 import { ArrowRight } from "lucide-react";
+import { PressDepth } from "@/components/ui/press-depth";
 
 interface StickyWhatsAppProps {
   whatsappNumber?: string;
@@ -36,18 +37,21 @@ export default function StickyWhatsApp({
             </span>
           </div>
           <div className="text-sm sm:text-base font-black text-[#143D2B] truncate">
-            {formattedPrice} <span className="text-[11px] font-normal text-slate-500">/ 8 Sesi</span>
+            Voucher Diskon 15% <span className="text-[11px] font-bold text-[#EE4C23] font-nunito">(November)</span>
           </div>
         </div>
 
         {/* CTA Button */}
-        <button
+        <PressDepth
+          type="button"
           onClick={handleAction}
-          className="py-3 px-5 rounded-2xl bg-[#EE4C23] text-white font-extrabold text-xs sm:text-sm shadow-none border-none flex items-center gap-2 cursor-pointer shrink-0"
+          containerClassName="shrink-0"
+          baseBg="bg-[#b83310]"
+          className="py-3 px-5 bg-[#EE4C23] text-white font-extrabold text-xs sm:text-sm border-none flex items-center gap-2 hover:bg-[#d93f18]"
         >
-          <span>Amankan Kursi</span>
+          <span>Klaim Voucher</span>
           <ArrowRight className="w-4 h-4 stroke-[2.5]" />
-        </button>
+        </PressDepth>
       </div>
     </div>
   );

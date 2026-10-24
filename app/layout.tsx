@@ -38,22 +38,26 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Metro Coding Kids | Kursus Koding Anak Usia 6-15 Tahun",
+  title: "Metro Coding Kids | Kursus Koding Anak & Remaja Usia 8-18 Tahun",
   description:
-    "Bukan cuma bermain game, anak bisa menciptakan game pertamanya sendiri! Kursus koding anak interaktif dengan Scratch, Roblox, dan Python. Kuota terbatas 6 anak per kelas.",
+    "4 Core Programs: Code & Game, Creative Technology, Digital Creator, dan Future Tech. Belajar Logic, Coding, Game, AI, Web/App & Automation dalam kelas semi-privat maksimal 6 anak.",
   keywords: [
     "kursus koding anak",
     "coding kids",
     "metro coding kids",
+    "code and game",
+    "creative technology",
+    "digital creator",
+    "future tech",
     "belajar coding anak",
-    "scratch game maker",
-    "roblox coding",
-    "les koding metro",
+    "kursus koding jakarta barat",
+    "kursus koding bandung",
+    "les koding jakarta",
   ],
   openGraph: {
-    title: "Metro Coding Kids - Anak Bisa Membuat Game Sendiri",
+    title: "Metro Coding Kids - 4 Core Programs Koding Anak & Remaja (8-18 Tahun)",
     description:
-      "Kursus koding interaktif untuk anak usia 6-15 tahun. Kuota terbatas 6 anak per kelas. Amankan kursi belajar si kecil sekarang!",
+      "Kursus koding interaktif untuk usia 8-18 tahun. 4 Core Programs: Code & Game, Creative Technology, Digital Creator, dan Future Tech. Kuota terbatas 6 anak per kelas.",
     type: "website",
     locale: "id_ID",
   },

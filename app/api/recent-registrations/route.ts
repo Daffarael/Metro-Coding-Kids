@@ -17,10 +17,15 @@ export async function GET() {
 
     const registrations = data.map((item) => {
       const courseMap: Record<string, string> = {
-        junior: "Junior Game Maker",
-        explorer: "Explorer Coder",
-        creator: "Master Creator Kid",
-        konsultasi_wa: "Kelas Koding Anak",
+        code_game: "Code & Game",
+        creative_tech: "Creative Technology",
+        digital_creator: "Digital Creator",
+        future_tech: "Future Tech",
+        junior: "Code & Game",
+        explorer: "Creative Technology",
+        creator: "Digital Creator",
+        master: "Future Tech",
+        konsultasi_wa: "4 Core Programs",
       };
 
       const diffMs = Math.max(0, Date.now() - new Date(item.created_at).getTime());

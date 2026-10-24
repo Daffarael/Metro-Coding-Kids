@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { parent_name, child_name, child_age, whatsapp, course_id } = body;
+    const { parent_name, child_name, child_age, whatsapp, course_id, city } = body;
 
     if (!parent_name || !child_name || !whatsapp) {
       return NextResponse.json(
@@ -21,12 +21,13 @@ export async function POST(request: Request) {
       cleanWa = "62" + cleanWa.slice(1);
     }
 
-    const leadData = {
+    const leadData: Record<string, any> = {
       parent_name: parent_name.trim(),
       child_name: child_name.trim(),
       child_age: String(child_age || "").trim(),
       whatsapp: cleanWa,
       course_id: course_id || "junior",
+      city: city || "jakarta",
       status: "baru",
       source: "landing_page",
       created_at: new Date().toISOString(),

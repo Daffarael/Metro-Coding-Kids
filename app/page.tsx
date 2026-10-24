@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import PainPoint from "@/components/PainPoint";
+import InspirationSection from "@/components/InspirationSection";
 import Pillars from "@/components/Pillars";
 import ClassAtmosphere from "@/components/ClassAtmosphere";
 import ClassPrograms from "@/components/ClassPrograms";
@@ -16,7 +18,7 @@ import LiveRegistrationToast from "@/components/LiveRegistrationToast";
 
 export default function Home() {
   const [settings, setSettings] = useState({
-    whatsapp_number: "6282382872411",
+    whatsapp_number: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6281818778099",
     batch_name: "Batch November 2026",
     batch_deadline: "2026-11-15T23:59:59",
     price_normal: 950000,
@@ -38,7 +40,12 @@ export default function Home() {
       });
   }, []);
 
-  const handleSelectClass = () => {
+  const [selectedCourse, setSelectedCourse] = useState("konsultasi_wa");
+
+  const handleSelectClass = (courseId?: string) => {
+    if (courseId) {
+      setSelectedCourse(courseId);
+    }
     const el = document.getElementById("form-pendaftaran");
     el?.scrollIntoView({ behavior: "smooth" });
   };
@@ -57,6 +64,12 @@ export default function Home() {
             el?.scrollIntoView({ behavior: "smooth" });
           }}
         />
+
+        {/* Section 2: Pain Point - Pilar 2: Mengerti Kebutuhan Customer */}
+        <PainPoint />
+
+        {/* Section 3: Inspirasi & Emosi - Pilar 3: Menjual Emosi */}
+        <InspirationSection />
 
         {/* 4 Pillars Section */}
         <Pillars />
@@ -86,7 +99,10 @@ export default function Home() {
         />
 
         {/* Hybrid Lead Form */}
-        <RegistrationForm whatsappNumber={settings.whatsapp_number} />
+        <RegistrationForm
+          whatsappNumber={settings.whatsapp_number}
+          selectedCourse={selectedCourse}
+        />
 
         {/* Frequently Asked Questions */}
         <FAQ />

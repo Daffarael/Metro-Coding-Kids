@@ -4,7 +4,7 @@ import { supabaseAdmin } from "@/lib/supabase-admin";
 export const dynamic = "force-dynamic";
 
 const DEFAULT_SETTINGS: Record<string, unknown> = {
-  whatsapp_number: "6282382872411",
+  whatsapp_number: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6281818778099",
   batch_name: "Batch November 2026",
   batch_deadline: "2026-11-15T23:59:59",
   price_normal: 950000,

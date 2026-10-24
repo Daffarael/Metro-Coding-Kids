@@ -59,7 +59,7 @@ export default function LiveRegistrationToast() {
       if (customEvent.detail) {
         const newItem: RegistrationItem = {
           name: customEvent.detail.name,
-          course: customEvent.detail.course || "Junior Game Maker",
+          course: customEvent.detail.course || "Code & Game",
           time: "Baru saja",
           isReal: true,
         };

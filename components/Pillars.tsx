@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
 import { ArrowUpRight, ArrowRight, Sparkles, Gamepad2 } from "lucide-react";
+import { PressDepth } from "@/components/ui/press-depth";
 
 export default function Pillars() {
   const values = [
@@ -143,18 +146,21 @@ export default function Pillars() {
 
         {/* Action Trigger Button */}
         <div className="mt-6 flex flex-col items-center text-center gap-2 w-full px-1">
-          <button
+          <PressDepth
+            type="button"
             onClick={() => {
               const el = document.getElementById("form-pendaftaran");
               el?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="w-full sm:w-auto max-w-full py-3.5 px-4 sm:px-8 rounded-2xl bg-[#EE4C23] text-white font-heading text-base sm:text-lg shadow-none flex items-center justify-center gap-2.5 sm:gap-3 cursor-pointer"
+            containerClassName="w-full sm:w-auto"
+            baseBg="bg-[#b83310]"
+            className="w-full sm:w-auto py-3.5 px-4 sm:px-8 bg-[#EE4C23] text-white font-heading text-base sm:text-lg border-none flex items-center justify-center gap-2.5 sm:gap-3 hover:bg-[#d93f18] shadow-md"
           >
             <span className="text-center">Daftarkan Si Kecil Sekarang</span>
             <div className="w-6 h-6 rounded-full bg-white text-[#EE4C23] flex items-center justify-center shrink-0">
               <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
             </div>
-          </button>
+          </PressDepth>
           <p className="text-xs font-semibold text-[#143D2B]">
             Bimbingan intensif semi-privat maksimal 6 anak
           </p>
@@ -214,19 +220,21 @@ export default function Pillars() {
 
           {/* Centered Action Button Inside Green Card */}
           <div className="mt-6 flex flex-col items-center justify-center text-center w-full px-1">
-            <button
+            <PressDepth
+              type="button"
               onClick={() => {
                 const el = document.getElementById("form-pendaftaran");
                 el?.scrollIntoView({ behavior: "smooth" });
               }}
-              style={{ fontFamily: "var(--font-poppins), sans-serif" }}
-              className="w-full sm:w-auto max-w-full py-3.5 px-4 sm:px-8 rounded-2xl bg-[#F5BA13] text-[#143D2B] font-black text-base sm:text-lg tracking-tight shadow-none flex items-center justify-center gap-2.5 sm:gap-3 cursor-pointer border-none"
+              containerClassName="w-full sm:w-auto"
+              baseBg="bg-[#c4920c]"
+              className="w-full sm:w-auto py-3.5 px-4 sm:px-8 bg-[#F5BA13] text-[#143D2B] font-black text-base sm:text-lg tracking-tight border-none flex items-center justify-center gap-2.5 sm:gap-3 hover:bg-[#e0a90f] shadow-md"
             >
               <span>Gass bikin ginian?</span>
               <div className="w-6 h-6 rounded-full bg-[#143D2B] text-[#F5BA13] flex items-center justify-center shrink-0">
                 <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
               </div>
-            </button>
+            </PressDepth>
           </div>
 
 

@@ -5,33 +5,43 @@ export default function Testimonials() {
   const reviews = [
     {
       name: "Bunda Maya",
-      role: "Orang Tua dari Arkan (8 Tahun)",
-      classTaken: "Junior Game Maker",
+      role: "Orang Tua dari Arkan (9 Tahun)",
+      classTaken: "Code & Game",
       classTag: "bg-[#F5BA13] text-[#143D2B]",
       avatarBg: "bg-[#F5BA13] text-[#143D2B]",
       avatarInitials: "BM",
       avatarRotate: "-4deg",
-      text: "Dulu anak saya kalau pegang tablet cuma nonton video berjam-jam. Setelah ikut Metro Coding Kids, dia sekarang bangga banget nunjukin game buatan sendiri ke keluarga. Screen time jadi produktif!",
+      text: "Dulu anak saya kalau pegang tablet cuma nonton video dan nge-game berjam-jam. Setelah ikut kelas Code & Game di Metro Coding Kids, dia sekarang bangga banget nunjukin game buatan sendiri ke keluarga. Screen time jadi produktif!",
     },
     {
       name: "Ayah Hendra",
       role: "Orang Tua dari Rasya (11 Tahun)",
-      classTaken: "Explorer Coder",
+      classTaken: "Creative Technology",
       classTag: "bg-[#EE4C23] text-white",
       avatarBg: "bg-[#EE4C23] text-white",
       avatarInitials: "AH",
       avatarRotate: "4deg",
-      text: "Metode belajarnya visual dan sangat seru. Mentornya sabar dan telaten memandu anak sampai paham. Kelasnya semi-privat jadi tiap anak benar-benar diperhatikan.",
+      text: "Materi koding dan AI-nya visual dan sangat seru. Mentornya sabar dan telaten memandu eksplorasi proyek kreatif anak sampai tuntas. Kelas semi-privat bikin tiap anak benar-benar terpantau intensif.",
     },
     {
       name: "Bunda Citra",
       role: "Orang Tua dari Kayla (13 Tahun)",
-      classTaken: "Master Creator Kid",
+      classTaken: "Digital Creator",
       classTag: "bg-[#2563EB] text-white",
       avatarBg: "bg-[#2563EB] text-white",
       avatarInitials: "BC",
       avatarRotate: "-3deg",
-      text: "Kayla yang tadinya pemalu jadi jauh lebih percaya diri saat mempresentasikan hasil karya game kodingnya. Kemampuan logika berpikir dan problem solving-nya terasa sekali meningkat.",
+      text: "Kayla yang tadinya pemalu jadi jauh lebih percaya diri saat mempresentasikan hasil karya web dan digital product ciptaannya. Kemampuan logika berpikir dan problem solving-nya terasa sekali meningkat.",
+    },
+    {
+      name: "Pak Dimas",
+      role: "Orang Tua dari Fathir (16 Tahun)",
+      classTaken: "Future Tech",
+      classTag: "bg-[#143D2B] text-[#F5BA13]",
+      avatarBg: "bg-[#143D2B] text-[#F5BA13]",
+      avatarInitials: "PD",
+      avatarRotate: "3deg",
+      text: "Persiapan yang luar biasa untuk masa depan. Di program Future Tech, Fathir belajar Python, web development, dan otomasi AI secara terstruktur. Portofolionya siap untuk lanjut kuliah IT.",
     },
   ];
 
@@ -55,7 +65,7 @@ export default function Testimonials() {
           </span>
         </h2>
         <p className="text-[#334155] text-xs sm:text-sm mt-2 max-w-md mx-auto leading-relaxed">
-          Pengalaman nyata para orang tua yang telah mengarahkan minat digital si kecil menjadi karya nyata.
+          Pengalaman nyata para orang tua yang telah mengarahkan minat digital si kecil menjadi karya nyata di 4 Core Programs kami.
         </p>
       </div>
 
@@ -66,12 +76,17 @@ export default function Testimonials() {
             key={idx}
             className="p-5 sm:p-6 rounded-[28px] sm:rounded-[32px] bg-white border-2 border-[#143D2B]/12 shadow-none hover:-translate-y-1 hover:border-[#143D2B]/25 transition-all duration-200 select-none"
           >
-            {/* Top Row: 5 Stars Rating */}
-            <div className="flex items-center gap-1 bg-[#F5BA13]/15 px-2.5 py-1 rounded-full w-fit mb-3.5">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#F5BA13] text-[#F5BA13]" />
-              ))}
-              <span className="text-xs font-black text-[#143D2B] ml-1 font-nunito">5.0</span>
+            {/* Top Row: 5 Stars Rating & Program Tag */}
+            <div className="flex items-center justify-between gap-2 mb-3.5">
+              <div className="flex items-center gap-1 bg-[#F5BA13]/15 px-2.5 py-1 rounded-full w-fit">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#F5BA13] text-[#F5BA13]" />
+                ))}
+                <span className="text-xs font-black text-[#143D2B] ml-1 font-nunito">5.0</span>
+              </div>
+              <span className={`text-[10px] sm:text-[11px] font-black px-2.5 py-1 rounded-xl font-nunito tracking-wide ${rev.classTag}`}>
+                {rev.classTaken}
+              </span>
             </div>
 
             {/* Testimonial Quote */}
@@ -105,4 +120,3 @@ export default function Testimonials() {
     </section>
   );
 }
-

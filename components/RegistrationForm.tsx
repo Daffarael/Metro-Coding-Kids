@@ -1,21 +1,41 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
+import { Combobox } from "@/components/ui/combobox";
+import { PressDepth } from "@/components/ui/press-depth";
 
 interface RegistrationFormProps {
   whatsappNumber?: string;
+  selectedCourse?: string;
 }
 
+const PROGRAMS_LIST = [
+  { id: "konsultasi_wa", label: "Konsultasi / Rekomendasi CS (Bantu Pilihkan)" },
+  { id: "code_game", label: "Code & Game (Usia 8–11 Thn - Logic & Coding)" },
+  { id: "creative_tech", label: "Creative Technology (Usia 8–11 Thn - Coding & AI)" },
+  { id: "digital_creator", label: "Digital Creator (Usia 12–14 Thn - Web, Game & AI)" },
+  { id: "future_tech", label: "Future Tech (Usia 15–18 Thn - Python & Automation)" },
+];
+
 export default function RegistrationForm({
-  whatsappNumber = "6282382872411",
+  whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6281818778099",
+  selectedCourse = "konsultasi_wa",
 }: RegistrationFormProps) {
   const [parentName, setParentName] = useState("");
   const [childName, setChildName] = useState("");
   const [childAge, setChildAge] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
+  const [city, setCity] = useState("jakarta");
+  const [courseId, setCourseId] = useState(selectedCourse);
   const [isLoading, setIsLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+
+  useEffect(() => {
+    if (selectedCourse) {
+      setCourseId(selectedCourse);
+    }
+  }, [selectedCourse]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,6 +51,12 @@ export default function RegistrationForm({
 
     setIsLoading(true);
 
+    const chosenProgram = PROGRAMS_LIST.find((p) => p.id === courseId) || PROGRAMS_LIST[0];
+    const cityName =
+      city === "bandung"
+        ? "Bandung (Setiabudi, Bandung)"
+        : "Jakarta (Taman Palem, Jakarta Barat)";
+
     try {
       // 1. Submit lead to database in background
       await fetch("/api/lead", {
@@ -41,7 +67,8 @@ export default function RegistrationForm({
           child_name: childName,
           child_age: childAge,
           whatsapp: whatsapp,
-          course_id: "konsultasi_wa",
+          course_id: courseId,
+          city: city,
         }),
       });
 
@@ -51,20 +78,22 @@ export default function RegistrationForm({
           new CustomEvent("new-registration", {
             detail: {
               name: childName.trim(),
-              course: "Kelas Koding Anak",
+              course: chosenProgram.id === "konsultasi_wa" ? "Code & Game" : chosenProgram.label.split("(")[0].trim(),
             },
           })
         );
       }
 
-      // 2. Format WhatsApp message without preselected course
+      // 2. Format WhatsApp message with chosen course & city
       const waMessage =
-        `Halo Admin Metro Coding Kids, saya ingin mendaftarkan anak saya untuk Batch Belajar Koding:\n\n` +
+        `Halo Admin Metro Coding Kids, saya ingin booking Free Trial Session untuk anak saya:\n\n` +
         `• Nama Orang Tua: ${parentName.trim()}\n` +
         `• Nama Anak: ${childName.trim()}\n` +
         `• Usia Anak: ${childAge.trim() ? `${childAge.trim()} Tahun` : "Belum dicantumkan"}\n` +
+        `• Pilihan Kota: ${cityName}\n` +
+        `• Program Pilihan: ${chosenProgram.label}\n` +
         `• WhatsApp: ${whatsapp.trim()}\n\n` +
-        `Saya ingin konsultasi rekomendasi program kelas yang paling cocok dan info ketersediaan kursinya. Terima kasih!`;
+        `Saya ingin klaim Free Trial Session serta Voucher Diskon 15% (Khusus November) untuk program 12 pertemuan (3 bulan). Mohon info ketersediaan jadwalnya. Terima kasih!`;
 
       const waUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(waMessage)}`;
 
@@ -80,10 +109,12 @@ export default function RegistrationForm({
     } catch (err) {
       console.error("Submission failed:", err);
       const waMessage =
-        `Halo Admin Metro Coding Kids, saya ingin mendaftarkan anak saya:\n` +
+        `Halo Admin Metro Coding Kids, saya ingin booking Free Trial Session untuk anak saya:\n` +
         `• Nama Orang Tua: ${parentName.trim()}\n` +
-        `• Nama Anak: ${childName.trim()} (${childAge.trim()} thn)\n\n` +
-        `Saya ingin konsultasi pilihan program kelas dan jadwal belajarnya. Terima kasih!`;
+        `• Nama Anak: ${childName.trim()} (${childAge.trim()} thn)\n` +
+        `• Kota: ${cityName}\n` +
+        `• Program: ${chosenProgram.label}\n\n` +
+        `Saya ingin info jadwal Free Trial Session terdekat. Terima kasih!`;
       window.location.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(waMessage)}`;
     } finally {
       setIsLoading(false);
@@ -92,19 +123,19 @@ export default function RegistrationForm({
 
   return (
     <section id="form-pendaftaran" className="px-5 py-8 bg-[#F7F5EE]">
-      <div className="text-center mb-6">
-        <span className="text-[11px] font-black text-[#143D2B] uppercase tracking-wider bg-[#F5BA13] px-3.5 py-1 rounded-full inline-block mb-2 shadow-2xs">
-          Langkah Mudah
+      <div className="text-center mb-6 flex flex-col items-center">
+        <span className="h-7 px-4 inline-flex items-center justify-center rounded-full bg-[#F5BA13] text-[#143D2B] font-nunito text-xs font-black uppercase tracking-wider mb-2.5 shadow-none">
+          <span className="translate-y-[1px]">Langkah Mudah</span>
         </span>
         <h2 className="text-3xl sm:text-4xl font-heading text-[#143D2B] tracking-tight">
-          Form Pendaftaran Cepat
+          Book Free Trial Session
         </h2>
-        <p className="text-[#334155] text-xs sm:text-sm mt-1 max-w-sm mx-auto">
+        <p className="text-[#143D2B] text-xs sm:text-sm font-bold mt-2 max-w-sm mx-auto leading-relaxed">
           Isi data singkat di bawah ini. Tim CS kami akan segera mengonfirmasi jadwal dan rekomendasi kelas terbaik untuk si kecil.
         </p>
       </div>
 
-      <div className="bg-white rounded-3xl p-6 border-2 border-[#143D2B]/10 shadow-md">
+      <div className="bg-white rounded-3xl p-6 border-2 border-[#143D2B] shadow-md">
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Field 1: Nama Orang Tua */}
           <div>
@@ -117,7 +148,7 @@ export default function RegistrationForm({
               placeholder="Contoh: Ayah Hendra / Bunda Maya"
               value={parentName}
               onChange={(e) => setParentName(e.target.value)}
-              className="w-full px-3.5 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#143D2B] focus:ring-2 focus:ring-[#143D2B]/10 transition-all placeholder:text-slate-400"
+              className="w-full px-3.5 py-3 rounded-xl border-2 border-[#143D2B]/20 text-xs sm:text-sm text-[#143D2B] font-medium focus:outline-none focus:border-[#143D2B] focus:ring-2 focus:ring-[#143D2B]/10 transition-all placeholder:text-slate-400"
             />
           </div>
 
@@ -133,7 +164,7 @@ export default function RegistrationForm({
                 placeholder="Contoh: Kenzo"
                 value={childName}
                 onChange={(e) => setChildName(e.target.value)}
-                className="w-full px-3.5 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#143D2B] focus:ring-2 focus:ring-[#143D2B]/10 transition-all placeholder:text-slate-400"
+                className="w-full px-3.5 py-3 rounded-xl border-2 border-[#143D2B]/20 text-xs sm:text-sm text-[#143D2B] font-medium focus:outline-none focus:border-[#143D2B] focus:ring-2 focus:ring-[#143D2B]/10 transition-all placeholder:text-slate-400"
               />
             </div>
             <div>
@@ -143,17 +174,60 @@ export default function RegistrationForm({
               <input
                 type="number"
                 required
-                min={5}
-                max={16}
-                placeholder="8"
+                min={7}
+                max={18}
+                placeholder="9"
                 value={childAge}
                 onChange={(e) => setChildAge(e.target.value)}
-                className="w-full px-3.5 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#143D2B] focus:ring-2 focus:ring-[#143D2B]/10 transition-all placeholder:text-slate-400 text-center"
+                className="w-full px-3.5 py-3 rounded-xl border-2 border-[#143D2B]/20 text-xs sm:text-sm text-[#143D2B] font-medium focus:outline-none focus:border-[#143D2B] focus:ring-2 focus:ring-[#143D2B]/10 transition-all placeholder:text-slate-400 text-center"
               />
             </div>
           </div>
 
-          {/* Field 3: WhatsApp */}
+          {/* Field 3: Pilihan Kota (Combobox Jakarta / Bandung) */}
+          <div className="relative z-30">
+            <label className="block text-xs font-bold text-[#143D2B] mb-1.5">
+              Pilihan Kota Belajar <span className="text-[#EE4C23]">*</span>
+            </label>
+            <Combobox
+              value={city}
+              onChange={(val) => setCity(val)}
+              placeholder="Cari atau pilih kota (Jakarta / Bandung)..."
+            >
+              <Combobox.Input />
+              <Combobox.List emptyMessage="Kota tidak ditemukan (hanya Jakarta atau Bandung)">
+                <Combobox.Option value="jakarta">
+                  Jakarta (Taman Palem, Jakarta Barat)
+                </Combobox.Option>
+                <Combobox.Option value="bandung">
+                  Bandung (Setiabudi, Bandung)
+                </Combobox.Option>
+              </Combobox.List>
+            </Combobox>
+          </div>
+
+          {/* Field 4: Pilihan Program (Combobox) */}
+          <div className="relative z-20">
+            <label className="block text-xs font-bold text-[#143D2B] mb-1.5">
+              Pilihan Program Kelas
+            </label>
+            <Combobox
+              value={courseId}
+              onChange={(val) => setCourseId(val)}
+              placeholder="Cari atau pilih program kelas..."
+            >
+              <Combobox.Input />
+              <Combobox.List emptyMessage="Program tidak ditemukan">
+                {PROGRAMS_LIST.map((prog) => (
+                  <Combobox.Option key={prog.id} value={prog.id}>
+                    {prog.label}
+                  </Combobox.Option>
+                ))}
+              </Combobox.List>
+            </Combobox>
+          </div>
+
+          {/* Field 5: WhatsApp */}
           <div>
             <label className="block text-xs font-bold text-[#143D2B] mb-1.5">
               Nomor WhatsApp Aktif <span className="text-[#EE4C23]">*</span>
@@ -164,10 +238,10 @@ export default function RegistrationForm({
               placeholder="Contoh: 081234567890"
               value={whatsapp}
               onChange={(e) => setWhatsapp(e.target.value)}
-              className="w-full px-3.5 py-3 rounded-xl border border-slate-200 text-xs sm:text-sm text-slate-800 focus:outline-none focus:border-[#143D2B] focus:ring-2 focus:ring-[#143D2B]/10 transition-all placeholder:text-slate-400"
+              className="w-full px-3.5 py-3 rounded-xl border-2 border-[#143D2B]/20 text-xs sm:text-sm text-[#143D2B] font-medium focus:outline-none focus:border-[#143D2B] focus:ring-2 focus:ring-[#143D2B]/10 transition-all placeholder:text-slate-400"
             />
-            <span className="block text-[11px] text-slate-400 mt-1">
-              Digunakan untuk pengiriman jadwal kelas dan koordinasi mentor.
+            <span className="block text-[11px] font-semibold text-[#143D2B]/70 mt-1">
+              Digunakan untuk konfirmasi jadwal kelas, slot kuota, dan koordinasi mentor.
             </span>
           </div>
 
@@ -176,12 +250,12 @@ export default function RegistrationForm({
             <div
               className={`p-3 rounded-2xl text-xs flex items-center gap-2 ${
                 statusMessage.type === "success"
-                  ? "bg-[#E2F3E7] text-[#143D2B] border border-[#143D2B]/20"
+                  ? "bg-[#143D2B] text-[#F5BA13] border-2 border-[#143D2B]"
                   : "bg-red-50 text-red-800 border border-red-200"
               }`}
             >
               {statusMessage.type === "success" ? (
-                <CheckCircle2 className="w-4 h-4 shrink-0 text-[#143D2B]" />
+                <CheckCircle2 className="w-4 h-4 shrink-0 text-[#F5BA13]" />
               ) : (
                 <AlertCircle className="w-4 h-4 shrink-0" />
               )}
@@ -190,10 +264,12 @@ export default function RegistrationForm({
           )}
 
           {/* Submit CTA */}
-          <button
+          <PressDepth
             type="submit"
             disabled={isLoading}
-            className="w-full py-4 px-6 rounded-2xl bg-[#EE4C23] text-white font-extrabold text-sm sm:text-base shadow-none border-none flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed mt-2"
+            containerClassName="w-full mt-2"
+            baseBg="bg-[#b83310]"
+            className="w-full py-4 px-6 bg-[#EE4C23] hover:bg-[#d93f18] text-white font-heading font-black text-base sm:text-lg border-none flex items-center justify-center gap-2.5 shadow-md"
           >
             {isLoading ? (
               <>
@@ -202,11 +278,11 @@ export default function RegistrationForm({
               </>
             ) : (
               <>
-                <span>Kirim & Hubungkan ke WhatsApp CS</span>
-                <Send className="w-4 h-4" />
+                <span>Book Trial</span>
+                <Send className="w-4 h-4 stroke-[2.5]" />
               </>
             )}
-          </button>
+          </PressDepth>
         </form>
       </div>
     </section>
