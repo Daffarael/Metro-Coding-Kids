@@ -91,10 +91,10 @@ export default function Hero({ onCtaClick }: HeroProps) {
       </div>
 
       {/* Primary Action Button & Reassurance - Centered */}
-      <div className="flex flex-col items-center text-center gap-2.5 max-w-sm mx-auto">
+      <div className="flex flex-col items-center text-center gap-2.5 max-w-sm mx-auto w-full px-1">
         <button
           onClick={handleScrollToForm}
-          className="w-full sm:w-auto py-3.5 px-8 rounded-2xl bg-[#EE4C23] text-white font-heading text-lg sm:text-xl shadow-none border-none flex items-center justify-center gap-3 cursor-pointer"
+          className="w-full max-w-full py-3.5 px-4 sm:px-8 rounded-2xl bg-[#EE4C23] text-white font-heading text-base sm:text-xl shadow-none border-none flex items-center justify-center gap-2.5 sm:gap-3 cursor-pointer"
         >
           <span className="tracking-wide">Daftarkan Si Kecil Sekarang</span>
           <div className="w-6 h-6 rounded-full bg-white text-[#EE4C23] flex items-center justify-center shrink-0">

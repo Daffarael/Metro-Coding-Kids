@@ -202,9 +202,9 @@ export default function PricingBatch({
           <button
             onClick={handleCta}
             style={{ fontFamily: "var(--font-poppins), sans-serif" }}
-            className="w-full py-4 px-6 rounded-2xl bg-[#EE4C23] text-white font-black text-base sm:text-lg tracking-tight shadow-none border-none flex items-center justify-center gap-3 cursor-pointer hover:bg-[#d93f18] active:scale-[0.98] transition-all select-none"
+            className="w-full max-w-full py-3.5 sm:py-4 px-3 sm:px-6 rounded-2xl bg-[#EE4C23] text-white font-black text-sm sm:text-lg tracking-tight shadow-none border-none flex items-center justify-center gap-2.5 sm:gap-3 cursor-pointer hover:bg-[#d93f18] active:scale-[0.98] transition-all select-none"
           >
-            <span>Daftar Sekarang & Amankan Kursi</span>
+            <span className="text-center">Daftar Sekarang & Amankan Kursi</span>
             <div className="w-6 h-6 rounded-full bg-white text-[#EE4C23] flex items-center justify-center shrink-0">
               <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
             </div>

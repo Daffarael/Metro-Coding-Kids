@@ -44,8 +44,8 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-[#EFECE3] py-0 sm:py-6">
-      <div className="brochure-container relative bg-[#F7F5EE]">
+    <main className="min-h-screen bg-[#F7F5EE] sm:bg-[#EFECE3] py-0 sm:py-6 overflow-x-hidden">
+      <div className="brochure-container relative bg-[#F7F5EE] overflow-x-hidden w-full">
         {/* Navigation Bar */}
         <Navbar whatsappNumber={settings.whatsapp_number} />
 

@@ -112,9 +112,9 @@ export default function FAQ() {
             <button
               onClick={scrollToForm}
               style={{ fontFamily: "var(--font-poppins), sans-serif" }}
-              className="inline-flex items-center gap-3 px-7 py-3.5 rounded-2xl bg-[#F5BA13] text-[#143D2B] font-black text-base sm:text-lg shadow-none border-none cursor-pointer hover:bg-[#e0a90f] active:scale-[0.98] transition-all select-none"
+              className="w-full sm:w-auto max-w-full inline-flex items-center justify-center gap-2.5 sm:gap-3 px-4 sm:px-7 py-3.5 rounded-2xl bg-[#F5BA13] text-[#143D2B] font-black text-sm sm:text-lg shadow-none border-none cursor-pointer hover:bg-[#e0a90f] active:scale-[0.98] transition-all select-none"
             >
-              <span className="tracking-wide">Daftarkan Si Kecil Sekarang</span>
+              <span className="tracking-wide text-center">Daftarkan Si Kecil Sekarang</span>
               <div className="w-6 h-6 rounded-full bg-[#143D2B] text-[#F5BA13] flex items-center justify-center shrink-0">
                 <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
               </div>

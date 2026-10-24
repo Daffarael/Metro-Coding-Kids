@@ -169,16 +169,16 @@ export default function ClassPrograms({ onSelectClass }: ClassProgramsProps) {
       </div>
 
       {/* Action Trigger CTA Button */}
-      <div className="mt-7 flex justify-center">
+      <div className="mt-7 flex justify-center w-full px-1">
         <button
           onClick={() => {
             const el = document.getElementById("form-pendaftaran");
             el?.scrollIntoView({ behavior: "smooth" });
           }}
           style={{ fontFamily: "var(--font-poppins), sans-serif" }}
-          className="w-full sm:w-auto py-3.5 px-8 rounded-2xl bg-[#EE4C23] text-white font-black text-base sm:text-lg tracking-tight shadow-none flex items-center justify-center gap-3 cursor-pointer hover:bg-[#d93f18] active:scale-[0.98] transition-all select-none"
+          className="w-full sm:w-auto max-w-full py-3.5 px-4 sm:px-8 rounded-2xl bg-[#EE4C23] text-white font-black text-sm sm:text-lg tracking-tight shadow-none flex items-center justify-center gap-2.5 sm:gap-3 cursor-pointer hover:bg-[#d93f18] active:scale-[0.98] transition-all select-none"
         >
-          <span>Pilih Kelas & Daftarkan Si Kecil</span>
+          <span className="text-center">Pilih Kelas & Daftarkan Si Kecil</span>
           <div className="w-6 h-6 rounded-full bg-white text-[#EE4C23] flex items-center justify-center shrink-0">
             <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
           </div>

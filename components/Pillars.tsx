@@ -142,15 +142,15 @@ export default function Pillars() {
         </div>
 
         {/* Action Trigger Button */}
-        <div className="mt-6 flex flex-col items-center text-center gap-2">
+        <div className="mt-6 flex flex-col items-center text-center gap-2 w-full px-1">
           <button
             onClick={() => {
               const el = document.getElementById("form-pendaftaran");
               el?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="w-full sm:w-auto py-3.5 px-8 rounded-2xl bg-[#EE4C23] text-white font-heading text-base sm:text-lg shadow-none flex items-center justify-center gap-3 cursor-pointer"
+            className="w-full sm:w-auto max-w-full py-3.5 px-4 sm:px-8 rounded-2xl bg-[#EE4C23] text-white font-heading text-base sm:text-lg shadow-none flex items-center justify-center gap-2.5 sm:gap-3 cursor-pointer"
           >
-            <span>Daftarkan Si Kecil Sekarang</span>
+            <span className="text-center">Daftarkan Si Kecil Sekarang</span>
             <div className="w-6 h-6 rounded-full bg-white text-[#EE4C23] flex items-center justify-center shrink-0">
               <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
             </div>
@@ -213,14 +213,14 @@ export default function Pillars() {
           </div>
 
           {/* Centered Action Button Inside Green Card */}
-          <div className="mt-6 flex flex-col items-center justify-center text-center">
+          <div className="mt-6 flex flex-col items-center justify-center text-center w-full px-1">
             <button
               onClick={() => {
                 const el = document.getElementById("form-pendaftaran");
                 el?.scrollIntoView({ behavior: "smooth" });
               }}
               style={{ fontFamily: "var(--font-poppins), sans-serif" }}
-              className="w-full sm:w-auto py-3.5 px-8 rounded-2xl bg-[#F5BA13] text-[#143D2B] font-black text-base sm:text-lg tracking-tight shadow-none flex items-center justify-center gap-3 cursor-pointer border-none"
+              className="w-full sm:w-auto max-w-full py-3.5 px-4 sm:px-8 rounded-2xl bg-[#F5BA13] text-[#143D2B] font-black text-base sm:text-lg tracking-tight shadow-none flex items-center justify-center gap-2.5 sm:gap-3 cursor-pointer border-none"
             >
               <span>Gass bikin ginian?</span>
               <div className="w-6 h-6 rounded-full bg-[#143D2B] text-[#F5BA13] flex items-center justify-center shrink-0">

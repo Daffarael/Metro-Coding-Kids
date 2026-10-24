@@ -24,11 +24,11 @@ export default function Navbar({
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 px-4 sm:px-6 py-3 sm:py-3.5 shadow-[0_4px_20px_rgba(20,61,43,0.06)] transition-all">
-      <div className="flex items-center justify-between gap-3">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 px-3 sm:px-6 py-2.5 sm:py-3.5 shadow-[0_4px_20px_rgba(20,61,43,0.06)] transition-all">
+      <div className="flex items-center justify-between gap-1.5 sm:gap-3">
         {/* Logo and Brand */}
-        <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-          <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl overflow-hidden shadow-xs group-hover:scale-105 transition-transform shrink-0">
+        <Link href="/" className="flex items-center gap-2 sm:gap-2.5 group shrink-0">
+          <div className="relative w-9 h-9 sm:w-11 sm:h-11 rounded-xl overflow-hidden shadow-xs group-hover:scale-105 transition-transform shrink-0">
             <Image
               src="/images/logo-rounded.png"
               alt="Metro Coding Kids"
@@ -39,24 +39,24 @@ export default function Navbar({
             />
           </div>
           <div>
-            <span className="block font-heading text-[#143D2B] text-base sm:text-lg leading-tight tracking-tight">
+            <span className="block font-heading text-[#143D2B] text-sm sm:text-lg leading-tight tracking-tight">
               Metro
             </span>
-            <span className="block font-heading text-[#143D2B] text-base sm:text-lg leading-none tracking-tight">
+            <span className="block font-heading text-[#143D2B] text-sm sm:text-lg leading-none tracking-tight">
               Coding Kids
             </span>
           </div>
         </Link>
 
-        {/* Right Action: Enriched & Larger Daftarkan Si Kecil & WhatsApp Buttons */}
-        <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+        {/* Right Action: Responsive Daftarkan Si Kecil & WhatsApp Buttons */}
+        <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
           <button
             onClick={handleEnroll}
-            className="flex items-center gap-2 px-4 sm:px-5 py-2.5 sm:py-2.5 rounded-full bg-[#F5BA13] text-[#143D2B] text-xs sm:text-sm font-black tracking-wide shadow-none border-none cursor-pointer"
+            className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#F5BA13] text-[#143D2B] text-xs sm:text-sm font-black tracking-wide shadow-none border-none cursor-pointer"
           >
-            <span>Daftarkan Si Kecil</span>
-            <div className="w-5 h-5 rounded-full bg-[#143D2B] text-[#F5BA13] flex items-center justify-center shrink-0">
-              <ArrowRight className="w-3 h-3 stroke-[3]" />
+            <span>Daftar<span className="hidden sm:inline">kan Si Kecil</span></span>
+            <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#143D2B] text-[#F5BA13] flex items-center justify-center shrink-0">
+              <ArrowRight className="w-2.5 h-2.5 sm:w-3 sm:h-3 stroke-[3]" />
             </div>
           </button>
 
@@ -68,10 +68,10 @@ export default function Navbar({
             rel="noopener noreferrer"
             title="Chat WhatsApp CS"
             role="button"
-            className="w-10 h-10 rounded-full bg-[#143D2B] text-white flex items-center justify-center shadow-none border-none shrink-0 cursor-pointer"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#143D2B] text-white flex items-center justify-center shadow-none border-none shrink-0 cursor-pointer"
           >
             <svg
-              className="w-5 h-5 fill-current"
+              className="w-4 h-4 sm:w-5 sm:h-5 fill-current"
               viewBox="0 0 24 24"
               aria-hidden="true"
             >
