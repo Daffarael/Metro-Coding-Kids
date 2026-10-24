@@ -48,20 +48,20 @@ export default function InspirationSection() {
         {/* KARTU 1: Tokoh Inspirasi Dunia (Luis von Ahn, CEO Duolingo) */}
         <div className="rounded-[32px] sm:rounded-[36px] bg-white text-[#143D2B] p-5 sm:p-7 pb-6 sm:pb-8 shadow-md border-2 border-[#143D2B]">
           {/* Header Row: Squircle Icon + Tag */}
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2.5">
+          <div className="flex items-center justify-between gap-2 mb-4 flex-wrap">
+            <div className="flex items-center gap-2">
               <div
                 style={{ transform: "rotate(-4deg)" }}
-                className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-[#F5BA13] text-[#143D2B] flex items-center justify-center font-black border-2 border-[#143D2B] shrink-0"
+                className="w-9 h-9 sm:w-11 sm:h-11 rounded-2xl bg-[#F5BA13] text-[#143D2B] flex items-center justify-center font-black border-2 border-[#143D2B] shrink-0"
               >
-                <Sparkles className="w-5 h-5 stroke-[2.5]" />
+                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
               </div>
-              <span className="h-7 px-3.5 inline-flex items-center justify-center rounded-full bg-[#143D2B] text-[#F5BA13] font-nunito text-xs font-black tracking-wider uppercase shadow-none">
-                <span className="translate-y-[1px]">Kisah Nyata</span>
+              <span className="px-3 py-1 inline-flex items-center justify-center rounded-full bg-[#143D2B] text-[#F5BA13] font-nunito text-[11px] sm:text-xs font-black tracking-wider uppercase whitespace-nowrap">
+                <span>Kisah Nyata</span>
               </span>
             </div>
-            <span className="h-7 px-3.5 inline-flex items-center justify-center rounded-full bg-[#F5BA13] text-[#143D2B] font-nunito text-xs font-black tracking-wide uppercase border border-[#143D2B]/15 shadow-none">
-              <span className="translate-y-[1px]">Mulai Usia 8-9 Tahun</span>
+            <span className="px-3 py-1 inline-flex items-center justify-center rounded-full bg-[#F5BA13] text-[#143D2B] font-nunito text-[11px] sm:text-xs font-black tracking-wide uppercase border border-[#143D2B]/15 whitespace-nowrap">
+              <span>Mulai Usia 8–9 Tahun</span>
             </span>
           </div>
 
@@ -134,8 +134,8 @@ export default function InspirationSection() {
               >
                 <Heart className="w-5 h-5 fill-[#F5BA13] stroke-[2.5]" />
               </div>
-              <span className="h-7 px-3.5 inline-flex items-center justify-center rounded-full bg-[#143D2B] text-[#F5BA13] font-nunito text-xs font-black tracking-wider uppercase shadow-none">
-                <span className="translate-y-[1px]">Momen Membanggakan</span>
+              <span className="px-3 py-1 inline-flex items-center justify-center rounded-full bg-[#143D2B] text-[#F5BA13] font-nunito text-[11px] sm:text-xs font-black tracking-wider uppercase whitespace-nowrap">
+                <span>Momen Membanggakan</span>
               </span>
             </div>
           </div>

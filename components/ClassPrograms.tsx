@@ -168,8 +168,8 @@ export default function ClassPrograms({ onSelectClass }: ClassProgramsProps) {
 
       {/* 2. Ringkasan 4 Core Programs (Solid High-Contrast Master Matrix) */}
       <div className="mb-6 rounded-[28px] sm:rounded-[32px] bg-[#143D2B] text-white p-5 sm:p-6 border-2 border-[#143D2B] shadow-xl overflow-hidden relative">
-        <div className="flex items-center justify-between gap-2 mb-3.5">
-          <div className="flex items-center gap-2.5">
+        <div className="flex items-center justify-between gap-2 mb-3.5 flex-wrap">
+          <div className="flex items-center gap-2">
             <div
               style={{ transform: "rotate(-3deg)" }}
               className="w-8 h-8 rounded-xl bg-[#F5BA13] text-[#143D2B] flex items-center justify-center font-heading font-black text-sm shadow-none shrink-0"
@@ -180,19 +180,19 @@ export default function ClassPrograms({ onSelectClass }: ClassProgramsProps) {
               Ringkasan 4 Core Programs
             </h3>
           </div>
-          <span className="h-6 px-3 inline-flex items-center justify-center rounded-full bg-[#F5BA13] text-[#143D2B] font-nunito text-[11px] font-black uppercase tracking-wider">
-            <span className="translate-y-[0.5px]">Usia 8–18 Thn</span>
+          <span className="px-2.5 py-1 inline-flex items-center justify-center rounded-full bg-[#F5BA13] text-[#143D2B] font-nunito text-[10.5px] sm:text-[11px] font-black uppercase tracking-wider whitespace-nowrap shrink-0">
+            <span>Usia 8–18 Thn</span>
           </span>
         </div>
 
         {/* Clean Matrix Table */}
-        <div className="overflow-hidden rounded-2xl border-2 border-white/20 bg-[#0A261A]">
-          <table className="w-full text-left text-xs border-collapse">
+        <div className="overflow-x-auto rounded-2xl border-2 border-white/20 bg-[#0A261A]">
+          <table className="w-full min-w-[340px] text-left text-xs border-collapse">
             <thead>
               <tr className="border-b-2 border-white/20 bg-white/10 text-[#F5BA13] font-black uppercase text-[10px] sm:text-[11px] tracking-wider font-nunito">
-                <th className="py-2.5 px-3">Program</th>
+                <th className="py-2.5 px-3 whitespace-nowrap">Program</th>
                 <th className="py-2.5 px-2 text-center whitespace-nowrap">Usia</th>
-                <th className="py-2.5 px-3">Fokus Pembelajaran</th>
+                <th className="py-2.5 px-3 whitespace-nowrap">Fokus Pembelajaran</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-white/15 text-[11px] sm:text-xs">
@@ -202,14 +202,14 @@ export default function ClassPrograms({ onSelectClass }: ClassProgramsProps) {
                   onClick={() => handleSelect(item.id)}
                   className="hover:bg-white/10 cursor-pointer transition-colors"
                 >
-                  <td className="py-3 px-3 font-heading font-black text-white whitespace-nowrap flex items-center gap-1.5">
+                  <td className="py-2.5 px-3 font-heading font-black text-white whitespace-nowrap flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-[#F5BA13] shrink-0" />
                     <span>{item.title}</span>
                   </td>
-                  <td className="py-3 px-2 text-center font-nunito font-black text-[#F5BA13] whitespace-nowrap">
+                  <td className="py-2.5 px-2 text-center font-nunito font-black text-[#F5BA13] whitespace-nowrap">
                     {item.ageRaw} Thn
                   </td>
-                  <td className="py-3 px-3 text-white font-semibold leading-tight">
+                  <td className="py-2.5 px-3 text-white font-medium text-[10.5px] sm:text-xs leading-snug">
                     {item.focus}
                   </td>
                 </tr>
@@ -232,25 +232,25 @@ export default function ClassPrograms({ onSelectClass }: ClassProgramsProps) {
               className={`relative rounded-[32px] sm:rounded-[36px] p-5 sm:p-7 bg-white ${item.cardBorder} shadow-md transition-all duration-200 select-none`}
             >
               {/* Header Row: Age Pill & Sticker / Icon */}
-              <div className="flex items-center justify-between gap-2 mb-3.5">
-                <span className={`h-7 px-3.5 inline-flex items-center justify-center rounded-full font-nunito text-xs font-black uppercase tracking-wide ${item.tagBg}`}>
-                  <span className="translate-y-[1px]">{item.age}</span>
+              <div className="flex items-center justify-between gap-2 mb-3.5 flex-wrap">
+                <span className={`px-3 py-1 inline-flex items-center justify-center rounded-full font-nunito text-[11px] sm:text-xs font-black uppercase tracking-wide whitespace-nowrap shrink-0 ${item.tagBg}`}>
+                  <span>{item.age}</span>
                 </span>
 
                 {item.highlight ? (
                   <div
                     style={{ transform: "rotate(2deg)" }}
-                    className="px-3.5 py-1.5 rounded-2xl bg-[#F5BA13] text-[#143D2B] font-heading font-black text-xs sm:text-sm flex items-center gap-1.5 border-2 border-[#143D2B] shadow-sm select-none"
+                    className="px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-xl sm:rounded-2xl bg-[#F5BA13] text-[#143D2B] font-heading font-black text-[11px] sm:text-xs flex items-center gap-1 sm:gap-1.5 border-2 border-[#143D2B] shadow-sm select-none whitespace-nowrap shrink-0"
                   >
-                    <Star className="w-4 h-4 fill-[#143D2B] text-[#143D2B]" />
+                    <Star className="w-3.5 h-3.5 fill-[#143D2B] text-[#143D2B] shrink-0" />
                     <span>PALING DIMINATI</span>
                   </div>
                 ) : (
                   <div
                     style={{ transform: `rotate(${item.iconRotate})` }}
-                    className={`w-11 h-11 sm:w-12 sm:h-12 rounded-2xl ${item.iconBg} ${item.iconBorder} flex items-center justify-center shrink-0 shadow-sm`}
+                    className={`w-9 h-9 sm:w-11 sm:h-11 rounded-2xl ${item.iconBg} ${item.iconBorder} flex items-center justify-center shrink-0 shadow-sm`}
                   >
-                    <IconComp className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]" />
+                    <IconComp className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
                   </div>
                 )}
               </div>
@@ -298,10 +298,10 @@ export default function ClassPrograms({ onSelectClass }: ClassProgramsProps) {
                 onClick={() => handleSelect(item.id)}
                 containerClassName="w-full mt-5"
                 baseBg={item.baseBg}
-                className={`w-full py-3.5 px-4 ${item.btnBg} font-heading font-black text-xs sm:text-sm flex items-center justify-between border-none shadow-md`}
+                className={`w-full py-3 px-3 sm:py-3.5 sm:px-4 ${item.btnBg} font-heading font-black text-[11px] sm:text-sm flex items-center justify-between gap-2 border-none shadow-md`}
               >
-                <span>Konsultasi & Pilih {item.title}</span>
-                <div className={`w-6 h-6 rounded-full ${item.arrowBg} flex items-center justify-center shrink-0`}>
+                <span className="text-left leading-snug">Konsultasi & Pilih {item.title}</span>
+                <div className={`w-6 h-6 rounded-full ${item.arrowBg} flex items-center justify-center shrink-0 ml-1`}>
                   <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
                 </div>
               </PressDepth>

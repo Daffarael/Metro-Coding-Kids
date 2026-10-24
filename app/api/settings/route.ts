@@ -28,6 +28,10 @@ export async function GET() {
       settingsMap[row.key] = row.value;
     });
 
+    if (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER) {
+      settingsMap.whatsapp_number = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+    }
+
     return NextResponse.json({
       success: true,
       settings: settingsMap,
