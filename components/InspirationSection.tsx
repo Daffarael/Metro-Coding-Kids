@@ -16,9 +16,7 @@ export default function InspirationSection() {
     <section id="inspirasi" className="px-5 py-8 bg-[#F7F5EE]">
       {/* 1. Section Header Matching PainPoint & Pillars */}
       <div className="text-center mb-6 flex flex-col items-center">
-        <span className="h-7 px-4 inline-flex items-center justify-center rounded-full bg-[#F5BA13] text-[#143D2B] font-nunito text-xs font-black uppercase tracking-wider mb-2.5 shadow-none">
-          <span className="translate-y-[1px]">Pilar 3: Inspirasi <Amp /> Emosi</span>
-        </span>
+
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading text-[#143D2B] tracking-tight leading-[1.2] max-w-xl text-center">
           Inovasi Besar Dunia Berawal dari{" "}
           <span className="text-[#EE4C23] inline-block relative font-heading">
