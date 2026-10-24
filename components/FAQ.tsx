@@ -23,7 +23,7 @@ export default function FAQ() {
     },
     {
       q: "Perangkat apa yang dibutuhkan?",
-      a: "Cukup laptop standar biasa atau komputer dengan koneksi internet dan browser Google Chrome. Untuk program usia 8-11 tahun, laptop standar yang biasa digunakan sehari-hari sudah sangat memadai.",
+      a: "Cukup laptop standar biasa atau komputer dengan koneksi internet dan browser Google Chrome.",
     },
     {
       q: "Bagaimana cara mendaftar kelasnya?",
