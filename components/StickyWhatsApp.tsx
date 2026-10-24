@@ -43,7 +43,7 @@ export default function StickyWhatsApp({
         {/* CTA Button */}
         <button
           onClick={handleAction}
-          className="py-3 px-5 rounded-2xl bg-[#EE4C23] hover:bg-[#d63f17] active:scale-[0.98] text-white font-extrabold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all flex items-center gap-2 cursor-pointer shrink-0"
+          className="py-3 px-5 rounded-2xl bg-[#EE4C23] text-white font-extrabold text-xs sm:text-sm shadow-none border-none flex items-center gap-2 cursor-pointer shrink-0"
         >
           <span>Amankan Kursi</span>
           <ArrowRight className="w-4 h-4 stroke-[2.5]" />

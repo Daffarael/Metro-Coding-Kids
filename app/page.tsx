@@ -12,7 +12,7 @@ import PricingBatch from "@/components/PricingBatch";
 import RegistrationForm from "@/components/RegistrationForm";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
-import StickyWhatsApp from "@/components/StickyWhatsApp";
+import LiveRegistrationToast from "@/components/LiveRegistrationToast";
 
 export default function Home() {
   const [settings, setSettings] = useState({
@@ -45,7 +45,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#EFECE3] py-0 sm:py-6">
-      <div className="brochure-container relative overflow-hidden bg-[#F7F5EE]">
+      <div className="brochure-container relative bg-[#F7F5EE]">
         {/* Navigation Bar */}
         <Navbar whatsappNumber={settings.whatsapp_number} />
 
@@ -94,11 +94,8 @@ export default function Home() {
         {/* Footer with Contacts & Location */}
         <Footer whatsappNumber={settings.whatsapp_number} />
 
-        {/* Sticky Mobile WhatsApp Bar */}
-        <StickyWhatsApp
-          whatsappNumber={settings.whatsapp_number}
-          priceCurrent={settings.price_current}
-        />
+        {/* Live Social Proof Registration Toast */}
+        <LiveRegistrationToast />
       </div>
     </main>
   );

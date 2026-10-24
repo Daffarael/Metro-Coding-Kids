@@ -45,6 +45,18 @@ export default function RegistrationForm({
         }),
       });
 
+      // Dispatch event to show live toast
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(
+          new CustomEvent("new-registration", {
+            detail: {
+              name: childName.trim(),
+              course: "Kelas Koding Anak",
+            },
+          })
+        );
+      }
+
       // 2. Format WhatsApp message without preselected course
       const waMessage =
         `Halo CS Metro Coding Kids, saya ingin mendaftarkan anak saya untuk Batch Belajar Koding:\n\n` +
@@ -181,7 +193,7 @@ export default function RegistrationForm({
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full py-4 px-6 rounded-2xl bg-[#EE4C23] hover:bg-[#d63f17] active:scale-[0.99] text-white font-extrabold text-sm sm:text-base shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed mt-2"
+            className="w-full py-4 px-6 rounded-2xl bg-[#EE4C23] text-white font-extrabold text-sm sm:text-base shadow-none border-none flex items-center justify-center gap-2 cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed mt-2"
           >
             {isLoading ? (
               <>

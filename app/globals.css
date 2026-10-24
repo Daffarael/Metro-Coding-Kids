@@ -23,17 +23,53 @@
   }
 }
 
+@theme {
+  --font-poppins: var(--font-poppins), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-nunito: var(--font-nunito), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: var(--font-more-sugar), cursive, sans-serif;
+  --font-hand: var(--font-patrick), cursive, sans-serif;
+  --font-sans: var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+@utility font-poppins {
+  font-family: var(--font-poppins), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+@utility font-nunito {
+  font-family: var(--font-nunito), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+@utility font-heading {
+  font-family: var(--font-more-sugar), cursive, sans-serif !important;
+}
+
+@utility font-hand {
+  font-family: var(--font-patrick), cursive, sans-serif !important;
+}
+
+@utility font-sans {
+  font-family: var(--font-jakarta), sans-serif !important;
+}
+
 /* Typography Utility Classes */
+.font-poppins {
+  font-family: var(--font-poppins), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
 .font-heading {
-  font-family: var(--font-more-sugar), cursive, sans-serif;
+  font-family: var(--font-more-sugar), cursive, sans-serif !important;
 }
 
 .font-hand {
-  font-family: var(--font-patrick), cursive, sans-serif;
+  font-family: var(--font-patrick), cursive, sans-serif !important;
 }
 
 .font-sans {
-  font-family: var(--font-jakarta), sans-serif;
+  font-family: var(--font-jakarta), sans-serif !important;
+}
+
+.font-nunito {
+  font-family: var(--font-nunito), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
 }
 
 /* Vertical Brochure Container (Warm Cream Canvas) */
@@ -52,3 +88,63 @@
     border-right: 1px solid #E6E1D1;
   }
 }
+
+/* Global 3D Tactile Pop-Up Button Effect (Nimbul & Bergerak Membesar, Tanpa Bayangan Hitam & Tanpa Efek Gelap/Cahaya) */
+button,
+a[role="button"],
+.btn-pop {
+  -webkit-tap-highlight-color: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+button:not(:disabled),
+a[role="button"],
+.btn-pop {
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  will-change: transform;
+  box-shadow: none !important;
+  filter: none !important;
+  outline: none !important;
+}
+
+button:not(:disabled):hover,
+a[role="button"]:hover,
+.btn-pop:hover {
+  transform: scale(1.04) translateY(-3px) !important;
+  box-shadow: none !important;
+  filter: none !important;
+  outline: none !important;
+}
+
+button:not(:disabled):active,
+a[role="button"]:active,
+.btn-pop:active {
+  transform: scale(1.10) translateY(-6px) !important;
+  box-shadow: none !important;
+  filter: none !important;
+  outline: none !important;
+}
+
+button:not(:disabled):focus,
+button:not(:disabled):focus-visible,
+a[role="button"]:focus,
+a[role="button"]:focus-visible {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Exclude non-CTA buttons (e.g. accordion, close icon, tabs) from aggressive pop scale */
+button.no-pop,
+.no-pop,
+.no-pop:hover,
+.no-pop:active,
+.no-pop:focus,
+button[aria-expanded],
+button[aria-expanded]:hover,
+button[aria-expanded]:active {
+  transform: none !important;
+  will-change: auto !important;
+  transition: none !important;
+}
+

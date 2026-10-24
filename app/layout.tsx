@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
-import { Plus_Jakarta_Sans, Patrick_Hand } from "next/font/google";
+import { Plus_Jakarta_Sans, Patrick_Hand, Nunito, Poppins } from "next/font/google";
 import "./globals.css";
 
 const moreSugar = localFont({
@@ -20,6 +20,20 @@ const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-jakarta",
   weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+});
+
+const nunito = Nunito({
+  subsets: ["latin"],
+  variable: "--font-nunito",
+  weight: ["500", "600", "700", "800", "900"],
+  display: "swap",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  weight: ["600", "700", "800", "900"],
   display: "swap",
 });
 
@@ -59,7 +73,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${jakarta.variable} ${moreSugar.variable} ${patrickHand.variable} scroll-smooth`}
+      className={`${jakarta.variable} ${moreSugar.variable} ${patrickHand.variable} ${nunito.variable} ${poppins.variable} scroll-smooth`}
     >
       <body className="min-h-screen bg-[#EDF4EC] font-sans text-slate-800 antialiased selection:bg-emerald-200 selection:text-emerald-900">
         {children}
