@@ -59,7 +59,7 @@ export default function RegistrationForm({
 
       // 2. Format WhatsApp message without preselected course
       const waMessage =
-        `Halo CS Metro Coding Kids, saya ingin mendaftarkan anak saya untuk Batch Belajar Koding:\n\n` +
+        `Halo Admin Metro Coding Kids, saya ingin mendaftarkan anak saya untuk Batch Belajar Koding:\n\n` +
         `• Nama Orang Tua: ${parentName.trim()}\n` +
         `• Nama Anak: ${childName.trim()}\n` +
         `• Usia Anak: ${childAge.trim() ? `${childAge.trim()} Tahun` : "Belum dicantumkan"}\n` +
@@ -70,7 +70,7 @@ export default function RegistrationForm({
 
       setStatusMessage({
         type: "success",
-        text: "Data tercatat! Mengarahkan ke WhatsApp CS...",
+        text: "Data tercatat! Mengarahkan ke WhatsApp Admin...",
       });
 
       // 3. Smooth redirect to WhatsApp
@@ -80,7 +80,7 @@ export default function RegistrationForm({
     } catch (err) {
       console.error("Submission failed:", err);
       const waMessage =
-        `Halo CS Metro Coding Kids, saya ingin mendaftarkan anak saya:\n` +
+        `Halo Admin Metro Coding Kids, saya ingin mendaftarkan anak saya:\n` +
         `• Nama Orang Tua: ${parentName.trim()}\n` +
         `• Nama Anak: ${childName.trim()} (${childAge.trim()} thn)\n\n` +
         `Saya ingin konsultasi pilihan program kelas dan jadwal belajarnya. Terima kasih!`;

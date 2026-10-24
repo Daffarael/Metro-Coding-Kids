@@ -62,11 +62,11 @@ export default function Navbar({
 
           <a
             href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-              "Halo CS Metro Coding Kids, saya ingin tanya info pendaftaran kelas koding anak."
+              "Halo Admin Metro Coding Kids, saya ingin tanya info pendaftaran kelas koding anak."
             )}`}
             target="_blank"
             rel="noopener noreferrer"
-            title="Chat WhatsApp CS"
+            title="Chat WhatsApp Admin"
             role="button"
             className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#143D2B] text-white flex items-center justify-center shadow-none border-none shrink-0 cursor-pointer"
           >

@@ -22,7 +22,7 @@ export default function FAQ() {
     },
     {
       q: "Bagaimana cara mendaftar kelasnya?",
-      a: "Cukup isi formulir pendaftaran singkat di atas dengan nama dan nomor WhatsApp Anda. Tim CS kami akan segera menghubungi untuk mengonfirmasi ketersediaan kursi dan jadwal belajar si kecil.",
+      a: "Cukup isi formulir pendaftaran singkat di atas dengan nama dan nomor WhatsApp Anda. Tim Admin kami akan segera menghubungi untuk mengonfirmasi ketersediaan kursi dan jadwal belajar si kecil.",
     },
   ];
 

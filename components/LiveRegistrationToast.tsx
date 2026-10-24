@@ -181,7 +181,7 @@ export default function LiveRegistrationToast() {
 
             {/* Baris 3: Ajakan / CTA Lembut */}
             <div className="mt-1 flex items-center gap-1.5 text-[11px] sm:text-[11.5px] font-bold text-[#EE4C23] group-hover:text-[#c93b16] transition-colors">
-              <span>ayook daftarkan jugaa buah hatimu</span>
+              <span>ayo daftarkan juga buah hatimu</span>
               <div className="w-4 h-4 rounded-full bg-[#EE4C23] text-white flex items-center justify-center shrink-0 transition-transform duration-200 group-hover:translate-x-1">
                 <ArrowRight className="w-2.5 h-2.5 stroke-[3]" />
               </div>
