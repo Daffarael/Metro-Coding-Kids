@@ -64,7 +64,7 @@ export default function PainPoint() {
           Rasa penasaran mereka pada game adalah
         </p>
         <div className="my-2.5">
-          <span className="inline-block px-4 sm:px-5 py-2 sm:py-2.5 rounded-2xl bg-[#F5BA13] text-[#143D2B] font-heading font-black text-2xl sm:text-3xl md:text-3xl tracking-tight shadow-md">
+          <span className="inline-block px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-2xl bg-[#F5BA13] text-[#143D2B] font-heading font-black text-lg min-[360px]:text-xl sm:text-2xl md:text-3xl tracking-tight shadow-md whitespace-nowrap">
             Sinyal Kuat Bakat Digital!
           </span>
         </div>
@@ -81,7 +81,7 @@ export default function PainPoint() {
               <span className="block text-base sm:text-lg text-[#EE4C23] font-heading mb-1">
                 Sebelumnya:
               </span>
-              <span className="text-lg sm:text-xl md:text-2xl text-[#143D2B] font-heading">
+              <span className="text-[15px] min-[360px]:text-base sm:text-xl md:text-2xl text-[#143D2B] font-heading block whitespace-nowrap">
                 Anak hanya menjadi <span className="text-[#EE4C23]">Consumer</span>
               </span>
             </h4>
@@ -103,7 +103,7 @@ export default function PainPoint() {
               <span className="block text-base sm:text-lg text-[#143D2B] font-heading mb-1">
                 Bersama Metro CodingKids:
               </span>
-              <span className="text-lg sm:text-xl md:text-2xl text-[#143D2B] font-heading">
+              <span className="text-[15px] min-[360px]:text-base sm:text-xl md:text-2xl text-[#143D2B] font-heading block whitespace-nowrap">
                 Anak diarahkan menjadi <span className="text-[#EE4C23]">Creator</span>
               </span>
             </h4>

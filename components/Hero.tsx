@@ -4,7 +4,6 @@ import React from "react";
 import Image from "next/image";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { PressDepth } from "@/components/ui/press-depth";
-import { Amp } from "@/components/ui/amp";
 
 interface HeroProps {
   onCtaClick?: () => void;
@@ -128,10 +127,10 @@ export default function Hero({ onCtaClick }: HeroProps) {
           onClick={handleScrollToForm}
           containerClassName="w-full max-w-full"
           baseBg="bg-[#b83310]"
-          className="w-full max-w-full py-3.5 px-4 sm:px-6 bg-[#EE4C23] text-white font-heading text-xs sm:text-sm md:text-base border-none flex items-center justify-center gap-2 sm:gap-3 hover:bg-[#d93f18] shadow-lg"
+          className="w-full max-w-full py-3.5 px-4 sm:px-6 bg-[#EE4C23] text-white font-heading text-sm sm:text-base border-none flex items-center justify-center gap-2 sm:gap-3 hover:bg-[#d93f18] shadow-lg"
         >
-          <span className="tracking-wide uppercase font-black text-center">
-            DAFTARKAN ANAK SEKARANG <Amp className="text-[1.15em] mx-1" /> AMANKAN PROMO LAUNCHING
+          <span className="tracking-wide font-black text-center">
+            Daftarkan Anak Anda Sekarang
           </span>
           <div className="w-6 h-6 rounded-full bg-white text-[#EE4C23] flex items-center justify-center shrink-0">
             <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />

@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import { Clock, ArrowRight, Check, Sparkles } from "lucide-react";
 import { PressDepth } from "@/components/ui/press-depth";
-import { Amp } from "@/components/ui/amp";
 
 interface PricingBatchProps {
   onCtaClick?: () => void;
@@ -144,10 +143,10 @@ export default function PricingBatch({
           </div>
 
           {/* Golden Voucher Ticket Box (Menggantikan Tampilan Harga) */}
-          <div className="rounded-2xl sm:rounded-3xl bg-[#F5BA13] border-2 border-[#143D2B] p-5 sm:p-6 text-[#143D2B] mb-4 shadow-sm relative overflow-hidden">
+          <div className="rounded-2xl sm:rounded-3xl bg-[#F5BA13] border-2 border-[#143D2B] p-5 sm:p-6 text-[#143D2B] mb-4 shadow-sm relative overflow-hidden text-center">
             {/* Top Row inside ticket */}
-            <div className="flex items-center justify-between gap-2 mb-2">
-              <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-[#143D2B] text-[#F5BA13] font-nunito">
+            <div className="flex flex-col items-center justify-center text-center gap-1.5 mb-2.5">
+              <span className="text-[11px] sm:text-xs font-black uppercase tracking-wider px-4 py-1.5 rounded-full bg-[#143D2B] text-[#F5BA13] font-nunito whitespace-nowrap shadow-xs">
                 Voucher Pendaftaran
               </span>
               <span className="text-[11px] sm:text-xs font-black text-[#143D2B] font-nunito uppercase tracking-wide">
@@ -156,21 +155,24 @@ export default function PricingBatch({
             </div>
 
             {/* Big Voucher Headline */}
-            <div className="my-2">
-              <div className="text-3xl sm:text-4xl md:text-[40px] font-heading font-black text-[#143D2B] tracking-tight leading-none">
-                KLAIM <span className="text-[#EE4C23]">{voucherBadge}</span>
+            <div className="my-2.5">
+              <div className="text-3xl sm:text-4xl md:text-[42px] font-heading font-black text-[#EE4C23] tracking-tight leading-tight">
+                {voucherBadge}
               </div>
-              <p className="text-xs sm:text-sm font-bold text-[#143D2B] mt-2 leading-relaxed">
+              <p className="text-xs sm:text-sm font-bold text-[#143D2B] mt-2 max-w-sm mx-auto leading-relaxed">
                 {voucherDescription}
               </p>
             </div>
 
             {/* Inclusions Line inside ticket */}
-            <div className="mt-3 pt-3 border-t-2 border-[#143D2B]/15 flex items-center gap-2 text-xs font-black text-[#143D2B]">
-              <div className="w-4 h-4 rounded-full bg-[#143D2B] text-[#F5BA13] flex items-center justify-center shrink-0">
+            <div className="mt-3.5 pt-3 border-t-2 border-[#143D2B]/15 flex items-start justify-center gap-2 text-xs font-black text-[#143D2B]">
+              <div className="w-4 h-4 rounded-full bg-[#143D2B] text-[#F5BA13] flex items-center justify-center shrink-0 mt-0.5">
                 <Check className="w-2.5 h-2.5 stroke-[3]" />
               </div>
-              <span>Sudah mencakup modul, sertifikat resmi, & portofolio game</span>
+              <span className="text-left leading-snug">
+                Sudah mencakup modul, sertifikat resmi,
+                <br className="sm:hidden" /> &amp; portofolio game
+              </span>
             </div>
           </div>
 
@@ -203,7 +205,7 @@ export default function PricingBatch({
             baseBg="bg-[#b83310]"
             className="w-full py-3.5 sm:py-4 px-3 sm:px-6 bg-[#EE4C23] text-white font-black text-sm sm:text-lg tracking-tight border-none flex items-center justify-center gap-2.5 sm:gap-3 hover:bg-[#d93f18] shadow-md"
           >
-            <span className="text-center">Klaim Voucher 15% <Amp /> Amankan Kursi</span>
+            <span className="text-center">Amankan Kursi</span>
             <div className="w-6 h-6 rounded-full bg-white text-[#EE4C23] flex items-center justify-center shrink-0">
               <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
             </div>
