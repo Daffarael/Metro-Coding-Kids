@@ -48,7 +48,7 @@ export default function Hero({ onCtaClick }: HeroProps) {
           </span>
 
           <span className="block mt-2.5 text-xl sm:text-2xl md:text-3xl text-[#143D2B] font-heading font-black leading-tight">
-            agar Anak{" "}
+            Agar Anak{" "}
             <span className="relative inline-block">
               Tidak Tergantikan
               <svg
@@ -66,7 +66,7 @@ export default function Hero({ onCtaClick }: HeroProps) {
                 />
               </svg>
             </span>{" "}
-            oleh
+            Oleh
             <br />
             <span className="relative mt-2 inline-block">
               Teknologi.

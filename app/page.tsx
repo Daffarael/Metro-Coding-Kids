@@ -15,6 +15,7 @@ import RegistrationForm from "@/components/RegistrationForm";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import LiveRegistrationToast from "@/components/LiveRegistrationToast";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import {
   DEFAULT_CAMPAIGN_SETTINGS,
   DEFAULT_PROGRAMS,
@@ -32,7 +33,7 @@ export default function Home() {
   const [testimonials, setTestimonials] = useState<TestimonialItem[]>(DEFAULT_TESTIMONIALS);
   const [faqs, setFaqs] = useState<FAQItem[]>(DEFAULT_FAQS);
 
-  const [selectedCourse, setSelectedCourse] = useState("konsultasi_wa");
+  const [selectedCourse, setSelectedCourse] = useState("");
 
   useEffect(() => {
     // 1. Fetch Campaign Settings
@@ -150,6 +151,9 @@ export default function Home() {
 
         {/* Live Social Proof Registration Toast */}
         <LiveRegistrationToast />
+
+        {/* Floating WhatsApp Action Button */}
+        <FloatingWhatsApp whatsappNumber={settings.whatsapp_number} />
       </div>
     </main>
   );

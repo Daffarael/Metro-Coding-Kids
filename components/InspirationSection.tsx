@@ -146,7 +146,7 @@ export default function InspirationSection() {
           <div className="my-3.5 p-4 sm:p-5 rounded-2xl bg-white text-[#143D2B] border-2 border-[#143D2B] shadow-md relative">
             <Quote className="w-5 h-5 text-[#EE4C23] stroke-[3] mb-1" />
             <p className="text-lg sm:text-xl md:text-2xl font-heading text-[#EE4C23] tracking-tight leading-snug">
-              &ldquo;Ibu/Ayah, lihat! Game ini aku sendiri yang buat kodenya!&rdquo;
+              &ldquo;Ibu/Ayah lihat! Game ini aku yang bikin!&rdquo;
             </p>
           </div>
 
@@ -174,7 +174,7 @@ export default function InspirationSection() {
             baseBg="bg-[#b83310]"
             className="w-full py-3.5 px-4 bg-[#EE4C23] text-white font-heading font-black text-sm sm:text-base border-none flex items-center justify-center gap-2.5 hover:bg-[#d93f18] shadow-lg"
           >
-            <span>Wujudkan Momen Ini untuk Anak Anda</span>
+            <span className="whitespace-nowrap">Wujudkan Momen Ini</span>
             <div className="w-6 h-6 rounded-full bg-white text-[#EE4C23] flex items-center justify-center shrink-0">
               <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
             </div>

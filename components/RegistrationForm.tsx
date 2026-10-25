@@ -15,7 +15,7 @@ interface RegistrationFormProps {
 
 export default function RegistrationForm({
   whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6281818778099",
-  selectedCourse = "konsultasi_wa",
+  selectedCourse = "",
   programs = DEFAULT_PROGRAMS,
 }: RegistrationFormProps) {
   // Bangun daftar program dinamis dari data kelas aktif
@@ -33,15 +33,15 @@ export default function RegistrationForm({
   const [childName, setChildName] = useState("");
   const [childAge, setChildAge] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
-  const [city, setCity] = useState("jakarta");
-  const [courseId, setCourseId] = useState(selectedCourse);
-  const [prevSelectedCourse, setPrevSelectedCourse] = useState(selectedCourse);
+  const [city, setCity] = useState("");
+  const [courseId, setCourseId] = useState(selectedCourse || "");
+  const [prevSelectedCourse, setPrevSelectedCourse] = useState(selectedCourse || "");
   const [isLoading, setIsLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
   if (selectedCourse !== prevSelectedCourse) {
     setPrevSelectedCourse(selectedCourse);
-    setCourseId(selectedCourse);
+    setCourseId(selectedCourse || "");
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -58,11 +58,14 @@ export default function RegistrationForm({
 
     setIsLoading(true);
 
-    const chosenProgram = dynamicProgramsList.find((p) => p.id === courseId) || dynamicProgramsList[0];
+    const chosenProgram = dynamicProgramsList.find((p) => p.id === courseId) || null;
+    const programLabel = chosenProgram ? chosenProgram.label : "Konsultasi / Rekomendasi CS (Bantu Pilihkan)";
     const cityName =
       city === "bandung"
         ? "Bandung (Setiabudi, Bandung)"
-        : "Jakarta (Taman Palem, Jakarta Barat)";
+        : city === "jakarta"
+        ? "Jakarta (Taman Palem, Jakarta Barat)"
+        : "Belum dipilih (Konsultasi CS)";
 
     try {
       // 1. Submit lead to database in background
@@ -74,8 +77,8 @@ export default function RegistrationForm({
           child_name: childName,
           child_age: childAge,
           whatsapp: whatsapp,
-          course_id: courseId,
-          city: city,
+          course_id: courseId || "konsultasi_wa",
+          city: city || "belum_dipilih",
         }),
       });
 
@@ -85,7 +88,7 @@ export default function RegistrationForm({
           new CustomEvent("new-registration", {
             detail: {
               name: childName.trim(),
-              course: chosenProgram.id === "konsultasi_wa" ? "Code & Game" : chosenProgram.label.split("(")[0].trim(),
+              course: chosenProgram ? (chosenProgram.id === "konsultasi_wa" ? "Code & Game" : chosenProgram.label.split("(")[0].trim()) : "Free Trial",
             },
           })
         );
@@ -98,7 +101,7 @@ export default function RegistrationForm({
         `• Nama Anak: ${childName.trim()}\n` +
         `• Usia Anak: ${childAge.trim() ? `${childAge.trim()} Tahun` : "Belum dicantumkan"}\n` +
         `• Pilihan Kota: ${cityName}\n` +
-        `• Program Pilihan: ${chosenProgram.label}\n` +
+        `• Program Pilihan: ${programLabel}\n` +
         `• WhatsApp: ${whatsapp.trim()}\n\n` +
         `Saya ingin klaim Free Trial Session serta Voucher Diskon 15% (Khusus November) untuk program 12 pertemuan (3 bulan). Mohon info ketersediaan jadwalnya. Terima kasih!`;
 
@@ -120,7 +123,7 @@ export default function RegistrationForm({
         `• Nama Orang Tua: ${parentName.trim()}\n` +
         `• Nama Anak: ${childName.trim()} (${childAge.trim()} thn)\n` +
         `• Kota: ${cityName}\n` +
-        `• Program: ${chosenProgram.label}\n\n` +
+        `• Program: ${programLabel}\n\n` +
         `Saya ingin info jadwal Free Trial Session terdekat. Terima kasih!`;
       window.location.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(waMessage)}`;
     } finally {
@@ -186,7 +189,7 @@ export default function RegistrationForm({
                 min={7}
                 max={18}
                 suppressHydrationWarning
-                placeholder="9"
+                placeholder=""
                 value={childAge}
                 onChange={(e) => setChildAge(e.target.value)}
                 className="w-full px-3.5 py-3 rounded-xl border-2 border-[#143D2B]/20 text-xs sm:text-sm text-[#143D2B] font-medium focus:outline-none focus:border-[#143D2B] focus:ring-2 focus:ring-[#143D2B]/10 transition-all placeholder:text-slate-400 text-center"
@@ -195,7 +198,7 @@ export default function RegistrationForm({
           </div>
 
           {/* Field 3: Pilihan Kota (Combobox Jakarta / Bandung) */}
-          <div className="relative z-30">
+          <div className="relative z-30 focus-within:z-50">
             <label className="block text-xs font-bold text-[#143D2B] mb-1.5">
               Pilihan Kota Belajar <span className="text-[#EE4C23]">*</span>
             </label>
@@ -217,7 +220,7 @@ export default function RegistrationForm({
           </div>
 
           {/* Field 4: Pilihan Program (Combobox) */}
-          <div className="relative z-20">
+          <div className="relative z-20 focus-within:z-50">
             <label className="block text-xs font-bold text-[#143D2B] mb-1.5">
               Pilihan Program Kelas
             </label>

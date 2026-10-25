@@ -126,6 +126,8 @@ export const Combobox = ({
       const match = options.find((opt) => opt.value === value);
       if (match) {
         setInputValue(match.label);
+      } else if (!value) {
+        setInputValue("");
       }
     }
   }, [value, options]);
@@ -201,6 +203,8 @@ const ComboboxInput = () => {
     const currentOption = context?.options.find((option) => option.value === context.value);
     if (currentOption) {
       context?.onChangeInputValue(currentOption.label);
+    } else if (!context?.value) {
+      context?.onChangeInputValue("");
     }
   }, [context?.options, context?.value]);
 

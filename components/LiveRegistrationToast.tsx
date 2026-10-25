@@ -135,10 +135,10 @@ export default function LiveRegistrationToast() {
     <aside
       role="status"
       aria-live="polite"
-      className="fixed bottom-4 sm:bottom-6 left-0 right-0 z-50 flex justify-center pointer-events-none px-3.5"
+      className="fixed bottom-4 sm:bottom-6 left-0 right-16 sm:right-auto sm:left-6 z-40 flex pointer-events-none px-3 sm:px-0"
     >
       <div
-        className={`w-full max-w-[430px] transition-all duration-500 ease-out ${
+        className={`w-full sm:w-[390px] transition-all duration-500 ease-out ${
           isVisible
             ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
             : "opacity-0 translate-y-6 scale-95 pointer-events-none"
