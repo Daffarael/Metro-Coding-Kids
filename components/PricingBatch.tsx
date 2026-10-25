@@ -162,14 +162,14 @@ export default function PricingBatch({
             </div>
 
             {/* Inclusions Line inside ticket */}
-            <div className="mt-3.5 pt-3 border-t-2 border-[#143D2B]/15 flex items-start justify-center gap-2 text-xs font-black text-[#143D2B]">
-              <div className="w-4 h-4 rounded-full bg-[#143D2B] text-[#F5BA13] flex items-center justify-center shrink-0 mt-0.5">
-                <Check className="w-2.5 h-2.5 stroke-[3]" />
+            <div className="mt-3.5 pt-3 border-t-2 border-[#143D2B]/15 flex items-center justify-center gap-2.5 text-[#143D2B]">
+              <div className="w-5 h-5 rounded-full bg-[#143D2B] text-[#F5BA13] flex items-center justify-center shrink-0 shadow-xs">
+                <Check className="w-3 h-3 stroke-[3]" />
               </div>
-              <span className="text-left leading-snug">
-                Sudah mencakup modul, sertifikat resmi,
-                <br className="sm:hidden" /> &amp; portofolio game
-              </span>
+              <div className="text-left text-xs sm:text-[13px] font-black text-[#143D2B] leading-tight">
+                <div>Sudah termasuk modul belajar,</div>
+                <div>sertifikat resmi &amp; portofolio game</div>
+              </div>
             </div>
           </div>
 

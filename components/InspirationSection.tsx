@@ -73,8 +73,9 @@ export default function InspirationSection() {
             <h3 className="text-xl sm:text-2xl font-heading text-[#143D2B] tracking-tight leading-tight">
               Luis von Ahn
             </h3>
-            <p className="text-xs sm:text-sm font-heading text-[#EE4C23] mt-0.5">
-              Pendiri <Amp /> CEO Duolingo (Aplikasi Edukasi #1 Dunia)
+            <p className="text-xs sm:text-sm font-heading text-[#EE4C23] mt-0.5 leading-snug">
+              <span>Pendiri <Amp /> CEO Duolingo</span>{" "}
+              <span className="inline-block whitespace-nowrap">(Aplikasi Edukasi #1 Dunia)</span>
             </p>
             <p className="text-[11px] sm:text-xs font-semibold text-[#143D2B]/85 mt-1 leading-snug">
               Pencipta reCAPTCHA yang diakuisisi Google <Amp /> kini memimpin Duolingo dengan 500+ juta pengguna global.

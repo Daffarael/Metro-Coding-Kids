@@ -39,10 +39,10 @@ export default function FAQ({ faqs = DEFAULT_FAQS }: FAQProps) {
             style={{ fontFamily: "var(--font-poppins), sans-serif" }}
             className="text-2xl sm:text-3xl md:text-4xl font-black text-[#143D2B] tracking-tight leading-tight"
           >
-            <span>Pertanyaan yang</span>{" "}
+            <span className="block sm:inline">Pertanyaan yang</span>{" "}
             <span
               style={{ transform: "rotate(-2deg)" }}
-              className="inline-block px-3.5 py-0.5 rounded-2xl bg-[#EE4C23] text-white font-black"
+              className="inline-block px-3.5 py-0.5 rounded-2xl bg-[#EE4C23] text-white font-black mt-3 sm:mt-1.5"
             >
               Sering Ditanyakan
             </span>
