@@ -128,16 +128,13 @@ export default function PricingBatch({
 
         {/* Voucher & Program Card */}
         <div className="rounded-[32px] sm:rounded-[36px] border-2 border-[#143D2B]/15 bg-white p-6 sm:p-7 shadow-none select-none">
-          {/* Header Row: Label & Playful Sticker Badge */}
-          <div className="flex items-center justify-between gap-2 mb-3">
-            <span className="text-xs sm:text-sm font-black text-slate-500 uppercase tracking-wide font-nunito">
+          {/* Header Row: Label & Sticker Badge */}
+          <div className="flex items-center justify-between gap-2 mb-3.5">
+            <span className="text-xs sm:text-sm font-black text-[#143D2B] uppercase tracking-wider font-heading whitespace-nowrap">
               Penawaran Khusus
             </span>
-            <div
-              style={{ transform: "rotate(2deg)" }}
-              className="px-3.5 sm:px-4 py-1.5 rounded-2xl bg-[#EE4C23] text-white font-heading font-black text-sm sm:text-base tracking-wide flex items-center gap-1.5 shadow-none select-none"
-            >
-              <Sparkles className="w-4 h-4 stroke-[2.5]" />
+            <div className="px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-[#EE4C23] text-white font-heading font-black text-xs sm:text-sm tracking-wide flex items-center gap-1.5 whitespace-nowrap shrink-0 shadow-xs select-none">
+              <Sparkles className="w-3.5 h-3.5 stroke-[2.5]" />
               <span>{voucherBadge}</span>
             </div>
           </div>
