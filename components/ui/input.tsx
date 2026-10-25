@@ -73,6 +73,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           value={value ?? ""}
           onChange={handleChange}
           disabled={disabled}
+          suppressHydrationWarning
           className={clsx(
             "w-full bg-transparent font-medium text-[#143D2B] placeholder:text-slate-400 focus:outline-none",
             className

@@ -37,9 +37,6 @@ export default function InspirationSection() {
             </svg>
           </span>
         </h2>
-        <p className="text-[#143D2B] text-xs sm:text-sm md:text-base font-bold mt-3.5 max-w-lg leading-relaxed text-center">
-          Tokoh-tokoh teknologi dunia seperti pendiri aplikasi global sudah mulai menulis baris kode pertama mereka sejak usia anak-anak.
-        </p>
       </div>
 
       {/* 2. Dua Kartu Terhubung (Pola Identik dengan PainPoint) */}
@@ -47,54 +44,46 @@ export default function InspirationSection() {
         {/* KARTU 1: Tokoh Inspirasi Dunia (Luis von Ahn, CEO Duolingo) */}
         <div className="rounded-[32px] sm:rounded-[36px] bg-white text-[#143D2B] p-5 sm:p-7 pb-6 sm:pb-8 shadow-md border-2 border-[#143D2B]">
           {/* Header Row: Squircle Icon + Tag */}
-          <div className="flex items-center justify-between gap-2 mb-4 flex-wrap">
-            <div className="flex items-center gap-2">
-              <div
-                style={{ transform: "rotate(-4deg)" }}
-                className="w-9 h-9 sm:w-11 sm:h-11 rounded-2xl bg-[#F5BA13] text-[#143D2B] flex items-center justify-center font-black border-2 border-[#143D2B] shrink-0"
-              >
-                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
-              </div>
-              <span className="px-3 py-1 inline-flex items-center justify-center rounded-full bg-[#143D2B] text-[#F5BA13] font-nunito text-[11px] sm:text-xs font-black tracking-wider uppercase whitespace-nowrap">
-                <span>Kisah Nyata</span>
-              </span>
+          <div className="flex items-center gap-2 mb-4">
+            <div
+              style={{ transform: "rotate(-4deg)" }}
+              className="w-9 h-9 sm:w-11 sm:h-11 rounded-2xl bg-[#F5BA13] text-[#143D2B] flex items-center justify-center font-black border-2 border-[#143D2B] shrink-0"
+            >
+              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
             </div>
-            <span className="px-3 py-1 inline-flex items-center justify-center rounded-full bg-[#F5BA13] text-[#143D2B] font-nunito text-[11px] sm:text-xs font-black tracking-wide uppercase border border-[#143D2B]/15 whitespace-nowrap">
-              <span>Mulai Usia 8–9 Tahun</span>
+            <span className="px-3.5 py-1 inline-flex items-center justify-center rounded-full bg-[#143D2B] text-[#F5BA13] font-nunito text-[11px] sm:text-xs font-black tracking-wider uppercase whitespace-nowrap">
+              <span>Kisah Nyata</span>
             </span>
           </div>
 
-          {/* Profile Row: Avatar & Bio */}
-          <div className="flex items-center gap-3.5 sm:gap-4 mb-3.5">
-            <div
-              style={{ transform: "rotate(-3deg)" }}
-              className="w-18 h-18 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border-2 border-[#143D2B] shadow-sm shrink-0 bg-[#143D2B]"
-            >
-              <Image
-                src="/images/luis-von-ahn.jpg"
-                alt="Luis von Ahn - Pendiri & CEO Duolingo"
-                width={80}
-                height={80}
-                className="w-full h-full object-cover"
-                priority
-              />
-            </div>
-            <div>
-              <h3 className="text-xl sm:text-2xl font-heading text-[#143D2B] tracking-tight leading-tight">
-                Luis von Ahn
-              </h3>
-              <p className="text-xs sm:text-sm font-heading text-[#EE4C23] mt-0.5">
-                Pendiri <Amp /> CEO Duolingo (Aplikasi Edukasi #1 Dunia)
-              </p>
-              <p className="text-[11px] sm:text-xs font-semibold text-[#143D2B]/85 mt-1 leading-snug">
-                Pencipta reCAPTCHA yang diakuisisi Google <Amp /> kini memimpin Duolingo dengan 500+ juta pengguna global.
-              </p>
-            </div>
+          {/* Full Uncropped Photo of Luis von Ahn & Duolingo Owl Mascot */}
+          <div className="relative w-full aspect-[1024/677] rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-[#143D2B] shadow-sm mb-4 bg-slate-100">
+            <Image
+              src="/images/luis-von-ahn-duolingo.png"
+              alt="Luis von Ahn bersama Maskot Burung Hantu Duolingo"
+              fill
+              sizes="(max-width: 600px) 100vw, 550px"
+              priority
+              className="object-cover w-full h-full"
+            />
+          </div>
+
+          {/* Profile Details */}
+          <div className="mb-3">
+            <h3 className="text-xl sm:text-2xl font-heading text-[#143D2B] tracking-tight leading-tight">
+              Luis von Ahn
+            </h3>
+            <p className="text-xs sm:text-sm font-heading text-[#EE4C23] mt-0.5">
+              Pendiri <Amp /> CEO Duolingo (Aplikasi Edukasi #1 Dunia)
+            </p>
+            <p className="text-[11px] sm:text-xs font-semibold text-[#143D2B]/85 mt-1 leading-snug">
+              Pencipta reCAPTCHA yang diakuisisi Google <Amp /> kini memimpin Duolingo dengan 500+ juta pengguna global.
+            </p>
           </div>
 
           {/* Narasi Pengantar */}
           <p className="text-xs sm:text-sm font-semibold text-[#143D2B] mt-2.5 leading-relaxed">
-            Ia mengenal pemrograman sejak usia anak-anak. Rasa penasaran itu bertransformasi menjadi kemampuan membangun teknologi kelas dunia yang merevolusi cara belajar ratusan juta orang.
+            Ia mengenal pemrograman sejak usia <strong className="font-extrabold text-[#143D2B]">9 tahun</strong>. Rasa penasaran itu bertransformasi menjadi kemampuan membangun teknologi kelas dunia yang merevolusi cara belajar ratusan juta orang.
           </p>
 
           {/* Kotak Pertanyaan Kunci - Solid Forest Green Tanpa Warna Pudar */}

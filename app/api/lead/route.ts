@@ -21,14 +21,16 @@ export async function POST(request: Request) {
       cleanWa = "62" + cleanWa.slice(1);
     }
 
+    const cityName = city === "jakarta" ? "Taman Palem (Jakarta Barat)" : city === "bandung" ? "Setiabudi (Bandung)" : city || "Online";
+
     const leadData: Record<string, any> = {
       parent_name: parent_name.trim(),
       child_name: child_name.trim(),
       child_age: String(child_age || "").trim(),
       whatsapp: cleanWa,
-      course_id: course_id || "junior",
-      city: city || "jakarta",
+      course_id: course_id || "code_game",
       status: "baru",
+      notes: `Pilihan Lokasi: ${cityName}`,
       source: "landing_page",
       created_at: new Date().toISOString(),
     };

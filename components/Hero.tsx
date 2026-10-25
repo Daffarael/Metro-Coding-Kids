@@ -98,18 +98,6 @@ export default function Hero({ onCtaClick }: HeroProps) {
           <strong className="font-bold text-[#143D2B]">kreativitas digital</strong> anak usia sekolah agar siap memimpin masa depan.
         </p>
 
-        {/* 3 Colorful Saturated Vision Pills */}
-        <div className="flex items-center justify-center gap-2 flex-wrap mt-4">
-          <span className="px-3.5 py-1.5 rounded-full bg-[#143D2B] text-white text-xs font-bold shadow-2xs font-nunito">
-            Logical Thinking
-          </span>
-          <span className="px-3.5 py-1.5 rounded-full bg-[#F5BA13] text-[#143D2B] text-xs font-bold shadow-2xs font-nunito">
-            Problem Solving
-          </span>
-          <span className="px-3.5 py-1.5 rounded-full bg-[#EE4C23] text-white text-xs font-bold shadow-2xs font-nunito">
-            Kreativitas Digital
-          </span>
-        </div>
       </div>
 
       {/* Hero Visual Card */}
@@ -133,8 +121,8 @@ export default function Hero({ onCtaClick }: HeroProps) {
         </div>
       </div>
 
-      {/* Primary Action Button & Reassurance - Centered */}
-      <div className="flex flex-col items-center text-center gap-2.5 max-w-md mx-auto w-full px-1">
+      {/* Primary Action Button - Centered */}
+      <div className="flex flex-col items-center text-center max-w-md mx-auto w-full px-1">
         <PressDepth
           type="button"
           onClick={handleScrollToForm}
@@ -149,16 +137,6 @@ export default function Hero({ onCtaClick }: HeroProps) {
             <ArrowRight className="w-3.5 h-3.5 stroke-[3]" />
           </div>
         </PressDepth>
-
-        {/* Reassurance */}
-        <div className="text-center pt-1 flex flex-col items-center gap-1">
-          <span className="px-3 py-1 rounded-full bg-[#143D2B] text-white text-[11px] font-black tracking-wider uppercase shadow-2xs font-nunito">
-            Promo Launching Terbatas
-          </span>
-          <p className="text-xs text-[#143D2B] font-semibold">
-            Semi-privat maksimal 6 anak per kelas • Konsultasi jadwal <Amp /> slot belajar
-          </p>
-        </div>
       </div>
     </section>
   );

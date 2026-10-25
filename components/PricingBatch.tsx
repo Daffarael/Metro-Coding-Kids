@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Clock, ArrowRight, Check, Sparkles, Calendar, Timer } from "lucide-react";
+import { Clock, ArrowRight, Check, Sparkles } from "lucide-react";
 import { PressDepth } from "@/components/ui/press-depth";
 import { Amp } from "@/components/ui/amp";
 
@@ -174,36 +174,6 @@ export default function PricingBatch({
             </div>
           </div>
 
-          {/* 3 Core Highlight Badges (Solid White & Forest Green, Tanpa Warna Pudar) */}
-          <div className="grid grid-cols-3 gap-2 mb-4">
-            <div className="p-2.5 rounded-2xl bg-white border-2 border-[#143D2B] text-center flex flex-col items-center justify-center shadow-xs">
-              <Calendar className="w-4 h-4 text-[#EE4C23] mb-1 stroke-[3]" />
-              <span className="text-sm sm:text-base font-heading text-[#143D2B] leading-none">
-                12 Sesi
-              </span>
-              <span className="text-[10px] font-black text-[#143D2B] mt-1 leading-tight font-nunito">
-                1 Program (3 Bulan)
-              </span>
-            </div>
-            <div className="p-2.5 rounded-2xl bg-white border-2 border-[#143D2B] text-center flex flex-col items-center justify-center shadow-xs">
-              <Clock className="w-4 h-4 text-[#EE4C23] mb-1 stroke-[3]" />
-              <span className="text-sm sm:text-base font-heading text-[#143D2B] leading-none">
-                1x Seminggu
-              </span>
-              <span className="text-[10px] font-black text-[#143D2B] mt-1 leading-tight font-nunito">
-                Jadwal Fleksibel
-              </span>
-            </div>
-            <div className="p-2.5 rounded-2xl bg-white border-2 border-[#143D2B] text-center flex flex-col items-center justify-center shadow-xs">
-              <Timer className="w-4 h-4 text-[#EE4C23] mb-1 stroke-[3]" />
-              <span className="text-sm sm:text-base font-heading text-[#143D2B] leading-none">
-                Maks 90 Mnt
-              </span>
-              <span className="text-[10px] font-black text-[#143D2B] mt-1 leading-tight font-nunito">
-                Per Pertemuan
-              </span>
-            </div>
-          </div>
 
           {/* Feature Inclusions Matching ClassPrograms */}
           <div className="space-y-2.5 py-4 border-y border-[#143D2B]/10 mb-5">

@@ -152,6 +152,7 @@ export default function RegistrationForm({
             <input
               type="text"
               required
+              suppressHydrationWarning
               placeholder="Contoh: Ayah Hendra / Bunda Maya"
               value={parentName}
               onChange={(e) => setParentName(e.target.value)}
@@ -168,6 +169,7 @@ export default function RegistrationForm({
               <input
                 type="text"
                 required
+                suppressHydrationWarning
                 placeholder="Contoh: Kenzo"
                 value={childName}
                 onChange={(e) => setChildName(e.target.value)}
@@ -183,6 +185,7 @@ export default function RegistrationForm({
                 required
                 min={7}
                 max={18}
+                suppressHydrationWarning
                 placeholder="9"
                 value={childAge}
                 onChange={(e) => setChildAge(e.target.value)}
@@ -242,6 +245,7 @@ export default function RegistrationForm({
             <input
               type="tel"
               required
+              suppressHydrationWarning
               placeholder="Contoh: 081234567890"
               value={whatsapp}
               onChange={(e) => setWhatsapp(e.target.value)}

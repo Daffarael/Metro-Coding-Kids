@@ -136,53 +136,7 @@ export default function ClassPrograms({
         </p>
       </div>
 
-      {/* 2. Ringkasan Core Programs Matrix */}
-      <div className="mb-6 rounded-[28px] sm:rounded-[32px] bg-[#143D2B] text-white p-5 sm:p-6 border-2 border-[#143D2B] shadow-xl overflow-hidden relative">
-        <div className="flex items-center justify-between gap-2 mb-3.5 flex-wrap">
-          <h3 className="font-heading text-base sm:text-lg text-white tracking-wide">
-            Ringkasan {activePrograms.length} Core Programs
-          </h3>
-          <span className="px-2.5 py-1 inline-flex items-center justify-center rounded-full bg-[#F5BA13] text-[#143D2B] font-nunito text-[10.5px] sm:text-[11px] font-black uppercase tracking-wider whitespace-nowrap shrink-0">
-            <span>Usia 8–18 Thn</span>
-          </span>
-        </div>
 
-        {/* Clean Matrix Table */}
-        <div className="overflow-x-auto rounded-2xl border-2 border-white/20 bg-[#0A261A]">
-          <table className="w-full min-w-[340px] text-left text-xs border-collapse">
-            <thead>
-              <tr className="border-b-2 border-white/20 bg-white/10 text-[#F5BA13] font-black uppercase text-[10px] sm:text-[11px] tracking-wider font-nunito">
-                <th className="py-2.5 px-3 whitespace-nowrap">Program</th>
-                <th className="py-2.5 px-2 text-center whitespace-nowrap">Usia</th>
-                <th className="py-2.5 px-3 whitespace-nowrap">Fokus Pembelajaran</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-white/15 text-[11px] sm:text-xs">
-              {activePrograms.map((item) => (
-                <tr
-                  key={item.id}
-                  onClick={() => handleSelect(item.id)}
-                  className="hover:bg-white/10 cursor-pointer transition-colors"
-                >
-                  <td className="py-2.5 px-3 font-heading font-black text-white whitespace-nowrap flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#F5BA13] shrink-0" />
-                    <span>{formatWithAmp(item.title)}</span>
-                  </td>
-                  <td className="py-2.5 px-2 text-center font-nunito font-black text-[#F5BA13] whitespace-nowrap">
-                    {item.ageRaw || item.age}
-                  </td>
-                  <td className="py-2.5 px-3 text-white font-medium text-[10.5px] sm:text-xs leading-snug">
-                    {formatWithAmp(item.focus)}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <p className="text-[11px] font-bold text-white/80 text-center mt-3">
-          💡 Klik salah satu baris program untuk langsung konsultasi kelas
-        </p>
-      </div>
 
       {/* 3. Program Detail Cards */}
       <div className="space-y-4">

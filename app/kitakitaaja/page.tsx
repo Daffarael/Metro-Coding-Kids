@@ -515,9 +515,9 @@ export default function AdminPage() {
               <div className="relative">
                 <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
-                  type="email"
+                  type="text"
                   required
-                  placeholder="admin@metrocodingkids.com"
+                  placeholder="admin@metrocodingkids.com atau admin"
                   value={authEmail}
                   onChange={(e) => setAuthEmail(e.target.value)}
                   className="w-full pl-10 pr-3.5 py-3 rounded-2xl border-2 border-[#143D2B]/20 text-sm font-semibold text-[#143D2B] focus:outline-none focus:border-[#143D2B] transition-colors"

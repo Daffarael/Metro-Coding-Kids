@@ -44,6 +44,7 @@ export function AnimatedAccordionItem({
         type="button"
         aria-expanded={isOpen}
         onClick={handleToggle}
+        suppressHydrationWarning
         style={{ transform: "none" }}
         className="no-pop w-full text-left flex items-center justify-between gap-3 cursor-pointer py-1 group select-none focus:outline-none"
       >

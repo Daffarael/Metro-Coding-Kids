@@ -7,6 +7,7 @@ import {
   ArrowDown,
 } from "lucide-react";
 import { PressDepth } from "@/components/ui/press-depth";
+import { Amp } from "@/components/ui/amp";
 
 export default function PainPoint() {
   const scrollToForm = () => {
@@ -85,28 +86,12 @@ export default function PainPoint() {
               </span>
             </h4>
             <p className="text-xs sm:text-sm font-bold text-[#143D2B] mt-1">
-              (penonton & pembelanja game)
+              (penonton <Amp /> pembelanja game)
             </p>
-
-            <p className="text-xs sm:text-sm font-semibold text-[#143D2B] mt-3 leading-relaxed">
-              Waktu habis berjam-jam menatap layar ponsel atau tablet hanya untuk bermain game, menonton konten, dan membeli item tanpa mengasah keterampilan nyata.
-            </p>
-
-            {/* Poin Ringkas Tegas */}
-            <div className="mt-3.5 pt-3 border-t-2 border-[#143D2B]/15 space-y-1.5">
-              <div className="flex items-center gap-2.5 text-xs font-bold text-[#143D2B]">
-                <span className="w-4 h-4 rounded-full bg-[#EE4C23] text-white flex items-center justify-center text-[10px] font-black shrink-0">✕</span>
-                <span>Pasif mengonsumsi hiburan instan tanpa belajar logika</span>
-              </div>
-              <div className="flex items-center gap-2.5 text-xs font-bold text-[#143D2B]">
-                <span className="w-4 h-4 rounded-full bg-[#EE4C23] text-white flex items-center justify-center text-[10px] font-black shrink-0">✕</span>
-                <span>Menghabiskan waktu berjam-jam tanpa menghasilkan karya</span>
-              </div>
-            </div>
           </div>
 
           {/* Indikator Transformasi Panah Turun - Simetris Sempurna Menyentuh Kartu Atas & Bawah */}
-          <div className="flex justify-center -my-2.5 sm:-my-3 relative z-10">
+          <div className="flex justify-center -my-3 sm:-my-3.5 relative z-10">
             <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#F5BA13] text-[#143D2B] flex items-center justify-center font-black shadow-lg border-[3px] border-[#143D2B]">
               <ArrowDown className="w-6 h-6 sm:w-7 sm:h-7 stroke-[3.5]" />
             </div>
@@ -125,22 +110,6 @@ export default function PainPoint() {
             <p className="text-xs sm:text-sm font-black text-[#143D2B] mt-1">
               (perancang logika, karakter, dan pembuat game mereka sendiri)
             </p>
-
-            <p className="text-xs sm:text-sm font-bold text-[#143D2B] mt-3 leading-relaxed">
-              Rasa penasaran pada game disalurkan menjadi kemampuan koding visual, problem-solving, matematika seru, hingga memprogram game orisinal ciptaan sendiri!
-            </p>
-
-            {/* Poin Ringkas Tegas */}
-            <div className="mt-3.5 pt-3 border-t-2 border-[#143D2B]/15 space-y-1.5">
-              <div className="flex items-center gap-2.5 text-xs font-black text-[#143D2B]">
-                <span className="w-4 h-4 rounded-full bg-[#143D2B] text-[#F5BA13] flex items-center justify-center text-[10px] font-black shrink-0">✓</span>
-                <span>Menguasai logika pemrograman visual & cara kerja teknologi</span>
-              </div>
-              <div className="flex items-center gap-2.5 text-xs font-black text-[#143D2B]">
-                <span className="w-4 h-4 rounded-full bg-[#143D2B] text-[#F5BA13] flex items-center justify-center text-[10px] font-black shrink-0">✓</span>
-                <span>Membuat portofolio game nyata yang bisa dimainkan bersama keluarga</span>
-              </div>
-            </div>
           </div>
         </div>
 

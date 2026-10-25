@@ -192,6 +192,7 @@ export function PressDepth({
       aria-label={ariaLabel}
       data-pressed={pressed ? "" : undefined}
       onClick={onClick}
+      suppressHydrationWarning
       style={{
         paddingBottom: depth,
         touchAction: "manipulation",
