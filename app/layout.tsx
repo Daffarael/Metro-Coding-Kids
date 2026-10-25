@@ -65,6 +65,17 @@ export const metadata: Metadata = {
     type: "website",
     locale: "id_ID",
   },
+  icons: {
+    icon: [
+      { url: "/images/logo-rounded.png?v=2", type: "image/png" },
+      { url: "/favicon.png?v=2", type: "image/png" },
+      { url: "/favicon.ico?v=2", sizes: "any" },
+    ],
+    apple: [
+      { url: "/images/logo-rounded.png?v=2", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/images/logo-rounded.png?v=2",
+  },
 };
 
 export const viewport: Viewport = {
