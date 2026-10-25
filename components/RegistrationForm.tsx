@@ -205,7 +205,7 @@ export default function RegistrationForm({
             <Combobox
               value={city}
               onChange={(val) => setCity(val)}
-              placeholder="Cari atau pilih kota (Jakarta / Bandung)..."
+              placeholder="Pilih kota (Jakarta / Bandung)"
             >
               <Combobox.Input />
               <Combobox.List emptyMessage="Kota tidak ditemukan (hanya Jakarta atau Bandung)">
