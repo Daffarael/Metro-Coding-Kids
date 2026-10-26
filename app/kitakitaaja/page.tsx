@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -27,6 +28,7 @@ import {
   Lock,
   Mail,
   ChevronDown,
+  Check,
 } from "lucide-react";
 import {
   DEFAULT_CAMPAIGN_SETTINGS,
@@ -48,6 +50,212 @@ const STATUS_FILTER_OPTIONS: AutocompleteItemData[] = [
   { value: "closing", label: "CLOSING", description: "Resmi Murid Baru", tag: "Closing" },
   { value: "batal", label: "BATAL", description: "Tidak Berminat / Batal", tag: "Batal" },
 ];
+
+const PIPELINE_STATUS_OPTIONS = [
+  {
+    value: "baru",
+    label: "BARU",
+    description: "Leads Baru Masuk",
+    tag: "Pipeline 1",
+    color: "#2563EB",
+  },
+  {
+    value: "sudah_dihubungi",
+    label: "SUDAH DIHUBUNGI",
+    description: "Follow Up CS",
+    tag: "Pipeline 2",
+    color: "#F5BA13",
+  },
+  {
+    value: "free_trial",
+    label: "JADWAL FREE TRIAL",
+    description: "Sesi Uji Coba",
+    tag: "Pipeline 3",
+    color: "#7C3AED",
+  },
+  {
+    value: "closing",
+    label: "CLOSING",
+    description: "Resmi Murid Baru",
+    tag: "Closing",
+    color: "#143D2B",
+  },
+  {
+    value: "batal",
+    label: "BATAL",
+    description: "Tidak Berminat / Batal",
+    tag: "Batal",
+    color: "#DC2626",
+  },
+];
+
+// Combobox Status Pipeline (Tampil & Berperilaku Sama dengan Combobox Status Filter)
+function PipelineStatusCombobox({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (val: string) => void;
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [coords, setCoords] = useState<{ top: number; left: number; width: number; placeTop: boolean }>({
+    top: 0,
+    left: 0,
+    width: 0,
+    placeTop: false,
+  });
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  const curOption =
+    PIPELINE_STATUS_OPTIONS.find((opt) => opt.value === value.toLowerCase()) ||
+    PIPELINE_STATUS_OPTIONS[0];
+
+  const updatePosition = () => {
+    if (!triggerRef.current) return;
+    const rect = triggerRef.current.getBoundingClientRect();
+    const dropdownHeight = 250;
+    const spaceBelow = window.innerHeight - rect.bottom;
+    const placeTop = spaceBelow < dropdownHeight && rect.top > spaceBelow;
+
+    setCoords({
+      top: placeTop ? rect.top - dropdownHeight - 6 : rect.bottom + 6,
+      left: Math.max(12, Math.min(rect.left, window.innerWidth - 280)),
+      width: Math.max(rect.width, 270),
+      placeTop,
+    });
+  };
+
+  const handleToggle = () => {
+    if (!isOpen) {
+      updatePosition();
+      setIsOpen(true);
+    } else {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        triggerRef.current &&
+        !triggerRef.current.contains(e.target as Node) &&
+        menuRef.current &&
+        !menuRef.current.contains(e.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    const handleScrollOrResize = () => {
+      setIsOpen(false);
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("scroll", handleScrollOrResize, true);
+    window.addEventListener("resize", handleScrollOrResize);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("scroll", handleScrollOrResize, true);
+      window.removeEventListener("resize", handleScrollOrResize);
+    };
+  }, [isOpen]);
+
+  const menuContent = isOpen && typeof document !== "undefined" ? (
+    createPortal(
+      <div
+        ref={menuRef}
+        style={{
+          position: "fixed",
+          top: `${coords.top}px`,
+          left: `${coords.left}px`,
+          width: `${coords.width}px`,
+          zIndex: 99999,
+        }}
+        className="bg-white rounded-[1.25rem] border border-border shadow-[0px_16px_32px_rgba(0,0,0,0.14)] p-1.5 animate-in fade-in zoom-in-95 duration-150"
+      >
+        <ul role="listbox" className="w-full space-y-0.5 outline-none">
+          {PIPELINE_STATUS_OPTIONS.map((item) => {
+            const isSelected = item.value === curOption.value;
+            return (
+              <li
+                key={item.value}
+                role="option"
+                aria-selected={isSelected}
+                onClick={() => {
+                  onChange(item.value);
+                  setIsOpen(false);
+                }}
+                className={`group flex items-center justify-between w-full px-3 py-2 text-xs rounded-xl cursor-pointer select-none transition-colors ${
+                  isSelected
+                    ? "bg-[#143D2B]/8 text-[#143D2B] font-bold"
+                    : "hover:bg-[#F7F5EE] text-slate-800 font-medium"
+                }`}
+              >
+                <div className="flex items-center gap-2.5 min-w-0">
+                  {isSelected ? (
+                    <Check className="w-3.5 h-3.5 text-[#143D2B] flex-shrink-0" />
+                  ) : (
+                    <span
+                      className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: item.color }}
+                    />
+                  )}
+                  <div className="flex flex-col min-w-0 text-left">
+                    <span className="font-heading font-black text-xs uppercase tracking-wide truncate">
+                      {item.label}
+                    </span>
+                    <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider truncate">
+                      {item.description}
+                    </span>
+                  </div>
+                </div>
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider pl-2 flex-shrink-0">
+                  {item.tag}
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      </div>,
+      document.body
+    )
+  ) : null;
+
+  return (
+    <div className="relative inline-block w-48">
+      <button
+        ref={triggerRef}
+        type="button"
+        onClick={handleToggle}
+        className={`w-full h-10 px-3 rounded-xl border bg-white flex items-center justify-between gap-2 shadow-xs transition-all text-left cursor-pointer ${
+          isOpen
+            ? "border-[#143D2B] ring-2 ring-[#143D2B]/10"
+            : "border-[#143D2B]/20 hover:border-[#143D2B]/50"
+        }`}
+      >
+        <div className="flex items-center gap-2 min-w-0 flex-1">
+          <span
+            className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+            style={{ backgroundColor: curOption.color }}
+          />
+          <span className="font-heading font-black text-[11px] text-[#143D2B] tracking-wide truncate uppercase">
+            {curOption.label}
+          </span>
+        </div>
+        <ChevronDown
+          className={`w-4 h-4 text-slate-400 transition-transform duration-200 flex-shrink-0 ${
+            isOpen ? "rotate-180" : ""
+          }`}
+        />
+      </button>
+      {menuContent}
+    </div>
+  );
+}
 
 interface Lead {
   id: string;
@@ -858,19 +1066,18 @@ export default function AdminPage() {
                               </span>
                             </td>
 
-                            {/* Dropdown Status Pipeline Tegas (Murni Teks) */}
+                            {/* Dropdown Status Pipeline (Combobox Mirip Status Filter) */}
                             <td className="py-3 px-4 text-center whitespace-nowrap">
-                              <select
-                                value={curStatus}
-                                onChange={(e) => updateLeadStatus(lead.id, e.target.value)}
-                                className={`px-3 py-1.5 rounded-full text-[10.5px] font-black uppercase tracking-wider cursor-pointer border-none shadow-xs ${statusObj.bg} ${statusObj.text} focus:outline-none`}
-                              >
-                                {STATUS_OPTIONS.map((opt) => (
-                                  <option key={opt.value} value={opt.value} className="bg-white text-slate-900 font-bold">
-                                    {opt.label}
-                                  </option>
-                                ))}
-                              </select>
+                              <div className="flex justify-center">
+                                <PipelineStatusCombobox
+                                  value={curStatus}
+                                  onChange={(val) => {
+                                    if (val && val !== curStatus) {
+                                      updateLeadStatus(lead.id, val);
+                                    }
+                                  }}
+                                />
+                              </div>
                             </td>
 
                             {/* Catatan CS Button */}
